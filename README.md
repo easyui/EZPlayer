@@ -89,6 +89,7 @@
 - 支持边缓存边下载
 - 支持视频解密播放
 - 支持tvOS
+
 ## License
 EZPlayer遵守MIT协议，具体请参考MIT
 
