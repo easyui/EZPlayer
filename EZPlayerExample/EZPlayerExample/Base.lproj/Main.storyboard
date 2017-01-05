@@ -642,11 +642,11 @@
             </objects>
             <point key="canvasLocation" x="953" y="553"/>
         </scene>
-        <!--Item-->
+        <!--videos-->
         <scene sceneID="KSj-7J-FYW">
             <objects>
                 <navigationController id="trZ-rh-yko" customClass="NavigationController" customModule="EZPlayerExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="y3E-VY-ZVe"/>
+                    <tabBarItem key="tabBarItem" title="videos" id="y3E-VY-ZVe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0LG-ot-DXI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -659,11 +659,11 @@
             </objects>
             <point key="canvasLocation" x="1" y="553"/>
         </scene>
-        <!--Item-->
+        <!--test-->
         <scene sceneID="XeE-Pu-Mr7">
             <objects>
                 <navigationController id="1gO-cR-WVM" customClass="NavigationController" customModule="EZPlayerExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eat-sY-BHW"/>
+                    <tabBarItem key="tabBarItem" title="test" id="eat-sY-BHW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fJS-jU-Zcd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
