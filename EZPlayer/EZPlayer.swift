@@ -105,7 +105,7 @@ open class EZPlayer: NSObject {
 
 
     /// 设置url会自动播放
-    open var autoPlay = false
+    open var autoPlay = true
     /// 设备横屏时自动旋转(phone)
     open var autoLandscapeFullScreenLandscape = UIDevice.current.userInterfaceIdiom == .phone
     /// 全屏的模式
@@ -428,7 +428,6 @@ open class EZPlayer: NSObject {
     // MARK: - Player action
     open func playWithURL(_ url: URL,embeddedContentView contentView: UIView? = nil, title: String? = nil) {
 
-        self.autoPlay = true
         self.contentItem = EZPlayerContentItem(url: url, title: title)
         self.contentURL = url
 
@@ -447,7 +446,6 @@ open class EZPlayer: NSObject {
     open func replaceToPlayWithURL(_ url: URL, title: String? = nil) {
         self.resetPlayerResource()
 
-        self.autoPlay = true
         self.contentItem = EZPlayerContentItem(url: url, title: title)
         self.contentURL = url
 
@@ -1059,7 +1057,6 @@ open class EZPlayer: NSObject {
     }
 
     private func  resetPlayerResource() {
-        self.autoPlay = false
         self.contentItem = nil
         self.contentURL = nil
 
@@ -1173,12 +1170,12 @@ extension EZPlayer {
                 case "status":
                     printLog("AVPlayerItem's status is changed: \(item.status)")
                     if item.status == .readyToPlay {
+                        let lastState = self.state
                         if self.state != .playing{
                             self.state = .readyToPlay
                         }
                         //自动播放
-                        if self.autoPlay {
-                            self.autoPlay = false
+                        if self.autoPlay && lastState == .unknown{
                             self.play()
 
                         }

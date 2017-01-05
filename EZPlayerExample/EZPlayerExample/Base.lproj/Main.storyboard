@@ -538,6 +538,55 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="testIdentifier" id="O3I-66-r4A">
+                                        <rect key="frame" x="0.0" y="352" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3I-66-r4A" id="gYD-nu-b4F">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(non)autoPlay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7A-6F-6Og">
+                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcV-E0-wbd">
+                                                    <rect key="frame" x="111" y="0.0" width="50" height="44"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="VqZ-3G-jhm"/>
+                                                    </constraints>
+                                                    <state key="normal" title="auto"/>
+                                                    <connections>
+                                                        <action selector="autoPlayTap:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="2G7-M6-7uS"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdQ-TV-O22">
+                                                    <rect key="frame" x="166" y="0.0" width="70" height="43.5"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="7W1-A0-8ht"/>
+                                                    </constraints>
+                                                    <state key="normal" title="nonauto"/>
+                                                    <connections>
+                                                        <action selector="nonautoPlayTap:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="b3u-MW-iGp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="C7A-6F-6Og" firstAttribute="top" secondItem="gYD-nu-b4F" secondAttribute="top" id="22g-2w-BXy"/>
+                                                <constraint firstAttribute="bottom" secondItem="C7A-6F-6Og" secondAttribute="bottom" id="4ev-63-CLc"/>
+                                                <constraint firstItem="LcV-E0-wbd" firstAttribute="top" secondItem="gYD-nu-b4F" secondAttribute="top" id="JDA-si-pSl"/>
+                                                <constraint firstItem="C7A-6F-6Og" firstAttribute="leading" secondItem="gYD-nu-b4F" secondAttribute="leading" id="Jde-dU-d7y"/>
+                                                <constraint firstAttribute="bottom" secondItem="LcV-E0-wbd" secondAttribute="bottom" id="KCG-Cg-dYV"/>
+                                                <constraint firstAttribute="bottom" secondItem="wdQ-TV-O22" secondAttribute="bottom" id="Ozw-kt-n1i"/>
+                                                <constraint firstItem="wdQ-TV-O22" firstAttribute="top" secondItem="gYD-nu-b4F" secondAttribute="top" id="Sff-e7-fUa"/>
+                                                <constraint firstItem="wdQ-TV-O22" firstAttribute="leading" secondItem="LcV-E0-wbd" secondAttribute="trailing" constant="5" id="XeH-T6-hcx"/>
+                                                <constraint firstItem="LcV-E0-wbd" firstAttribute="leading" secondItem="C7A-6F-6Og" secondAttribute="trailing" constant="5" id="ty1-Bk-hcq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

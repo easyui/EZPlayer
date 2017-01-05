@@ -20,43 +20,51 @@ class MediaManager {
 
     }
 
-    func playEmbeddedVideo(url: URL, embeddedContentView contentView: UIView? = nil, skin: UIView? = nil ) {
+    func playEmbeddedVideo(url: URL, embeddedContentView contentView: UIView? = nil, userinfo: [AnyHashable : Any]? = nil) {
         var mediaItem = MediaItem()
         mediaItem.url = url
-        self.playEmbeddedVideo(mediaItem: mediaItem, embeddedContentView: contentView , skin: skin)
+        self.playEmbeddedVideo(mediaItem: mediaItem, embeddedContentView: contentView, userinfo: userinfo )
 
     }
 
-
-    func playEmbeddedVideo(mediaItem: MediaItem, embeddedContentView contentView: UIView? = nil , skin: UIView? = nil ) {
+    func playEmbeddedVideo(mediaItem: MediaItem, embeddedContentView contentView: UIView? = nil , userinfo: [AnyHashable : Any]? = nil ) {
         //stop
         self.releasePlayer()
-
-        self.player = skin == nil ? EZPlayer() : EZPlayer(controlView: skin)
+        
+        if let skinView = userinfo?["skin"] as? UIView{
+         self.player =  EZPlayer(controlView: skinView)
+        }else{
+          self.player = EZPlayer()
+        }
+        
+        if let autoPlay = userinfo?["autoPlay"] as? Bool{
+            self.player!.autoPlay = autoPlay
+        }
+        
+        if let fullScreenMode = userinfo?["fullScreenMode"] as? EZPlayerFullScreenMode{
+            self.player!.fullScreenMode = fullScreenMode
+        }
+        
         self.player!.backButtonBlock = { fromDisplayMode in
             if fromDisplayMode == .embedded {
-              self.releasePlayer()
+                self.releasePlayer()
             }else if fromDisplayMode == .fullscreen {
                 if self.embeddedContentView == nil && self.player!.lastDisplayMode != .float{
                     self.releasePlayer()
                 }
-
+                
             }else if fromDisplayMode == .float {
-                    self.releasePlayer()
+                self.releasePlayer()
             }
-
+            
         }
-
+        
         self.embeddedContentView = contentView
-
-
-//        if self.embeddedContentView != nil {
-//            self.embeddedContentView!.addSubview(self.player!.view)
-//            self.player!.view.frame = self.embeddedContentView!.bounds
-//        }
+        
         self.player!.playWithURL(mediaItem.url! , embeddedContentView: self.embeddedContentView)
-
     }
+
+
 
 
     func releasePlayer(){
@@ -69,12 +77,8 @@ class MediaManager {
 
     }
     @objc  func playerDidPlayToEnd(_ notifiaction: Notification) {
-        print("oooooooooooooooo")
-//        //        self.state   = BMPlayerState.playedToTheEnd
-//        //        self.playDidEnd = true
-//        self.state = .stopped
-//        NotificationCenter.default.post(name: .EZPlayerPlaybackDidFinish, object: self, userInfo: [Notification.Key.EZPlayerPlaybackDidFinishReasonKey: EZPlayerPlaybackDidFinishReason.playbackEndTime])
-        self.releasePlayer()
+       //结束播放关闭播放器
+       //self.releasePlayer()
 
     }
 
@@ -89,30 +93,6 @@ class MediaManager {
     }
 
 
-    func onlyFor_fullscreenPortraitTap(){
-        //stop
-        self.releasePlayer()
-        var mediaItem = MediaItem()
-        mediaItem.url = Bundle.main.url(forResource: "hubblecast", withExtension: "m4v")!
 
-        self.player =  EZPlayer()
-        self.player!.backButtonBlock = { fromDisplayMode in
-            if fromDisplayMode == .embedded {
-                self.releasePlayer()
-            }else if fromDisplayMode == .fullscreen {
-                if self.embeddedContentView == nil && self.player!.lastDisplayMode != .float{
-                    self.releasePlayer()
-                }
-
-            }else if fromDisplayMode == .float {
-                self.releasePlayer()
-            }
-
-        }
-
-        self.player!.fullScreenMode = .portrait
-        self.player!.playWithURL(mediaItem.url! , embeddedContentView: self.embeddedContentView)
-
-    }
 
 }

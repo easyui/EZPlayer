@@ -34,6 +34,7 @@
 - 支持广告功能
 
 
+
 ## 安装 
 ### ExportFramework
 执行项目中的ExportFramework脚本自动生成framework
@@ -78,6 +79,10 @@
    $ pod install
    ```
 
+
+## 使用 
+
+
 ## Todo
 - 优化ui，优化代码，添加注释
 - 优化demo
@@ -89,6 +94,12 @@
 - 支持边缓存边下载
 - 支持视频解密播放
 - 支持tvOS
+- 支持播放百分比触发
+- 国际化
+- 记忆播放
+- 支持滤镜
+
+
 
 ## License
 EZPlayer遵守MIT协议，具体请参考MIT
