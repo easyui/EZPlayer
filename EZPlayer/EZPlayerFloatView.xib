@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EZPlayerFloatView" customModule="EZPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="381"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTE-BC-aTq">
+                    <rect key="frame" x="389" y="0.0" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="OGP-Xo-NRK"/>
+                        <constraint firstAttribute="height" constant="40" id="c1N-k7-lxg"/>
+                    </constraints>
+                    <state key="normal" image="btn_float_close20x20"/>
+                    <connections>
+                        <action selector="backButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="MxA-Kp-HjI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wTE-BC-aTq" secondAttribute="trailing" id="Yfc-DM-zIL"/>
+                <constraint firstItem="wTE-BC-aTq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="skW-C1-8yO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="100.5" y="103.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_float_close20x20" width="20" height="20"/>
+    </resources>
+</document>

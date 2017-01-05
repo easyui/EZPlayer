@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		99145C661E1CD5B900891B06 /* ExportFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 99145C671E1CD5B900891B06 /* Build configuration list for PBXAggregateTarget "ExportFramework" */;
+			buildPhases = (
+				99145C6A1E1CD5BE00891B06 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ExportFramework;
+			productName = ExportFramework;
+		};
+		99145C771E1CDF2200891B06 /* Cleanup Whitespace */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 99145C7A1E1CDF2200891B06 /* Build configuration list for PBXAggregateTarget "Cleanup Whitespace" */;
+			buildPhases = (
+				99145C7B1E1CDF2700891B06 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Cleanup Whitespace";
+			productName = "Cleanup Whitespace";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		991492311DDC0274005FF2BD /* EZPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991492301DDC0274005FF2BD /* EZPlayer.xcassets */; };
+		991492341DDC166A005FF2BD /* AVAsset+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */; };
+		991BE8531E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */; };
+		9933B2051DFEFA920066A09A /* EZPlayerThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */; };
+		995D47AA1DFFB05500BEB41B /* EZPlayerFloatContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */; };
+		995D47AC1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */; };
+		995E791C1DD99D5A006CE7E9 /* EZPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 995E791A1DD99D5A006CE7E9 /* EZPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		995E79241DD99E92006CE7E9 /* EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79231DD99E92006CE7E9 /* EZPlayer.swift */; };
+		995E79261DD9A04A006CE7E9 /* EZPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */; };
+		995E79281DD9A2E9006CE7E9 /* EZPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79271DD9A2E9006CE7E9 /* EZPlayerControlView.swift */; };
+		995E792A1DD9A322006CE7E9 /* EZPlayerControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995E79291DD9A322006CE7E9 /* EZPlayerControlView.xib */; };
+		995E79521DD9D166006CE7E9 /* EZPlayerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79511DD9D166006CE7E9 /* EZPlayerUtils.swift */; };
+		996ED44A1E00EB2C00D936D6 /* EZPlayerLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996ED4491E00EB2C00D936D6 /* EZPlayerLoading.swift */; };
+		99818A681DE948D1000DAC1C /* EZPlayerNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99818A671DE948D1000DAC1C /* EZPlayerNotification.swift */; };
+		99818A6E1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99818A6D1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift */; };
+		9990340F1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */; };
+		99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99998A251DE3450700296EDB /* Timer+EZPlayer.swift */; };
+		99998A281DE3479700296EDB /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99998A271DE3479700296EDB /* Delay.swift */; };
+		99C221D81DDCAC5400167DBE /* EZPlayerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */; };
+		99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */; };
+		99C221DC1DDCB4EB00167DBE /* EZPlayerContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */; };
+		99CF4D691E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */; };
+		99CF4D6A1E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */; };
+		99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */; };
+		99EB8CB21E0FFF0300176BF2 /* EZPlayerFloatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		991492301DDC0274005FF2BD /* EZPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EZPlayer.xcassets; sourceTree = "<group>"; };
+		991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAsset+EZPlayer.swift"; sourceTree = "<group>"; };
+		991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerFloatContainerRootViewController.xib; sourceTree = "<group>"; };
+		9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerThumbnail.swift; sourceTree = "<group>"; };
+		995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatContainer.swift; sourceTree = "<group>"; };
+		995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatContainerRootViewController.swift; sourceTree = "<group>"; };
+		995E79171DD99D5A006CE7E9 /* EZPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EZPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		995E791A1DD99D5A006CE7E9 /* EZPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZPlayer.h; sourceTree = "<group>"; };
+		995E791B1DD99D5A006CE7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		995E79231DD99E92006CE7E9 /* EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayer.swift; sourceTree = "<group>"; };
+		995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerView.swift; sourceTree = "<group>"; };
+		995E79271DD9A2E9006CE7E9 /* EZPlayerControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerControlView.swift; sourceTree = "<group>"; };
+		995E79291DD9A322006CE7E9 /* EZPlayerControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerControlView.xib; sourceTree = "<group>"; };
+		995E79511DD9D166006CE7E9 /* EZPlayerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerUtils.swift; sourceTree = "<group>"; };
+		996ED4491E00EB2C00D936D6 /* EZPlayerLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerLoading.swift; sourceTree = "<group>"; };
+		99818A671DE948D1000DAC1C /* EZPlayerNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerNotification.swift; sourceTree = "<group>"; };
+		99818A6D1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFullScreenViewController.swift; sourceTree = "<group>"; };
+		9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+EZPlayer.swift"; sourceTree = "<group>"; };
+		99998A251DE3450700296EDB /* Timer+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+EZPlayer.swift"; sourceTree = "<group>"; };
+		99998A271DE3479700296EDB /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerTransport.swift; sourceTree = "<group>"; };
+		99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerTransportExtension.swift; sourceTree = "<group>"; };
+		99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerContentItem.swift; sourceTree = "<group>"; };
+		99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerAudibleLegibleViewController.swift; sourceTree = "<group>"; };
+		99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerAudibleLegibleViewController.xib; sourceTree = "<group>"; };
+		99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatView.swift; sourceTree = "<group>"; };
+		99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerFloatView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		995E79131DD99D5A006CE7E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		995E790D1DD99D5A006CE7E9 = {
+			isa = PBXGroup;
+			children = (
+				995E79191DD99D5A006CE7E9 /* EZPlayer */,
+				995E79181DD99D5A006CE7E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		995E79181DD99D5A006CE7E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				995E79171DD99D5A006CE7E9 /* EZPlayer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		995E79191DD99D5A006CE7E9 /* EZPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				995E791A1DD99D5A006CE7E9 /* EZPlayer.h */,
+				99CF4D6B1E06BC7000798ACE /* Utiles */,
+				99CF4D661E06B3CD00798ACE /* Core */,
+				99CF4D651E06B38400798ACE /* Component */,
+				99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */,
+				995E791B1DD99D5A006CE7E9 /* Info.plist */,
+				991492301DDC0274005FF2BD /* EZPlayer.xcassets */,
+			);
+			path = EZPlayer;
+			sourceTree = "<group>";
+		};
+		99CF4D651E06B38400798ACE /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				99EB8CAE1E0FF41A00176BF2 /* Skin */,
+				996ED4491E00EB2C00D936D6 /* EZPlayerLoading.swift */,
+				99818A6D1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift */,
+				99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */,
+				99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */,
+				995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */,
+				995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */,
+				991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */,
+			);
+			name = Component;
+			sourceTree = "<group>";
+		};
+		99CF4D661E06B3CD00798ACE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				995E79231DD99E92006CE7E9 /* EZPlayer.swift */,
+				99818A671DE948D1000DAC1C /* EZPlayerNotification.swift */,
+				99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */,
+				995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */,
+				99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */,
+				9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		99CF4D6B1E06BC7000798ACE /* Utiles */ = {
+			isa = PBXGroup;
+			children = (
+				995E79511DD9D166006CE7E9 /* EZPlayerUtils.swift */,
+				99998A251DE3450700296EDB /* Timer+EZPlayer.swift */,
+				991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */,
+				9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */,
+				99998A271DE3479700296EDB /* Delay.swift */,
+			);
+			name = Utiles;
+			sourceTree = "<group>";
+		};
+		99EB8CAE1E0FF41A00176BF2 /* Skin */ = {
+			isa = PBXGroup;
+			children = (
+				995E79271DD9A2E9006CE7E9 /* EZPlayerControlView.swift */,
+				995E79291DD9A322006CE7E9 /* EZPlayerControlView.xib */,
+				99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */,
+				99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */,
+			);
+			name = Skin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		995E79141DD99D5A006CE7E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				995E791C1DD99D5A006CE7E9 /* EZPlayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		995E79161DD99D5A006CE7E9 /* EZPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 995E791F1DD99D5A006CE7E9 /* Build configuration list for PBXNativeTarget "EZPlayer" */;
+			buildPhases = (
+				995E79121DD99D5A006CE7E9 /* Sources */,
+				995E79131DD99D5A006CE7E9 /* Frameworks */,
+				995E79141DD99D5A006CE7E9 /* Headers */,
+				995E79151DD99D5A006CE7E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EZPlayer;
+			productName = EZPlayer;
+			productReference = 995E79171DD99D5A006CE7E9 /* EZPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		995E790E1DD99D5A006CE7E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "yangjun zhu";
+				TargetAttributes = {
+					99145C661E1CD5B900891B06 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					99145C771E1CDF2200891B06 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					995E79161DD99D5A006CE7E9 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 995E79111DD99D5A006CE7E9 /* Build configuration list for PBXProject "EZPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 995E790D1DD99D5A006CE7E9;
+			productRefGroup = 995E79181DD99D5A006CE7E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				995E79161DD99D5A006CE7E9 /* EZPlayer */,
+				99145C661E1CD5B900891B06 /* ExportFramework */,
+				99145C771E1CDF2200891B06 /* Cleanup Whitespace */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		995E79151DD99D5A006CE7E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				995E792A1DD9A322006CE7E9 /* EZPlayerControlView.xib in Resources */,
+				991BE8531E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib in Resources */,
+				99CF4D6A1E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib in Resources */,
+				991492311DDC0274005FF2BD /* EZPlayer.xcassets in Resources */,
+				99EB8CB21E0FFF0300176BF2 /* EZPlayerFloatView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99145C6A1E1CD5BE00891B06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
+		};
+		99145C7B1E1CDF2700891B06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\ndirectories=(EZPlayerExample EZPlayer)\n\nfor directory in \"${directories[@]}\"\ndo\necho \"Cleaning whitespace in directory: $directory\"\nfind $directory -iregex '.*\\.swift' -exec sed -E -i '' -e 's/[[:blank:]]*$//' {} \\;\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		995E79121DD99D5A006CE7E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9933B2051DFEFA920066A09A /* EZPlayerThumbnail.swift in Sources */,
+				995D47AC1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift in Sources */,
+				99818A681DE948D1000DAC1C /* EZPlayerNotification.swift in Sources */,
+				99C221DC1DDCB4EB00167DBE /* EZPlayerContentItem.swift in Sources */,
+				99CF4D691E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift in Sources */,
+				995E79261DD9A04A006CE7E9 /* EZPlayerView.swift in Sources */,
+				9990340F1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift in Sources */,
+				99C221D81DDCAC5400167DBE /* EZPlayerTransport.swift in Sources */,
+				995E79281DD9A2E9006CE7E9 /* EZPlayerControlView.swift in Sources */,
+				99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */,
+				99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */,
+				99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */,
+				995D47AA1DFFB05500BEB41B /* EZPlayerFloatContainer.swift in Sources */,
+				99818A6E1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift in Sources */,
+				995E79241DD99E92006CE7E9 /* EZPlayer.swift in Sources */,
+				991492341DDC166A005FF2BD /* AVAsset+EZPlayer.swift in Sources */,
+				995E79521DD9D166006CE7E9 /* EZPlayerUtils.swift in Sources */,
+				996ED44A1E00EB2C00D936D6 /* EZPlayerLoading.swift in Sources */,
+				99998A281DE3479700296EDB /* Delay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		99145C681E1CD5B900891B06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		99145C691E1CD5B900891B06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		99145C781E1CDF2200891B06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		99145C791E1CDF2200891B06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		995E791D1DD99D5A006CE7E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		995E791E1DD99D5A006CE7E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		995E79201DD99D5A006CE7E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				INFOPLIST_FILE = EZPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		995E79211DD99D5A006CE7E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				INFOPLIST_FILE = EZPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99145C671E1CD5B900891B06 /* Build configuration list for PBXAggregateTarget "ExportFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99145C681E1CD5B900891B06 /* Debug */,
+				99145C691E1CD5B900891B06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99145C7A1E1CDF2200891B06 /* Build configuration list for PBXAggregateTarget "Cleanup Whitespace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99145C781E1CDF2200891B06 /* Debug */,
+				99145C791E1CDF2200891B06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		995E79111DD99D5A006CE7E9 /* Build configuration list for PBXProject "EZPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				995E791D1DD99D5A006CE7E9 /* Debug */,
+				995E791E1DD99D5A006CE7E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		995E791F1DD99D5A006CE7E9 /* Build configuration list for PBXNativeTarget "EZPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				995E79201DD99D5A006CE7E9 /* Debug */,
+				995E79211DD99D5A006CE7E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 995E790E1DD99D5A006CE7E9 /* Project object */;
+}
