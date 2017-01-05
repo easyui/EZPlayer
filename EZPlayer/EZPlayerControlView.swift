@@ -411,7 +411,7 @@ extension EZPlayerControlView: EZPlayerCustom {
     }
 
     public func player(_ player: EZPlayer, currentTime: TimeInterval, duration: TimeInterval) {
-        if currentTime.isNaN {
+        if currentTime.isNaN || (currentTime == 0 && duration.isNaN){
             return
         }
         self.timeSlider.isEnabled = !duration.isNaN
