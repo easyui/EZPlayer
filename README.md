@@ -9,6 +9,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/EZPlayer.svg?style=flat)](http://cocoadocs.org/docsets/EZPlayer)
 ![License](https://img.shields.io/cocoapods/l/BMPlayer.svg?style=flat)
 
+## 预览
+![EZPlayer](EZPlayer.gif)
 
 ## 介绍
 基于AVPlayer封装的视频播放器，功能丰富，快速集成，可定制性强。
