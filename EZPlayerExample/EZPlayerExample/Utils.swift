@@ -15,7 +15,7 @@ extension URL {
         static let localMP4_2 =  Bundle.main.url(forResource: "blackhole", withExtension: "mp4")!
 
         //remote vod
-        static let apple_0 = URL(string: "http://111devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8")!
+        static let apple_0 = URL(string: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8")!
         static let apple_1 = URL(string: "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8")!
 
         static let remoteMP4_0 =  URL(string: "http://gslb.miaopai.com/stream/kPzSuadRd2ipEo82jk9~sA__.mp4")!

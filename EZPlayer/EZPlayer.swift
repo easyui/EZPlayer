@@ -456,9 +456,6 @@ open class EZPlayer: NSObject {
             return
         }
 
-        self.autoPlay = true
-        self.contentItem = EZPlayerContentItem(url: url, title: title)
-        self.contentURL = url
 
         self.playerasset = AVAsset(url: url)
 
@@ -1179,6 +1176,7 @@ extension EZPlayer {
                         if self.state != .playing{
                             self.state = .readyToPlay
                         }
+                        //自动播放
                         if self.autoPlay {
                             self.autoPlay = false
                             self.play()
