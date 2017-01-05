@@ -93,7 +93,7 @@
 EZPlayer遵守MIT协议，具体请参考MIT
 
 
-## Ps
+## PS
 2017年元旦在家撸了个播放器，EZPlayer是2017年码拉松的起点，希望大家多star，谢谢！
 
 
