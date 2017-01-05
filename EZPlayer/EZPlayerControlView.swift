@@ -58,7 +58,7 @@ open class EZPlayerControlView: UIView{
         super.awakeFromNib()
         self.timeSlider.value = 0
         self.progressView.progress = 0
-        self.progressView.progressTintColor = UIColor.yellow
+        self.progressView.progressTintColor = UIColor.lightGray
         self.progressView.trackTintColor = UIColor.clear
         self.progressView.backgroundColor = UIColor.clear
 
