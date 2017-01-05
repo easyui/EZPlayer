@@ -1226,10 +1226,6 @@ extension EZPlayer {
             default:
                 break
             }
-
-
-
-
         }
     }
 }
