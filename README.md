@@ -56,21 +56,21 @@
 ### [CocoaPods](http://cocoapods.org)
 1. 创建一个 `Podfile` ，在这个文件中列出你想使用的 frameworks
 
-```ruby
-project 'EZPlayerExample.xcodeproj'
-platform :ios, '8.0'
+   ```ruby
+   project 'EZPlayerExample.xcodeproj'
+   platform :ios, '8.0'
 
-target '<Your Target Name>' do
-  use_frameworks!
-  pod 'EZPlayer' 
-end
-```
-
+   target '<Your Target Name>' do
+     use_frameworks!
+     pod 'EZPlayer' 
+   end
+   ```
+   
 2. 在 `Podfile` 文件目录下执行
 
-```bash
-$ pod install
-```
+   ```bash
+   $ pod install
+   ```
 
 ## Todo
 - 优化ui，优化代码，添加注释
