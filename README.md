@@ -35,7 +35,7 @@
 1. 创建一个 `Cartfile` ，在这个文件中列出你想使用的 frameworks
 
    ```ogdl
-   github "easyui/EZPlayer" ~> 0.0.1
+   github "easyui/EZPlayer" 
    ```
    
 2. 运行 `carthage update` ，获取依赖到 Carthage/Checkouts 文件夹，逐个构建
