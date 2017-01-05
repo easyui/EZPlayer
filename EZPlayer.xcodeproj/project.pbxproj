@@ -123,7 +123,6 @@
 				99CF4D6B1E06BC7000798ACE /* Utiles */,
 				99CF4D661E06B3CD00798ACE /* Core */,
 				99CF4D651E06B38400798ACE /* Component */,
-				99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */,
 				995E791B1DD99D5A006CE7E9 /* Info.plist */,
 				991492301DDC0274005FF2BD /* EZPlayer.xcassets */,
 			);
@@ -153,6 +152,7 @@
 				99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */,
 				995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */,
 				99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */,
+				99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */,
 				9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */,
 			);
 			name = Core;

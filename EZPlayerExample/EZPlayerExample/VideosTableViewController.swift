@@ -49,7 +49,6 @@ class VideosTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.()
         if let player = MediaManager.sharedInstance.player  ,let index = player.indexPath , index == indexPath{
            return
         }

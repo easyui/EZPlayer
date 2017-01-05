@@ -887,7 +887,6 @@ open class EZPlayer: NSObject {
             if thumbnailCount == 0 {
                 DispatchQueue.main.async {
                     completionHandler(thumbnails)
-                    NotificationCenter.default.post(name: .EZPlayerThumbnailsGenerated, object: self, userInfo: [Notification.Key.EZPlayerThumbnailsKey:thumbnails])
                 }
 
             }

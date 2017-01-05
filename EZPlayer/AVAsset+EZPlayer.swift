@@ -25,6 +25,7 @@ public extension AVAsset {
         return nil
     }
 
+    /// 获取所有cc
     public var closedCaption: [AVMediaSelectionOption]? {
         var closedCaptions = [AVMediaSelectionOption]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
@@ -40,6 +41,7 @@ public extension AVAsset {
         return nil
     }
 
+    /// 获取所有subtitle
     public var subtitles: [(subtitle: AVMediaSelectionOption,localDisplayName: String)]? {
         var subtitles = [(subtitle: AVMediaSelectionOption,localDisplayName: String)]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
@@ -57,6 +59,7 @@ public extension AVAsset {
         return nil
     }
 
+    /// 获取所有audio
     public var audios: [(audio: AVMediaSelectionOption,localDisplayName: String)]? {
         var audios = [(audio: AVMediaSelectionOption,localDisplayName: String)]()
         if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicAudible){

@@ -116,7 +116,6 @@ class ParamsEmbedTableViewController: UITableViewController {
     }
 
     @IBAction func floatTap(_ sender: UIButton) {
-//        MediaManager.sharedInstance.showFloatVideo()
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.toFloat()
         }else{

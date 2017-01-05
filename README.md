@@ -20,18 +20,17 @@
 
 ## 特性
 - 本地视频、网络视频播放（支持的格式请参考苹果AVPlayer文档）
-- 全屏模式/嵌入模式/浮动模式随意切换
-- 全屏模式支持横屏全屏和竖屏全屏
-- 定制手势：播放/暂停(全屏/嵌入模式双击，浮动模式单击)，浮动和全屏切换（双击），音量/亮度调节（上下滑动），进度调节（左右滑动）
-- 定制手势：播放/暂停(全屏/嵌入模式双击，浮动模式单击)，浮动和全屏切换（双击），音量/亮度调节（上下滑动），进度调节（左右滑动）
-- 支持airPlay
-- 支持UITableview自动管理嵌入和浮动模式切换
-- 视频比例填充（videoGravity）切换
-- 字幕/CC切换
-- 音频切换
-- 拖动进度显示预览图（m3u8不支持）
-- 播放器控件皮肤自定义（自带一套浮动皮肤，嵌入和全屏用的一套皮肤）
-- 支持广告功能
+- [全屏模式/嵌入模式/浮动模式随意切换(支持根据设备自动旋转)](#DisplayMode)
+- [全屏模式支持横屏全屏和竖屏全屏](#DisplayMode)
+- [定制手势：播放/暂停(全屏/嵌入模式双击，浮动模式单击)，浮动和全屏切换（双击），音量/亮度调节（上下滑动），进度调节（左右滑动）](#GestureRecognizer)
+- [支持airPlay](#airPlay)
+- [支持UITableview自动管理嵌入和浮动模式切换](#tableview)
+- [视频比例填充（videoGravity）切换](#videoGravity)
+- [字幕/CC切换](#subtitle&cc&audio)
+- [音频切换](#subtitle&cc&audio)
+- [拖动进度显示预览图（m3u8不支持）](#preview)
+- [播放器控件皮肤自定义（自带一套浮动皮肤，嵌入和全屏用的一套皮肤）](#skin)
+- [支持广告功能](#ad)
 
 
 
@@ -81,6 +80,177 @@
 
 
 ## 使用 
+- 初始化播放器播放
+
+```
+func playEmbeddedVideo(mediaItem: MediaItem, embeddedContentView contentView: UIView? = nil , userinfo: [AnyHashable : Any]? = nil ) {
+        //stop
+        self.releasePlayer()
+......       
+        self.player!.backButtonBlock = { fromDisplayMode in
+            if fromDisplayMode == .embedded {
+                self.releasePlayer()
+            }else if fromDisplayMode == .fullscreen {
+                if self.embeddedContentView == nil && self.player!.lastDisplayMode != .float{
+                    self.releasePlayer()
+                }
+                
+            }else if fromDisplayMode == .float {
+                self.releasePlayer()
+            }
+            
+        }
+        
+        self.embeddedContentView = contentView
+        //self.embeddedContentView为nil时就是全屏播放
+        self.player!.playWithURL(mediaItem.url! , embeddedContentView: self.embeddedContentView)
+    }
+```
+<a name="DisplayMode"></a>
+
+- 全屏模式/嵌入模式/浮动模式随意切换(支持根据设备自动旋转)
+- 全屏模式支持横屏全屏和竖屏全屏
+
+```
+//根据设备横置自动全屏
+open var autoLandscapeFullScreenLandscape = UIDevice.current.userInterfaceIdiom == .phone
+//指定全屏模式是竖屏还是横屏
+open var fullScreenMode = EZPlayerFullScreenMode.landscape
+
+//进去全屏模式
+open func toFull(_ orientation:UIDeviceOrientation = .landscapeLeft, animated: Bool = true ,completion: ((Bool) -> Swift.Void)? = nil) 
+//进入嵌入屏模式
+open func toEmbedded(animated: Bool = true , completion: ((Bool) -> Swift.Void)? = nil)
+//进入浮动模式
+open func toFloat(animated: Bool = true, completion: ((Bool) -> Swift.Void)? = nil) 
+```
+例子：EZPlayerExample-DisplayMode
+
+<a name="GestureRecognizer"></a>
+
+- 定制手势：播放/暂停(全屏/嵌入模式双击，浮动模式单击)，浮动和全屏切换（双击），音量/亮度调节（上下滑动），进度调节（左右滑动）
+
+```
+//自定义皮肤只要实现这两个协议
+public protocol EZPlayerHorizontalPan: class {
+func player(_ player: EZPlayer ,progressWillChange value: TimeInterval)
+func player(_ player: EZPlayer ,progressChanging value: TimeInterval)
+func player(_ player: EZPlayer ,progressDidChange value: TimeInterval)
+}
+
+public protocol EZPlayerGestureRecognizer: class {
+func player(_ player: EZPlayer ,singleTapGestureTapped singleTap: UITapGestureRecognizer)
+func player(_ player: EZPlayer ,doubleTapGestureTapped doubleTap: UITapGestureRecognizer)
+}
+//点击事件还可以接受通知
+static let EZPlayerTapGestureRecognizer = Notification.Name(rawValue: "com.ezplayer.EZPlayerTapGestureRecognizer")
+```
+
+<a name="airPlay"></a>
+
+- 支持airPlay
+
+```
+/// 支持airplay
+open var allowsExternalPlayback = true
+/// airplay连接状态
+open var isExternalPlaybackActive: Bool 
+```
+
+<a name="tableview"></a>
+
+- 支持UITableview自动管理嵌入和浮动模式切换
+
+```
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+...       MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: cell?.contentView)
+
+//主要是设置indexPath和scrollView 属性
+MediaManager.sharedInstance.player?.indexPath = indexPath
+        MediaManager.sharedInstance.player?.scrollView = tableView
+    }
+```
+
+<a name="videoGravity"></a>
+
+- 视频比例填充（videoGravity）切换
+
+```
+//设置
+open var videoGravity = EZPlayerVideoGravity.aspect
+```
+
+<a name="subtitle&cc&audio"></a>
+
+- 字幕/CC切换
+- 音频切换
+
+```
+主要通过下面两个extension来设置，查看
+AVAsset+EZPlayer.swift
+//获取所有cc
+public var closedCaption: [AVMediaSelectionOption]? 
+//获取所有subtitle
+public var subtitles: [(subtitle: AVMediaSelectionOption,localDisplayName: String)]? 
+//获取所有audio
+public var audios: [(audio: AVMediaSelectionOption,localDisplayName: String)]? 
+
+AVPlayerItem+EZPlayer.swift
+/// 获取／设置当前subtitle／cc
+public var selectedMediaCharacteristicLegibleOption:AVMediaSelectionOption?
+/// 获取／设置当前cc
+public var selectedClosedCaptionOption:AVMediaSelectionOption?
+/// 获取／设置当前subtitle
+public var selectedSubtitleOption:AVMediaSelectionOption?
+/// 获取／设置当前audio
+public var selectedMediaCharacteristicAudibleOption:AVMediaSelectionOption?
+```
+
+<a name="preview"></a>
+
+- 拖动进度显示预览图（m3u8不支持）
+
+```
+//不支持m3u8
+open func generateThumbnails(times: [TimeInterval],maximumSize: CGSize, completionHandler: @escaping (([EZPlayerThumbnail]) -> Swift.Void ))
+//支持m3u8
+func snapshotImage() -> UIImage?
+```
+
+<a name="skin"></a>
+
+- 播放器控件皮肤自定义（自带一套浮动皮肤，嵌入和全屏用的一套皮肤）
+
+ - EZPlayer一共三套皮肤可以设置： 
+```
+ /// 嵌入模式的控制皮肤
+open  var controlViewForEmbedded : UIView?
+/// 浮动模式的控制皮肤
+open  var controlViewForFloat : UIView?
+/// 浮动模式的控制皮肤
+open  var controlViewForFullscreen : UIView?
+```
+
+ - 默认controlViewForFullscreen为空的时候会默认使用controlViewForEmbedded皮肤
+ - EZPlayer初始化的时候可以设置controlViewForEmbedded皮肤
+ 
+      ```
+      public init(controlView: UIView? )
+      ```
+
+例子：EZPlayerExample-Skin(ad)
+
+<a name="ad"></a>
+
+- 支持广告功能
+
+假如播放过程中进入广告，那需要临时设置广告皮肤，可以设置属性：
+
+```
+open  var controlViewForIntercept : UIView?
+```
+
+例子：EZPlayerExample-Skin(ad)
 
 
 ## Todo

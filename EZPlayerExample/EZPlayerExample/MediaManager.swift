@@ -76,19 +76,10 @@ class MediaManager {
         self.mediaItem = nil
 
     }
+    
     @objc  func playerDidPlayToEnd(_ notifiaction: Notification) {
        //结束播放关闭播放器
        //self.releasePlayer()
-
-    }
-
-    func showFloatVideo(){
-//      self.player?.showFloatVideo()
-
-    }
-
-    func hiddenFloatVideo() {
-//        self.player?.hiddenFloatVideo()
 
     }
 
