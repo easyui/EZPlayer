@@ -270,8 +270,7 @@ open  var controlViewForIntercept : UIView?
 - 国际化
 - 记忆播放
 - 支持滤镜
-
-
+- 支持RN
 
 ## License
 EZPlayer遵守MIT协议，具体请参考MIT
