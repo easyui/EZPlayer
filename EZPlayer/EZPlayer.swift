@@ -335,8 +335,8 @@ open class EZPlayer: NSObject {
 
     /// 视频长度，live是NaN
     open var duration: TimeInterval? {
-        if let  duration = self.player?.currentItem?.duration  {
-            return CMTimeGetSeconds(duration)
+        if let  duration = self.player?.duration  {
+            return duration
         }
         return nil
     }
@@ -344,11 +344,10 @@ open class EZPlayer: NSObject {
 
     /// 视频进度
     open var currentTime: TimeInterval? {
-        if let  currentTime = self.player?.currentTime() {
-            return CMTimeGetSeconds(currentTime)
+        if let  currentTime = self.player?.currentTime {
+            return currentTime
         }
         return nil
-
     }
 
     /// 视频播放速率

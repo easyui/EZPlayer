@@ -50,6 +50,7 @@
 		9990340F1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */; };
 		99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99998A251DE3450700296EDB /* Timer+EZPlayer.swift */; };
 		99998A281DE3479700296EDB /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99998A271DE3479700296EDB /* Delay.swift */; };
+		99B999761E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B999751E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift */; };
 		99C221D81DDCAC5400167DBE /* EZPlayerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */; };
 		99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */; };
 		99C221DC1DDCB4EB00167DBE /* EZPlayerContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */; };
@@ -80,6 +81,7 @@
 		9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+EZPlayer.swift"; sourceTree = "<group>"; };
 		99998A251DE3450700296EDB /* Timer+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+EZPlayer.swift"; sourceTree = "<group>"; };
 		99998A271DE3479700296EDB /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		99B999751E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVPlayer+EZPlayer.swift"; sourceTree = "<group>"; };
 		99C221D71DDCAC5400167DBE /* EZPlayerTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerTransport.swift; sourceTree = "<group>"; };
 		99C221D91DDCAEEA00167DBE /* EZPlayerTransportExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerTransportExtension.swift; sourceTree = "<group>"; };
 		99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerContentItem.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				99998A251DE3450700296EDB /* Timer+EZPlayer.swift */,
 				991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */,
 				9990340E1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift */,
+				99B999751E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift */,
 				99998A271DE3479700296EDB /* Delay.swift */,
 			);
 			name = Utiles;
@@ -314,6 +317,7 @@
 				9990340F1DE4377B00AB11A1 /* AVPlayerItem+EZPlayer.swift in Sources */,
 				99C221D81DDCAC5400167DBE /* EZPlayerTransport.swift in Sources */,
 				995E79281DD9A2E9006CE7E9 /* EZPlayerControlView.swift in Sources */,
+				99B999761E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift in Sources */,
 				99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */,
 				99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */,
 				99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */,
