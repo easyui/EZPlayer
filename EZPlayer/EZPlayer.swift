@@ -1162,7 +1162,7 @@ extension EZPlayer {
         if let item = object as? AVPlayerItem, let keyPath = keyPath {
             if item == self.playerItem {
                 switch keyPath {
-                case "status":
+                case #keyPath(AVPlayerItem.status):
                     printLog("AVPlayerItem's status is changed: \(item.status)")
                     if item.status == .readyToPlay {
                         let lastState = self.state
@@ -1178,13 +1178,13 @@ extension EZPlayer {
                         self.state = .error(.playerFail)
                     }
 
-                case "loadedTimeRanges":
+                case #keyPath(AVPlayerItem.loadedTimeRanges):
                     printLog("AVPlayerItem's loadedTimeRanges is changed")
                     (self.controlView as? EZPlayerDelegate)?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
                     self.delegate?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
-                case "playbackBufferEmpty":
+                case #keyPath(AVPlayerItem.playbackBufferEmpty):
                     printLog("AVPlayerItem's playbackBufferEmpty is changed")
-                case "playbackLikelyToKeepUp":
+                case #keyPath(AVPlayerItem.playbackLikelyToKeepUp):
                     printLog("AVPlayerItem's playbackLikelyToKeepUp is changed")
                 default:
                     break
@@ -1192,7 +1192,7 @@ extension EZPlayer {
             }
         }else if let view = object as? UITableView ,let keyPath = keyPath{
             switch keyPath {
-            case "contentOffset":
+            case #keyPath(UITableView.contentOffset):
                 if view == self.scrollView {
                     if let index = self.indexPath {
                         let cellrectInTable = view.rectForRow(at: index)
