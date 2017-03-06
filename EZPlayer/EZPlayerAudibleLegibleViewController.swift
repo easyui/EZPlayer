@@ -11,9 +11,9 @@ import AVFoundation
 public struct  MediaTypes: OptionSet {
     public  let rawValue: Int
 
-    public static let audios = MediaTypes(rawValue: 1)
-    public static let closedCaption = MediaTypes(rawValue: 2)
-    public static let subtitles = MediaTypes(rawValue: 4)
+    public static let audios = MediaTypes(rawValue: 1 << 0)
+    public static let closedCaption = MediaTypes(rawValue: 1 << 1)
+    public static let subtitles = MediaTypes(rawValue: 1 << 2)
 
     public init(rawValue: MediaTypes.RawValue) {
         self.rawValue = rawValue

@@ -169,10 +169,10 @@ open class EZPlayer: NSObject {
             if playerItem != newValue{
                 if let item = playerItem{
                     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
-                    item.removeObserver(self, forKeyPath: "status")
-                    item.removeObserver(self, forKeyPath: "loadedTimeRanges")
-                    item.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-                    item.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges))
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackBufferEmpty))
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackLikelyToKeepUp))
                 }
             }
         }
@@ -181,12 +181,12 @@ open class EZPlayer: NSObject {
                 if let item = playerItem{
 
                     NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-                    item.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
-                    item.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: NSKeyValueObservingOptions.new, context: nil)
                     // 缓冲区空了，需要等待数据
-                    item.addObserver(self, forKeyPath: "playbackBufferEmpty", options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackBufferEmpty), options: NSKeyValueObservingOptions.new, context: nil)
                     // 缓冲区有足够数据可以播放了
-                    item.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackLikelyToKeepUp), options: NSKeyValueObservingOptions.new, context: nil)
                 }
             }
         }
@@ -382,7 +382,7 @@ open class EZPlayer: NSObject {
         willSet{
             if scrollView != newValue{
                 if let view = scrollView{
-                    view.removeObserver(self, forKeyPath: "contentOffset")
+                    view.removeObserver(self, forKeyPath: #keyPath(UITableView.contentOffset))
 
                 }
             }
@@ -390,7 +390,7 @@ open class EZPlayer: NSObject {
         didSet {
             if playerItem != oldValue{
                 if let view = scrollView{
-                    view.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.new, context: nil)
+                    view.addObserver(self, forKeyPath: #keyPath(UITableView.contentOffset), options: NSKeyValueObservingOptions.new, context: nil)
                 }
             }
         }
@@ -762,9 +762,6 @@ open class EZPlayer: NSObject {
             completion?(false)
 
         }
-
-
-
     }
 
     open func toFloat(animated: Bool = true, completion: ((Bool) -> Swift.Void)? = nil) {
