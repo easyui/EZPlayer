@@ -1023,6 +1023,9 @@ open class EZPlayer: NSObject {
         let keys = ["tracks","duration","commonMetadata","availableMediaCharacteristicsWithMediaSelectionOptions"]
         self.playerItem = AVPlayerItem(asset: self.playerasset!, automaticallyLoadedAssetKeys: keys)
         self.player     = AVPlayer(playerItem: playerItem!)
+//        if #available(iOS 10.0, *) {
+//            self.player!.automaticallyWaitsToMinimizeStalling = false
+//        }
         self.player!.allowsExternalPlayback = self.allowsExternalPlayback
         if self.playerView == nil {
             self.playerView = EZPlayerView(controlView: self.controlView )
@@ -1163,7 +1166,7 @@ extension EZPlayer {
             if item == self.playerItem {
                 switch keyPath {
                 case #keyPath(AVPlayerItem.status):
-                    printLog("AVPlayerItem's status is changed: \(item.status)")
+                    printLog("AVPlayerItem's status is changed: \(item.status.rawValue)")
                     if item.status == .readyToPlay {
                         let lastState = self.state
                         if self.state != .playing{
