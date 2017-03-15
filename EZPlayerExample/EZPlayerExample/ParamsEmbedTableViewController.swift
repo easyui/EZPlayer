@@ -197,4 +197,16 @@ class ParamsEmbedTableViewController: UITableViewController {
         
     }
 
+    // MARK: - fairPlay：
+    
+    @IBAction func onlineTap(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func offlineTap(_ sender: UIButton) {
+        
+        
+        
+    }
 }

@@ -39,9 +39,9 @@ public extension Notification.Name {
     /// 点击播放器手势通知
     static let EZPlayerTapGestureRecognizer = Notification.Name(rawValue: "com.ezplayer.EZPlayerTapGestureRecognizer")
 
-
-
-
+    /// FairPlay DRM
+    static let EZPlayerDidPersistContentKeyNotification = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKeyNotification")
+    
 }
 
 extension Notification {
@@ -68,6 +68,8 @@ extension Notification {
         static let EZPlayerNumberOfTaps =  "EZPlayerNumberOfTaps"
         static let EZPlayerTapGestureRecognizer =  "EZPlayerTapGestureRecognizer"
 
+        /// FairPlay DRM=
+        static let EZPlayerDidPersistAssetIdentifierKey = "EZPlayerDidPersistAssetIdentifierKey"
 
     }
 

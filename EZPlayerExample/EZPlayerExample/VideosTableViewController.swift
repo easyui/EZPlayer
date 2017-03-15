@@ -37,7 +37,6 @@ class VideosTableViewController: UITableViewController {
         return 50
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "videosIdentifier", for: indexPath)

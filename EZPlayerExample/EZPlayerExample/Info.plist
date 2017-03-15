@@ -21,10 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+	<dict/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
