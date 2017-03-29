@@ -566,7 +566,7 @@ open class EZPlayer: NSObject {
                     self.fullScreenViewController!.view.addSubview(self.view)
                     self.fullScreenViewController!.view.sendSubview(toBack: self.view)
                     if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
-                        self.view.transform = CGAffineTransform(rotationAngle:orientation == .landscapeRight ? CGFloat(M_PI_2) : -CGFloat(M_PI_2))
+                        self.view.transform = CGAffineTransform(rotationAngle:orientation == .landscapeRight ? CGFloat(Double.pi / 2) : -CGFloat(Double.pi / 2))
                         self.view.frame = orientation == .landscapeRight ?  CGRect(x:  y, y: rect.origin.x, width: rect.size.height, height: rect.size.width) : CGRect(x: rect.origin.y, y: x, width: rect.size.height, height: rect.size.width)
                     }else{
                         self.view.frame = rect
@@ -695,7 +695,7 @@ open class EZPlayer: NSObject {
                 fullScreenViewController.dismiss(animated: false, completion: {
 
                     if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
-                        self.view.transform = CGAffineTransform(rotationAngle : fullScreenViewController.currentOrientation == .landscapeLeft ? CGFloat(M_PI_2) : -CGFloat(M_PI_2))
+                        self.view.transform = CGAffineTransform(rotationAngle : fullScreenViewController.currentOrientation == .landscapeLeft ? CGFloat(Double.pi / 2) : -CGFloat(Double.pi / 2))
                         self.view.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.height, height: rect.size.width)
                     }else{
                         self.view.bounds = embeddedContentView.bounds
@@ -826,7 +826,7 @@ open class EZPlayer: NSObject {
                 UIApplication.shared.keyWindow?.addSubview(self.view)
                 fullScreenViewController.dismiss(animated: false, completion: {
                     if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
-                        self.view.transform = CGAffineTransform(rotationAngle : fullScreenViewController.currentOrientation == .landscapeLeft ? CGFloat(M_PI_2) : -CGFloat(M_PI_2))
+                        self.view.transform = CGAffineTransform(rotationAngle : fullScreenViewController.currentOrientation == .landscapeLeft ? CGFloat(Double.pi / 2) : -CGFloat(Double.pi / 2))
                         self.view.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.height, height: rect.size.width)
                     }else{
                         self.view.bounds = self.floatContainer!.floatWindow.bounds
