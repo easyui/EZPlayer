@@ -1,5 +1,5 @@
-<p align="center">
 ![EZPlayer](EZPlayerExample/EZPlayerExample/Assets.xcassets/AppIcon.appiconset/Icon-83.5@2x.png)
+
 
 # EZPlayer
 ![Swift 3.1](https://img.shields.io/badge/Swift-3.1-brightgreen.svg?style=flat) 
