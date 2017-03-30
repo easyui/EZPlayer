@@ -1,8 +1,6 @@
 <p align="center">
 ![EZPlayer](EZPlayerExample/EZPlayerExample/Assets.xcassets/AppIcon.appiconset/Icon-83.5@2x.png)
 
-![EZPlayer](EZPlayerExample/EZPlayerExample/Assets.xcassets/AppIcon.appiconset/Icon-83.5@2x.png)
-
 # EZPlayer
 ![Swift 3.1](https://img.shields.io/badge/Swift-3.1-brightgreen.svg?style=flat) 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
