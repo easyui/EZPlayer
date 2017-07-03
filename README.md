@@ -4,9 +4,9 @@
 # EZPlayer
 ![Swift 3.1](https://img.shields.io/badge/Swift-3.1-brightgreen.svg?style=flat) 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-<a href="https://img.shields.io/cocoapods/v/ZFPlayer.svg"><img src="https://img.shields.io/cocoapods/v/EZPlayer.svg"></a>
+<a href="https://img.shields.io/cocoapods/v/EZPlayer.svg"><img src="https://img.shields.io/cocoapods/v/EZPlayer.svg"></a>
 [![Platform](https://img.shields.io/cocoapods/p/EZPlayer.svg?style=flat)](http://cocoadocs.org/docsets/EZPlayer)
-![License](https://img.shields.io/cocoapods/l/BMPlayer.svg?style=flat)
+![License](https://img.shields.io/cocoapods/l/EZPlayer.svg?style=flat)
 
 ## 预览
 ![EZPlayer](EZPlayer.gif)
