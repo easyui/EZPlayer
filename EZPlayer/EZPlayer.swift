@@ -133,7 +133,6 @@ open class EZPlayer: NSObject {
             return false
         }
         return  avplayer.isExternalPlaybackActive
-        //        }
     }
 
 
@@ -261,7 +260,7 @@ open class EZPlayer: NSObject {
     /// 嵌入模式的容器
     open weak var embeddedContentView: UIView?
 
-    /// 嵌入模式的显示影藏
+    /// 嵌入模式的显示隐藏
     open  private(set)  var controlsHidden = false
 
     /// 过多久自动消失控件，设置为<=0不消失
@@ -293,14 +292,11 @@ open class EZPlayer: NSObject {
                     (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: false)
                     self.delegate?.player(self, showLoading: false)
                     NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: false])
-
-
                     break
                 default:
                     (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: true)
                     self.delegate?.player(self, showLoading: true)
                     NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: true])
-
                     break
                 }
                 
