@@ -98,7 +98,7 @@ open class EZPlayer: NSObject {
     open var videoGravity = EZPlayerVideoGravity.aspect{
         didSet {
             if let layer = self.playerView?.layer as? AVPlayerLayer{
-                layer.videoGravity = videoGravity.rawValue
+                layer.videoGravity = AVLayerVideoGravity(rawValue: videoGravity.rawValue)
             }
         }
     }
@@ -1026,7 +1026,7 @@ open class EZPlayer: NSObject {
         if self.playerView == nil {
             self.playerView = EZPlayerView(controlView: self.controlView )
         }
-        (self.playerView?.layer as! AVPlayerLayer).videoGravity = self.videoGravity.rawValue
+        (self.playerView?.layer as! AVPlayerLayer).videoGravity = AVLayerVideoGravity(rawValue: self.videoGravity.rawValue)
         self.playerView?.config(player: self)
 
         (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: true)

@@ -239,7 +239,7 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
              */
             spcData = try resourceLoadingRequest.streamingContentKeyRequestData(forApp: applicationCertificate, contentIdentifier: assetIDData, options: resourceLoadingRequestOptions)
         } catch let error as NSError {
-            printLog("Error obtaining key request data: \(error.domain) reason: \(error.localizedFailureReason)")
+            printLog("Error obtaining key request data: \(error.domain) reason: \(error.localizedFailureReason ?? "")")
             resourceLoadingRequest.finishLoading(with: error)
             return
         }
@@ -264,7 +264,6 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
         // Check if this reuqest is the result of a potential AVAssetDownloadTask.
         if shouldPersist, #available(iOS 9.0, *){
             // Since this request is the result of an AVAssetDownloadTask, we should get the secure persistent content key.
-            var error: NSError?
             
             /*
              Obtain a persistable content key from a context.
@@ -274,10 +273,10 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
              
              The value of AVAssetResourceLoadingContentInformationRequest.contentType must be set to AVStreamingKeyDeliveryPersistentContentKeyType when responding with data created with this method.
              */
-            let  persistentContentKeyData = resourceLoadingRequest.persistentContentKey(fromKeyVendorResponse: ckcData, options: nil, error: &error)
-            
-            
-            if let error = error {
+            var  persistentContentKeyData: Data!
+            do{
+                persistentContentKeyData = try resourceLoadingRequest.persistentContentKey(fromKeyVendorResponse: ckcData, options: nil)
+            }catch let error as NSError {
                 printLog("Error creating persistent content key: \(error)")
                 resourceLoadingRequest.finishLoading(with: error)
                 return
@@ -289,7 +288,7 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
                 
                 if persistentContentKeyURL == documentURL {
                     printLog("failed to create the URL for writing the persistent content key")
-                    resourceLoadingRequest.finishLoading(with: error)
+                    resourceLoadingRequest.finishLoading(with:NSError(domain: EZPlayerErrorDomain, code: -6, userInfo: [NSLocalizedDescriptionKey: "failed to create the URL for writing the persistent content key"]))
                     return
                 }
                 

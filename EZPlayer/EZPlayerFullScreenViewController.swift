@@ -100,7 +100,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     }
 
     // MARK: - notification
-    func playerControlsHiddenDidChange(_ notifiaction: Notification) {
+    @objc func playerControlsHiddenDidChange(_ notifiaction: Notification) {
         self.statusBarHiddenAnimated = notifiaction.userInfo?[Notification.Key.EZPlayerControlsHiddenDidChangeByAnimatedKey] as? Bool ?? true
         self.setNeedsStatusBarAppearanceUpdate()
     }

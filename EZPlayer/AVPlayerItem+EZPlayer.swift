@@ -24,13 +24,13 @@ public extension AVPlayerItem {
     /// 获取／设置当前subtitle／cc
     public var selectedMediaCharacteristicLegibleOption:AVMediaSelectionOption?{
         get{
-            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 return self.selectedMediaOption(in: legibleGroup)
             }
             return nil
         }
         set{
-            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 self.select(newValue, in: legibleGroup)
             }
         }
@@ -47,7 +47,7 @@ public extension AVPlayerItem {
             return nil
         }
         set{
-            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 if newValue == nil{
                     self.select(newValue, in: legibleGroup)
                 }else if newValue!.mediaType == "clcp"{
@@ -61,17 +61,17 @@ public extension AVPlayerItem {
     public var selectedSubtitleOption:AVMediaSelectionOption?{
         get{
             if let option = self.selectedMediaCharacteristicLegibleOption{
-                if !option.hasMediaCharacteristic(AVMediaCharacteristicContainsOnlyForcedSubtitles) {
+                if !option.hasMediaCharacteristic(AVMediaCharacteristic.containsOnlyForcedSubtitles) {
                     return option
                 }
             }
             return nil
         }
         set{
-            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+            if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 if newValue == nil{
                     self.select(newValue, in: legibleGroup)
-                }else if !newValue!.hasMediaCharacteristic(AVMediaCharacteristicContainsOnlyForcedSubtitles) {
+                }else if !newValue!.hasMediaCharacteristic(AVMediaCharacteristic.containsOnlyForcedSubtitles) {
                     self.select(newValue, in: legibleGroup)
                 }
             }
@@ -81,13 +81,13 @@ public extension AVPlayerItem {
     /// 获取／设置当前audio
     public var selectedMediaCharacteristicAudibleOption:AVMediaSelectionOption?{
         get{
-            if let group = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicAudible){
+            if let group = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.audible){
                 return self.selectedMediaOption(in: group)
             }
             return nil
         }
         set{
-            if let group = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicAudible){
+            if let group = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.audible){
                 self.select(newValue, in: group)
             }
         }

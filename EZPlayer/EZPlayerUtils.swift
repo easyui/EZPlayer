@@ -37,7 +37,7 @@ public func printLog<T>(_ message: T...,
 
 
 
-public func toNSError(code: Int, userInfo dict: [AnyHashable : Any]? = nil) -> NSError
+public func toNSError(code: Int, userInfo dict: [String : Any]? = nil) -> NSError
 {
     return NSError(domain: EZPlayerErrorDomain, code: code, userInfo: dict)
 }
