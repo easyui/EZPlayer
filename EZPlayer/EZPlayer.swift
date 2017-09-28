@@ -568,7 +568,7 @@ open class EZPlayer: NSObject {
                         self.view.frame = rect
                     }
 
-                    UIView.animate(withDuration: ezAnimatedDuration, animations: {
+                    UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                         if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                             self.view.transform = CGAffineTransform.identity
                         }
@@ -698,7 +698,7 @@ open class EZPlayer: NSObject {
 
                     }
 
-                    UIView.animate(withDuration: ezAnimatedDuration, animations: {
+                    UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                         if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                             self.view.transform = CGAffineTransform.identity
                         }
@@ -740,7 +740,7 @@ open class EZPlayer: NSObject {
                 UIApplication.shared.keyWindow?.addSubview(self.view)
                 self.view.frame = rect
 
-                UIView.animate(withDuration: ezAnimatedDuration, animations: {
+                UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                     self.view.bounds = embeddedContentView.bounds
                     self.view.center = embeddedContentView.center
 
@@ -795,7 +795,7 @@ open class EZPlayer: NSObject {
                 self.view.removeFromSuperview()
                 UIApplication.shared.keyWindow?.addSubview(self.view)
                 self.view.frame = rect
-                UIView.animate(withDuration: ezAnimatedDuration, animations: {
+                UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                     self.view.bounds = self.floatContainer!.floatWindow.bounds
                     self.view.center = self.floatContainer!.floatWindow.center
                 }, completion: {finished in
@@ -827,7 +827,7 @@ open class EZPlayer: NSObject {
                     }else{
                         self.view.bounds = self.floatContainer!.floatWindow.bounds
                     }
-                    UIView.animate(withDuration: ezAnimatedDuration, animations: {
+                    UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                         if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                             self.view.transform = CGAffineTransform.identity
                         }

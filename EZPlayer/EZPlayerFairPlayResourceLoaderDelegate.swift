@@ -288,7 +288,8 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
                 
                 if persistentContentKeyURL == documentURL {
                     printLog("failed to create the URL for writing the persistent content key")
-                    resourceLoadingRequest.finishLoading(with:NSError(domain: EZPlayerErrorDomain, code: -6, userInfo: [NSLocalizedDescriptionKey: "failed to create the URL for writing the persistent content key"]))
+                    let error = toNSError(code: -6, userInfo: [NSLocalizedDescriptionKey: "failed to create the URL for writing the persistent content key"])
+                    resourceLoadingRequest.finishLoading(with:error)
                     return
                 }
                 
@@ -300,7 +301,7 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
                     
                     guard let dataRequest = resourceLoadingRequest.dataRequest else {
                         printLog("no data is being requested in loadingRequest")
-                        let error = NSError(domain: EZPlayerErrorDomain, code: -6, userInfo: [NSLocalizedDescriptionKey: "no data is being requested in loadingRequest"])
+                        let error = toNSError(code: -6, userInfo: [NSLocalizedDescriptionKey: "no data is being requested in loadingRequest"])
                         resourceLoadingRequest.finishLoading(with: error)
                         return
                     }

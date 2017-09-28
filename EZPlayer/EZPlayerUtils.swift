@@ -12,7 +12,7 @@ import MediaPlayer
 // MARK: - 全局变量
 
 /// 动画时间
-public var ezAnimatedDuration = 0.3
+public var EZPlayerAnimatedDuration = 0.3
 
 public let EZPlayerErrorDomain = "EZPlayerErrorDomain"
 
