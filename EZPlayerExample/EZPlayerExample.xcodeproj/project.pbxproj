@@ -26,7 +26,6 @@
 		995E79421DD9A3CF006CE7E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995E79401DD9A3CF006CE7E9 /* LaunchScreen.storyboard */; };
 		99C1A2C71DDB46510096A543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2C61DDB46510096A543 /* TabBarController.swift */; };
 		99C1A2C91DDBC8EF0096A543 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2C81DDBC8EF0096A543 /* NavigationController.swift */; };
-		99C1A2CB1DDBC9710096A543 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2CA1DDBC9710096A543 /* ViewController.swift */; };
 		99C1A2CD1DDBC9870096A543 /* ParamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2CC1DDBC9870096A543 /* ParamsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +88,6 @@
 		995E79491DD9A403006CE7E9 /* EZPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZPlayer.xcodeproj; path = ../EZPlayer.xcodeproj; sourceTree = "<group>"; };
 		99C1A2C61DDB46510096A543 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		99C1A2C81DDBC8EF0096A543 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		99C1A2CA1DDBC9710096A543 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		99C1A2CC1DDBC9870096A543 /* ParamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +150,6 @@
 				995E79371DD9A3CF006CE7E9 /* AppDelegate.swift */,
 				99C1A2C61DDB46510096A543 /* TabBarController.swift */,
 				99C1A2C81DDBC8EF0096A543 /* NavigationController.swift */,
-				99C1A2CA1DDBC9710096A543 /* ViewController.swift */,
 				99C1A2CC1DDBC9870096A543 /* ParamsViewController.swift */,
 				9903EB6D1E0CE4A60021AACA /* ParamsEmbedTableViewController.swift */,
 				99145C561E16685400891B06 /* VideosTableViewController.swift */,
@@ -283,7 +280,6 @@
 				99C1A2C91DDBC8EF0096A543 /* NavigationController.swift in Sources */,
 				99C1A2CD1DDBC9870096A543 /* ParamsViewController.swift in Sources */,
 				99145C571E16685400891B06 /* VideosTableViewController.swift in Sources */,
-				99C1A2CB1DDBC9710096A543 /* ViewController.swift in Sources */,
 				9914922B1DDBDA5F005FF2BD /* MediaManager.swift in Sources */,
 				995E79381DD9A3CF006CE7E9 /* AppDelegate.swift in Sources */,
 				9903EB6E1E0CE4A60021AACA /* ParamsEmbedTableViewController.swift in Sources */,
