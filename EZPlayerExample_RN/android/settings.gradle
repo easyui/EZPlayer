@@ -1,0 +1,3 @@
+rootProject.name = 'EZPlayerExample_RN'
+
+include ':app'
