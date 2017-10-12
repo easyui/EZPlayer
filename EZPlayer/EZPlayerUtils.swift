@@ -12,7 +12,7 @@ import MediaPlayer
 // MARK: - 全局变量
 
 /// 动画时间
-public var ezAnimatedDuration = 0.3
+public var EZPlayerAnimatedDuration = 0.3
 
 public let EZPlayerErrorDomain = "EZPlayerErrorDomain"
 
@@ -37,7 +37,7 @@ public func printLog<T>(_ message: T...,
 
 
 
-public func toNSError(code: Int, userInfo dict: [AnyHashable : Any]? = nil) -> NSError
+public func toNSError(code: Int, userInfo dict: [String : Any]? = nil) -> NSError
 {
     return NSError(domain: EZPlayerErrorDomain, code: code, userInfo: dict)
 }

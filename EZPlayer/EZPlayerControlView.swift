@@ -166,7 +166,7 @@ open class EZPlayerControlView: UIView{
         //        }
         if animated{
             UIView.setAnimationsEnabled(false)
-            UIView.animate(withDuration: ezAnimatedDuration, delay: 0,options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: EZPlayerAnimatedDuration, delay: 0,options: .curveEaseInOut, animations: {
                 self.autohidedControlViews.forEach{
                     $0.alpha = 0
                 }
@@ -194,7 +194,7 @@ open class EZPlayerControlView: UIView{
             self.autohidedControlViews.forEach{
                 $0.isHidden = false
             }
-            UIView.animate(withDuration: ezAnimatedDuration, delay: 0,options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: EZPlayerAnimatedDuration, delay: 0,options: .curveEaseInOut, animations: {
                 if self.player?.displayMode == .fullscreen{
                     self.navBarContainerTopConstraint.constant = 20
                 }else{

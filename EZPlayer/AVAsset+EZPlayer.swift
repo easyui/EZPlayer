@@ -16,7 +16,7 @@ public extension AVAsset {
             return nil
         }
         if status == .loaded{
-            let metadataItems = AVMetadataItem.metadataItems(from: self.commonMetadata, withKey: AVMetadataCommonKeyTitle, keySpace: AVMetadataKeySpaceCommon)
+            let metadataItems = AVMetadataItem.metadataItems(from: self.commonMetadata, withKey: AVMetadataKey.commonKeyTitle, keySpace: AVMetadataKeySpace.common)
             if metadataItems.count > 0  {
                 let titleItem = metadataItems.first
                 return titleItem?.value as? String
@@ -28,7 +28,7 @@ public extension AVAsset {
     /// 获取所有cc
     public var closedCaption: [AVMediaSelectionOption]? {
         var closedCaptions = [AVMediaSelectionOption]()
-        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
             for option in mediaSelectionGroup.options {
                 if option.mediaType == "clcp" {
                     closedCaptions.append(option)
@@ -44,9 +44,9 @@ public extension AVAsset {
     /// 获取所有subtitle
     public var subtitles: [(subtitle: AVMediaSelectionOption,localDisplayName: String)]? {
         var subtitles = [(subtitle: AVMediaSelectionOption,localDisplayName: String)]()
-        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible){
+        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
             for option in mediaSelectionGroup.options {
-                if !option.hasMediaCharacteristic(AVMediaCharacteristicContainsOnlyForcedSubtitles) {
+                if !option.hasMediaCharacteristic(AVMediaCharacteristic.containsOnlyForcedSubtitles) {
                     if let localDisplayName = self.localDisplayName(forMediaSelectionOption: option){
                         subtitles.append((option,localDisplayName))
                     }
@@ -62,7 +62,7 @@ public extension AVAsset {
     /// 获取所有audio
     public var audios: [(audio: AVMediaSelectionOption,localDisplayName: String)]? {
         var audios = [(audio: AVMediaSelectionOption,localDisplayName: String)]()
-        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicAudible){
+        if let mediaSelectionGroup = self.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.audible){
             for option in mediaSelectionGroup.options {
                 if let localDisplayName = self.localDisplayName(forMediaSelectionOption: option){
                     audios.append((option,localDisplayName))
@@ -77,7 +77,7 @@ public extension AVAsset {
 
     public func localDisplayName(forMediaSelectionOption subtitle: AVMediaSelectionOption) -> String?{
         var title: String? = nil
-        var metadataItems = AVMetadataItem.metadataItems(from: subtitle.commonMetadata, withKey: AVMetadataCommonKeyTitle, keySpace: AVMetadataKeySpaceCommon)
+        var metadataItems = AVMetadataItem.metadataItems(from: subtitle.commonMetadata, withKey: AVMetadataKey.commonKeyTitle, keySpace: AVMetadataKeySpace.common)
         if metadataItems.count > 0 {
             let preferredLanguages = NSLocale.preferredLanguages
             for language: String in preferredLanguages {

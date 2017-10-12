@@ -2,7 +2,7 @@
 
 
 # EZPlayer
-![Swift 3.1](https://img.shields.io/badge/Swift-3.1-brightgreen.svg?style=flat) 
+![Swift 3.1](https://img.shields.io/badge/Swift-4.0-brightgreen.svg?style=flat) 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 <a href="https://img.shields.io/cocoapods/v/EZPlayer.svg"><img src="https://img.shields.io/cocoapods/v/EZPlayer.svg"></a>
 [![Platform](https://img.shields.io/cocoapods/p/EZPlayer.svg?style=flat)](http://cocoadocs.org/docsets/EZPlayer)
@@ -16,8 +16,8 @@
 
 ## 要求
 - iOS 8.0+ 
-- Xcode 8.3 (8E162)+
-- Swift 3.1+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## 特性
 - 本地视频、网络视频播放（支持的格式请参考苹果AVPlayer文档）
@@ -275,8 +275,6 @@ open  var controlViewForIntercept : UIView?
 EZPlayer遵守MIT协议，具体请参考MIT
 
 
-## PS
-2017年元旦在家撸了个播放器，EZPlayer是2017年码拉松的起点，希望大家多star，给更多动力更新所有todo
 
 
 

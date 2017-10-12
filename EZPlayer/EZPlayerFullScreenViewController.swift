@@ -84,7 +84,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
 
     override open var prefersStatusBarHidden: Bool{
         if self.statusBarHiddenAnimated {
-            UIView.animate(withDuration: ezAnimatedDuration, animations: {
+            UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                 self.statusbarBackgroundView.alpha = self.player.controlsHidden ? 0 : 1
             }, completion: {finished in
             })
@@ -100,7 +100,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     }
 
     // MARK: - notification
-    func playerControlsHiddenDidChange(_ notifiaction: Notification) {
+    @objc func playerControlsHiddenDidChange(_ notifiaction: Notification) {
         self.statusBarHiddenAnimated = notifiaction.userInfo?[Notification.Key.EZPlayerControlsHiddenDidChangeByAnimatedKey] as? Bool ?? true
         self.setNeedsStatusBarAppearanceUpdate()
     }
