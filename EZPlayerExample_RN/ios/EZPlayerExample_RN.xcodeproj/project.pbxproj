@@ -25,7 +25,7 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation-tvOS.a */; };
+		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */; };
 		2D02E4C41E0B4AEC006451C7 /* libRCTLinking-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */; };
 		2D02E4C51E0B4AEC006451C7 /* libRCTNetwork-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E8C1DF850E9000B6D8A /* libRCTNetwork-tvOS.a */; };
@@ -36,6 +36,11 @@
 		2DCD954D1E0B4F2C00145EB5 /* EZPlayerExample_RNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EZPlayerExample_RNTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A654A8041F7F6E9A00D3B5FC /* EZPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66DBB6A1F7F397000AE20F2 /* EZPlayer.framework */; };
+		A654A8051F7F6E9A00D3B5FC /* EZPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A66DBB6A1F7F397000AE20F2 /* EZPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A66DBB921F7F3F6300AE20F2 /* EZRNPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66DBB911F7F3F6300AE20F2 /* EZRNPlayerView.swift */; };
+		A66DBB9E1F7F426B00AE20F2 /* EZRNPlayerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66DBB9D1F7F426B00AE20F2 /* EZRNPlayerViewManager.swift */; };
+		A66DBBAC1F7F452300AE20F2 /* EZRNPlayerViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A66DBBAB1F7F452300AE20F2 /* EZRNPlayerViewBridge.m */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +234,62 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		A654A8061F7F6E9A00D3B5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 995E79161DD99D5A006CE7E9;
+			remoteInfo = EZPlayer;
+		};
+		A654A8271F7F6E9B00D3B5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7ECE1E25DB7D00323FB7;
+			remoteInfo = "third-party";
+		};
+		A654A8291F7F6E9B00D3B5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D3C1EBD27B6005632C8;
+			remoteInfo = "third-party-tvOS";
+		};
+		A654A82B1F7F6E9B00D3B5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7E881E25C6D100323FB7;
+			remoteInfo = "double-conversion";
+		};
+		A654A82D1F7F6E9B00D3B5FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
+			remoteInfo = "double-conversion-tvOS";
+		};
+		A66DBB691F7F397000AE20F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 995E79171DD99D5A006CE7E9;
+			remoteInfo = EZPlayer;
+		};
+		A66DBB701F7F397000AE20F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADD01A681E09402E00F6D226;
+			remoteInfo = "RCTBlob-tvOS";
+		};
+		A66DBB811F7F39A100AE20F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 995E79161DD99D5A006CE7E9;
+			remoteInfo = EZPlayer;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -237,6 +298,20 @@
 			remoteInfo = RCTBlob;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A654A82F1F7F6E9B00D3B5FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A654A8051F7F6E9A00D3B5FC /* EZPlayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -263,6 +338,12 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZPlayer.xcodeproj; path = ../../EZPlayer.xcodeproj; sourceTree = "<group>"; };
+		A66DBB901F7F3F6200AE20F2 /* EZPlayerExample_RN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EZPlayerExample_RN-Bridging-Header.h"; sourceTree = "<group>"; };
+		A66DBB911F7F3F6300AE20F2 /* EZRNPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZRNPlayerView.swift; sourceTree = "<group>"; };
+		A66DBB9D1F7F426B00AE20F2 /* EZRNPlayerViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZRNPlayerViewManager.swift; sourceTree = "<group>"; };
+		A66DBBAA1F7F452300AE20F2 /* EZRNPlayerViewBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZRNPlayerViewBridge.h; sourceTree = "<group>"; };
+		A66DBBAB1F7F452300AE20F2 /* EZRNPlayerViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZRNPlayerViewBridge.m; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +372,7 @@
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				A654A8041F7F6E9A00D3B5FC /* EZPlayer.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */,
-				2D02E4C21E0B4AEC006451C7 /* libRCTAnimation-tvOS.a in Frameworks */,
+				2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */,
 				2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */,
 				2D02E4C41E0B4AEC006451C7 /* libRCTLinking-tvOS.a in Frameworks */,
 				2D02E4C51E0B4AEC006451C7 /* libRCTNetwork-tvOS.a in Frameworks */,
@@ -400,6 +482,7 @@
 		13B07FAE1A68108700A75B9A /* EZPlayerExample_RN */ = {
 			isa = PBXGroup;
 			children = (
+				A66DBB831F7F3A5800AE20F2 /* EZPlayer_RN */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -422,7 +505,10 @@
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
 				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
-				3DAD3EA31DF850E9000B6D8A /* libReact-tvOS.a */,
+				A654A8281F7F6E9B00D3B5FC /* libthird-party.a */,
+				A654A82A1F7F6E9B00D3B5FC /* libthird-party.a */,
+				A654A82C1F7F6E9B00D3B5FC /* libdouble-conversion.a */,
+				A654A82E1F7F6E9B00D3B5FC /* libdouble-conversion.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,7 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */,
-				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation-tvOS.a */,
+				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -476,6 +562,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* EZPlayerExample_RN */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* EZPlayerExample_RNTests */,
@@ -497,10 +584,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A66DBB641F7F396F00AE20F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A66DBB6A1F7F397000AE20F2 /* EZPlayer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A66DBB831F7F3A5800AE20F2 /* EZPlayer_RN */ = {
+			isa = PBXGroup;
+			children = (
+				A66DBB911F7F3F6300AE20F2 /* EZRNPlayerView.swift */,
+				A66DBB9D1F7F426B00AE20F2 /* EZRNPlayerViewManager.swift */,
+				A66DBBAA1F7F452300AE20F2 /* EZRNPlayerViewBridge.h */,
+				A66DBBAB1F7F452300AE20F2 /* EZRNPlayerViewBridge.m */,
+				A66DBB901F7F3F6200AE20F2 /* EZPlayerExample_RN-Bridging-Header.h */,
+			);
+			name = EZPlayer_RN;
+			path = EZPlayerExample_RN/EZPlayer_RN;
+			sourceTree = "<group>";
+		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
+				A66DBB711F7F397000AE20F2 /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -534,10 +643,13 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				A654A82F1F7F6E9B00D3B5FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A66DBB821F7F39A100AE20F2 /* PBXTargetDependency */,
+				A654A8071F7F6E9A00D3B5FC /* PBXTargetDependency */,
 			);
 			name = EZPlayerExample_RN;
 			productName = "Hello World";
@@ -593,6 +705,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 0900;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -616,6 +731,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = A66DBB641F7F396F00AE20F2 /* Products */;
+					ProjectRef = A66DBB631F7F396F00AE20F2 /* EZPlayer.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -774,10 +893,10 @@
 			remoteRef = 3DAD3E981DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3DAD3EA31DF850E9000B6D8A /* libReact-tvOS.a */ = {
+		3DAD3EA31DF850E9000B6D8A /* libReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libReact-tvOS.a";
+			path = libReact.a;
 			remoteRef = 3DAD3EA21DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -830,10 +949,10 @@
 			remoteRef = 5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5E9157351DD0AC6500FF2AA8 /* libRCTAnimation-tvOS.a */ = {
+		5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libRCTAnimation-tvOS.a";
+			path = libRCTAnimation.a;
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -849,6 +968,48 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A654A8281F7F6E9B00D3B5FC /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = A654A8271F7F6E9B00D3B5FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A654A82A1F7F6E9B00D3B5FC /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = A654A8291F7F6E9B00D3B5FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A654A82C1F7F6E9B00D3B5FC /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = A654A82B1F7F6E9B00D3B5FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A654A82E1F7F6E9B00D3B5FC /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = A654A82D1F7F6E9B00D3B5FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A66DBB6A1F7F397000AE20F2 /* EZPlayer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EZPlayer.framework;
+			remoteRef = A66DBB691F7F397000AE20F2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A66DBB711F7F397000AE20F2 /* libRCTBlob-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTBlob-tvOS.a";
+			remoteRef = A66DBB701F7F397000AE20F2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -938,7 +1099,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66DBB9E1F7F426B00AE20F2 /* EZRNPlayerViewManager.swift in Sources */,
+				A66DBBAC1F7F452300AE20F2 /* EZRNPlayerViewBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				A66DBB921F7F3F6300AE20F2 /* EZRNPlayerView.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -973,6 +1137,16 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* EZPlayerExample_RN-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
+		A654A8071F7F6E9A00D3B5FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EZPlayer;
+			targetProxy = A654A8061F7F6E9A00D3B5FC /* PBXContainerItemProxy */;
+		};
+		A66DBB821F7F39A100AE20F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EZPlayer;
+			targetProxy = A66DBB811F7F39A100AE20F2 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -991,6 +1165,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1011,6 +1186,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = EZPlayerExample_RNTests/Info.plist;
@@ -1028,7 +1204,9 @@
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = EZPlayerExample_RN/Info.plist;
@@ -1039,6 +1217,9 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = EZPlayerExample_RN;
+				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1046,7 +1227,9 @@
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = EZPlayerExample_RN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1056,6 +1239,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = EZPlayerExample_RN;
+				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
