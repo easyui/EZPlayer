@@ -40,36 +40,37 @@ public extension Notification.Name {
     static let EZPlayerTapGestureRecognizer = Notification.Name(rawValue: "com.ezplayer.EZPlayerTapGestureRecognizer")
 
     /// FairPlay DRM
-    static let EZPlayerDidPersistContentKeyNotification = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKeyNotification")
+    static let EZPlayerDidPersistContentKey = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKey")
     
 }
 
-extension Notification {
-    struct Key {
+public extension Notification {
+    public struct Key {
         /// 播放器状态改变
-        static let EZPlayerStatusDidChangeKey = "EZPlayerStatusDidChangeKey"
-        
+        public static let EZPlayerNewStateKey = "EZPlayerNewStateKey"
+        public static let EZPlayerOldStateKey = "EZPlayerOldStateKey"
+
         /// 视频结束
-        static let EZPlayerPlaybackDidFinishReasonKey = "EZPlayerPlaybackDidFinishReasonKey"
+        public static let EZPlayerPlaybackDidFinishReasonKey = "EZPlayerPlaybackDidFinishReasonKey"
 
         /// loading状态改变
-        static let EZPlayerLoadingDidChangeKey = "EZPlayerLoadingDidChangeKey"
+        public static let EZPlayerLoadingDidChangeKey = "EZPlayerLoadingDidChangeKey"
 
         /// 播放器控制条隐藏显示
-        static let EZPlayerControlsHiddenDidChangeKey = "EZPlayerControlsHiddenDidChangeKey"
-        static let EZPlayerControlsHiddenDidChangeByAnimatedKey = "EZPlayerControlsHiddenDidChangeByAnimatedKey"
+        public static let EZPlayerControlsHiddenDidChangeKey = "EZPlayerControlsHiddenDidChangeKey"
+        public static let EZPlayerControlsHiddenDidChangeByAnimatedKey = "EZPlayerControlsHiddenDidChangeByAnimatedKey"
         
         /// 播放器显示模式改变了（全屏，嵌入屏，浮动）
-        static let EZPlayerDisplayModeDidChangeKey = "EZPlayerDisplayModeDidChangeKey"
-        static let EZPlayerDisplayModeChangedFrom = "EZPlayerDisplayModeChangedFrom"
-        static let EZPlayerDisplayModeChangedTo = "EZPlayerDisplayModeChangedTo"
+        public static let EZPlayerDisplayModeDidChangeKey = "EZPlayerDisplayModeDidChangeKey"
+        public static let EZPlayerDisplayModeChangedFrom = "EZPlayerDisplayModeChangedFrom"
+        public static let EZPlayerDisplayModeChangedTo = "EZPlayerDisplayModeChangedTo"
 
         /// 点击播放器手势通知
-        static let EZPlayerNumberOfTaps =  "EZPlayerNumberOfTaps"
-        static let EZPlayerTapGestureRecognizer =  "EZPlayerTapGestureRecognizer"
+        public static let EZPlayerNumberOfTaps =  "EZPlayerNumberOfTaps"
+        public static let EZPlayerTapGestureRecognizer =  "EZPlayerTapGestureRecognizer"
 
         /// FairPlay DRM=
-        static let EZPlayerDidPersistAssetIdentifierKey = "EZPlayerDidPersistAssetIdentifierKey"
+        public static let EZPlayerDidPersistAssetIdentifierKey = "EZPlayerDidPersistAssetIdentifierKey"
 
     }
 

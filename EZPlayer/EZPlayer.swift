@@ -56,7 +56,6 @@ public enum EZPlayerDisplayMode  {
     case embedded
     case fullscreen
     case float
-    
 }
 
 public enum EZPlayerFullScreenMode  {
@@ -284,7 +283,7 @@ open class EZPlayer: NSObject {
                 
                 (self.controlView as? EZPlayerDelegate)?.player(self, playerStateDidChange: state)
                 self.delegate?.player(self, playerStateDidChange: state)
-                NotificationCenter.default.post(name: .EZPlayerStatusDidChange, object: self, userInfo: [Notification.Key.EZPlayerStatusDidChangeKey: state])
+                NotificationCenter.default.post(name: .EZPlayerStatusDidChange, object: self, userInfo: [Notification.Key.EZPlayerNewStateKey: state,Notification.Key.EZPlayerOldStateKey: oldValue])
                 switch state {
                 case  .readyToPlay,.playing ,.pause,.seekingForward,.seekingBackward,.stopped,.bufferFinished:
                     (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: false)
@@ -923,7 +922,9 @@ open class EZPlayer: NSObject {
             
             if playerItem.isPlaybackLikelyToKeepUp && (weakSelf.state == .buffering || weakSelf.state == .readyToPlay){
                 weakSelf.state = .bufferFinished
-                weakSelf.state = .playing
+                if weakSelf.autoPlay {
+                  weakSelf.state = .playing
+                }
             }
             
             (weakSelf.controlView as? EZPlayerDelegate)?.playerHeartbeat(weakSelf)

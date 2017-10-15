@@ -312,7 +312,7 @@ private extension EZPlayerFairPlayResourceLoaderDelegate {
                     
                     // Since the request has complete, notify the rest of the app that the content key has been persisted for this asset.
                     
-                    NotificationCenter.default.post(name: .EZPlayerDidPersistContentKeyNotification, object: self, userInfo: [Notification.Key.EZPlayerDidPersistAssetIdentifierKey : self.assetIdentifier])
+                    NotificationCenter.default.post(name: .EZPlayerDidPersistContentKey, object: self, userInfo: [Notification.Key.EZPlayerDidPersistAssetIdentifierKey : self.assetIdentifier])
                     
                 } catch let error as NSError {
                     printLog("failed writing persisting key to path: \(persistentContentKeyURL) with error: \(error)")
