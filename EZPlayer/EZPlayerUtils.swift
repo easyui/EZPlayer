@@ -31,7 +31,7 @@ public func printLog<T>(_ message: T...,
     line: Int = #line)
 {
     if EZPlayer.showLog {
-    print("EZPlayer Log-->\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
+        print("EZPlayer Log-->\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
     }
 }
 
@@ -78,7 +78,7 @@ public func !=(lhs: EZPlayerState, rhs: EZPlayerState) -> Bool {
 
 // MARK: - 辅助方法
 public class EZPlayerUtils{
-
+    
     /// system volume ui
     public static let systemVolumeSlider : UISlider = {
         let volumeView = MPVolumeView()
@@ -93,8 +93,8 @@ public class EZPlayerUtils{
         }
         return returnSlider
     }()
-
-
+    
+    
     /// fotmat time
     ///
     /// - Parameters:
@@ -108,7 +108,7 @@ public class EZPlayerUtils{
         let positionHours = (Int(position) / 3600) % 60
         let positionMinutes = (Int(position) / 60) % 60
         let positionSeconds = Int(position) % 60;
-
+        
         let durationHours = (Int(duration) / 3600) % 60
         let durationMinutes = (Int(duration) / 60) % 60
         let durationSeconds = Int(duration) % 60
@@ -117,8 +117,8 @@ public class EZPlayerUtils{
         }
         return String(format: "%02d:%02d:%02d/%02d:%02d:%02d",positionHours,positionMinutes,positionSeconds,durationHours,durationMinutes,durationSeconds)
     }
-
-
+    
+    
     ///  get current top viewController
     ///
     /// - Returns: current top viewController
@@ -148,8 +148,8 @@ public class EZPlayerUtils{
         }
         return result
     }
-
-
+    
+    
     /// get viewController from view
     ///
     /// - Parameter view: view
@@ -164,6 +164,16 @@ public class EZPlayerUtils{
         }
         return nil
     }
-
-
+    
+    /// is iPhone X
+    public static var isPhoneX: Bool{
+        return UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.size == CGSize(width: 1125, height: 2436)
+    }
+    
+    /// is iPhone X
+    public static var statusBarHeight: CGFloat{
+        return EZPlayerUtils.isPhoneX ? 44 : 20
+    }
+    
+    
 }

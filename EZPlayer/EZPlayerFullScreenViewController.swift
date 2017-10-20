@@ -22,12 +22,11 @@ open class EZPlayerFullScreenViewController: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerControlsHiddenDidChange(_:)), name: NSNotification.Name.EZPlayerControlsHiddenDidChange, object: nil)
 
         self.view.backgroundColor = UIColor.black
 
-        self.statusbarBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 20))
+        self.statusbarBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: UIApplication.shared.statusBarFrame.size.height))
         self.statusbarBackgroundView.backgroundColor = self.player.fullScreenStatusbarBackgroundColor
         self.statusbarBackgroundView.autoresizingMask = [ .flexibleWidth,.flexibleLeftMargin,.flexibleRightMargin,.flexibleBottomMargin]
         self.view.addSubview(self.statusbarBackgroundView)
@@ -52,7 +51,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-
+    
     // MARK: - Orientations
     override open var shouldAutorotate : Bool {
         return true
@@ -75,6 +74,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
             self.currentOrientation = .portrait
             return .portrait
         case .landscape:
+            self.statusbarBackgroundView.isHidden = EZPlayerUtils.isPhoneX
             return self.preferredlandscapeForPresentation
         }
     }
@@ -103,12 +103,20 @@ open class EZPlayerFullScreenViewController: UIViewController {
     @objc func playerControlsHiddenDidChange(_ notifiaction: Notification) {
         self.statusBarHiddenAnimated = notifiaction.userInfo?[Notification.Key.EZPlayerControlsHiddenDidChangeByAnimatedKey] as? Bool ?? true
         self.setNeedsStatusBarAppearanceUpdate()
+        if #available(iOS 11.0, *) {
+            self.setNeedsUpdateOfHomeIndicatorAutoHidden()
+        }
     }
 
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         self.currentOrientation = UIDevice.current.orientation
 
+    }
+    
+    
+    open override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return self.player.controlsHidden
     }
 
 

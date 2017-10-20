@@ -111,7 +111,7 @@ open class EZPlayer: NSObject {
     /// 全屏的模式
     open var fullScreenMode = EZPlayerFullScreenMode.landscape
     /// 全屏时status bar的样式
-    open var fullScreenPreferredStatusBarStyle = UIStatusBarStyle.default
+    open var fullScreenPreferredStatusBarStyle = UIStatusBarStyle.lightContent
     /// 全屏时status bar的背景色
     open var fullScreenStatusbarBackgroundColor = UIColor.black.withAlphaComponent(0.3)
     
@@ -270,7 +270,7 @@ open class EZPlayer: NSObject {
     
     open var floatContainer: EZPlayerFloatContainer?
     open var floatContainerRootViewController: EZPlayerFloatContainerRootViewController?
-    open var floatInitFrame = CGRect(x: UIScreen.main.bounds.size.width - 213 - 20, y: UIScreen.main.bounds.size.height - 120 - 60, width: 213, height: 120)
+    open var floatInitFrame = CGRect(x: UIScreen.main.bounds.size.width - 213 - 10, y: UIScreen.main.bounds.size.height - 120 - 49 - 34 - 10, width: 213, height: 120)
     //    autohideTimeInterval//
     // MARK: -  player status
     
@@ -541,7 +541,9 @@ open class EZPlayer: NSObject {
             self.fullScreenViewController!.preferredlandscapeForPresentation = orientation == .landscapeRight ? .landscapeLeft : .landscapeRight
             self.fullScreenViewController!.player = self
             
-            if animated {
+//            if animated {
+            if true {
+
                 let rect = view.convert(self.view.frame, to: activityViewController.view)
                 let x = activityViewController.view.bounds.size.width - rect.size.width - rect.origin.x
                 let y = activityViewController.view.bounds.size.height - rect.size.height - rect.origin.y
@@ -576,8 +578,6 @@ open class EZPlayer: NSObject {
                     self.view.removeFromSuperview()
                     self.fullScreenViewController!.view.addSubview(self.view)
                     self.fullScreenViewController!.view.sendSubview(toBack: self.view)
-                    
-                    
                     
                     self.view.bounds = self.fullScreenViewController!.view.bounds
                     self.view.center = self.fullScreenViewController!.view.center
