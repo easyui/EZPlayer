@@ -20,6 +20,7 @@ import {
 import EZCustomPlayer from './EZCustomPlayer'
 
 import TablePlayerCell from './TablePlayerCell'
+import Utils from './Utils'
 
 const { height, width } = Dimensions.get('window');
 
@@ -174,7 +175,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'yellow',
-    marginTop: 20
+    marginTop: Utils.statusBarHeight,
+    marginBottom: Utils.safeAreaBottomHeight    
   },
   footerContainer: {
     flex: 1,

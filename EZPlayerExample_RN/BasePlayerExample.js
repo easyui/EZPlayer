@@ -16,6 +16,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import EZPlayer from './EZPlayer'
+import Utils from './Utils'
 const { height, width } = Dimensions.get('window');
 
 export default class EZPlayerExample_RN extends Component {
@@ -164,7 +165,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'yellow',
-    marginTop: 20
+    marginTop: Utils.statusBarHeight,
+    marginBottom: Utils.safeAreaBottomHeight        
   },
   player: {
     width: width,
