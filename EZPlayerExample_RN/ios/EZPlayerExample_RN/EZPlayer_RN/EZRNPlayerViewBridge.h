@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL *autoPlay;
 @property (nonatomic, strong) NSString *videoGravity;
 @property (nonatomic, strong) NSString *fullScreenMode;
+@property (nonatomic, assign) BOOL *useDefaultUI;
 
 
 @property (nonatomic, strong, nullable) RCTDirectEventBlock onPlayerHeartbeat;

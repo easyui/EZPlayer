@@ -40,7 +40,7 @@ class MediaManager {
         if let autoPlay = userinfo?["autoPlay"] as? Bool{
             self.player!.autoPlay = autoPlay
         }
-        
+
         if let fullScreenMode = userinfo?["fullScreenMode"] as? EZPlayerFullScreenMode{
             self.player!.fullScreenMode = fullScreenMode
         }

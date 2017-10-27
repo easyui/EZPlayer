@@ -52,6 +52,16 @@ open class EZRNPlayerView: UIView {
     }
   }
   
+  public var useDefaultUI: Bool = true {
+    didSet {
+      if useDefaultUI{
+        self.player?.controlViewForIntercept = nil
+      }else{
+        self.player?.controlViewForIntercept = UIView()
+      }
+    }
+  }
+  
   public var videoGravity: String = "aspect"{
     didSet {
      self.player?.videoGravity = self.getEZPlayerVideoGravity(videoGravity: videoGravity)
@@ -80,6 +90,8 @@ open class EZRNPlayerView: UIView {
   public var onPlayerTapGestureRecognizer: RCTDirectEventBlock?
   public var onPlayerDidPersistContentKey: RCTDirectEventBlock?
   
+  // MARK: - Life
+
   public override init(frame: CGRect) {
     super.init(frame: CGRect(x:0,y:0,width:100,height:100))
     //    self.backgroundColor = UIColor.red
@@ -104,11 +116,16 @@ open class EZRNPlayerView: UIView {
 //    }
   }
   
+  deinit {
+    print("swift播放器释放")
+  }
   
+  // MARK: - player
+
   open func initPlayerIfNeeded(){
     if(self.player == nil){
       self.addObservers()
-      self.player = EZPlayer()
+      self.player = self.useDefaultUI ?  EZPlayer() : EZPlayer(controlView: UIView())
       
       self.player!.autoPlay = self.autoPlay
       self.player!.videoGravity = self.getEZPlayerVideoGravity(videoGravity: self.videoGravity)
@@ -232,6 +249,9 @@ extension EZRNPlayerView {
   }
   
   @objc  func playerHeartbeat(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     var playerInfo = [String:Any]()
     if let player = self.player{
       if let isLive = player.isLive {
@@ -247,52 +267,84 @@ extension EZRNPlayerView {
       playerInfo["isM3U8"] = player.isM3U8
       playerInfo["rate"] = player.rate.isNaN ? 0 : player.rate //maybe nan
       playerInfo["systemVolume"] = player.systemVolume
+      playerInfo["state"] = self.stateName(state: player.state)
+
     }
     self.onPlayerHeartbeat?(playerInfo)
   }
   
   @objc  func playerPlaybackTimeDidChange(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerPlaybackTimeDidChange?(notifiaction.userInfo)
     
   }
   
   @objc  func playerStatusDidChange(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     let newState = self.stateName(state: notifiaction.userInfo![Notification.Key.EZPlayerNewStateKey] as! EZPlayerState)
     let oldState = self.stateName(state: notifiaction.userInfo![Notification.Key.EZPlayerOldStateKey] as! EZPlayerState)
     self.onPlayerStatusDidChange?(["newState":newState,"oldState":oldState])
   }
   
   @objc  func playerPlaybackDidFinish(_ notifiaction: Notification) {
-    self.onPlayerPlaybackDidFinish?(notifiaction.userInfo)
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    let reason = self.finishReason(finishReason: notifiaction.userInfo![Notification.Key.EZPlayerPlaybackDidFinishReasonKey] as! EZPlayerPlaybackDidFinishReason)
+    self.onPlayerPlaybackDidFinish?(["playerPlaybackDidFinish" : reason])
   }
   
   @objc  func playerLoadingDidChange(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerLoadingDidChange?(notifiaction.userInfo)
   }
   
   @objc  func playerControlsHiddenDidChange(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerControlsHiddenDidChange?(notifiaction.userInfo)
   }
   
   @objc  func playerDisplayModeDidChange(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     let displayMode = self.displayModeName(displayMode:self.player?.displayMode ?? .none)
     self.onPlayerDisplayModeDidChange?(["displayMode":displayMode])
   }
   
   @objc  func playerDisplayModeChangedWillAppear(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerDisplayModeChangedWillAppear?(notifiaction.userInfo)
   }
   
   @objc  func playerDisplayModeChangedDidAppear(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerDisplayModeChangedDidAppear?(notifiaction.userInfo)
   }
   
   @objc  func playerTapGestureRecognizer(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerTapGestureRecognizer?(notifiaction.userInfo)
   }
   
   @objc  func playerDidPersistContentKey(_ notifiaction: Notification) {
-    
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
     self.onPlayerDidPersistContentKey?(notifiaction.userInfo)
   }
   
@@ -329,6 +381,16 @@ extension EZRNPlayerView {
   }
   
   
+  private func finishReason(finishReason: EZPlayerPlaybackDidFinishReason) -> String{
+    var reason = ""
+    switch (finishReason) {
+    case .playbackEndTime: reason = "playbackEndTime"
+    case .playbackError: reason = "playbackError"
+    case .stopByUser: reason = "stopByUser"
+    }
+    return reason
+  }
+
   
 }
 
