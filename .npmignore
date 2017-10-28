@@ -1,8 +1,8 @@
 .idea
 Screenshots
-.gif
+*.gif
 *.iml
-
+*.podspec
 EZPlayerExample_RN/
 EZPlayerExample/
 EZPlayer/
@@ -28,6 +28,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-
+EZPlayer.xcodeproj
 
 

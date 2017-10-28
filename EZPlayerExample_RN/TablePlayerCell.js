@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     Dimensions,    
 } from 'react-native'
-import EZPlayer from './EZPlayer'
 
 const { height, width } = Dimensions.get('window');
 
