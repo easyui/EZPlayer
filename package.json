@@ -1,0 +1,30 @@
+{
+  "name": "react-native-ezplayer",
+  "version": "0.0.1",
+  "description": "EZPlayer component for react-native apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easyui/EZPlayer.git"
+  },
+  "keywords": [
+    "react",    
+    "react-native",
+    "react-native-component",
+    "react-native-ezplayer",
+    "ezplayer",
+    "ios",
+    "avplayer",
+    "media",
+    "video"
+  ],
+  "author": "Zhu Yangjun(gzhuyangjun@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/easyui/EZPlayer/issues"
+  },
+  "homepage": "https://github.com/easyui/EZPlayer#readme"
+}
