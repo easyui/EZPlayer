@@ -32,6 +32,8 @@
 - [拖动进度显示预览图（m3u8不支持）](#preview)
 - [播放器控件皮肤自定义（自带一套浮动皮肤，嵌入和全屏用的一套皮肤）](#skin)
 - [支持广告功能](#ad)
+- [支持React Native](#rn)
+
 
 
 
@@ -253,10 +255,11 @@ open  var controlViewForIntercept : UIView?
 
 例子：EZPlayerExample-Skin(ad)
 
+<a name="rn"></a>
+
+- 支持React Native
 
 ## Todo
-- 优化ui，优化代码，添加注释
-- 优化demo
 - 支持VR
 - 支持iPad pip
 - 支持本地m3u8
@@ -269,7 +272,6 @@ open  var controlViewForIntercept : UIView?
 - 国际化
 - 记忆播放
 - 支持滤镜
-- 支持RN
 
 ## License
 EZPlayer遵守MIT协议，具体请参考MIT
