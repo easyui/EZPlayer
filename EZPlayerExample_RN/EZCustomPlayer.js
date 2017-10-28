@@ -13,7 +13,7 @@ import {
     Easing
 } from 'react-native';
 
-import EZPlayer from 'react-native-ezplayer'
+import EZPlayer from './EZPlayer'
 
 const bottomHeight = 36
 

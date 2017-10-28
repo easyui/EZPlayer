@@ -15,7 +15,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import EZPlayer from 'react-native-ezplayer'
+import EZPlayer from './EZPlayer'
 import Utils from './Utils'
 const { height, width } = Dimensions.get('window');
 
