@@ -541,8 +541,7 @@ open class EZPlayer: NSObject {
             self.fullScreenViewController!.preferredlandscapeForPresentation = orientation == .landscapeRight ? .landscapeLeft : .landscapeRight
             self.fullScreenViewController!.player = self
             
-//            if animated {
-            if true {
+            if animated {
 
                 let rect = view.convert(self.view.frame, to: activityViewController.view)
                 let x = activityViewController.view.bounds.size.width - rect.size.width - rect.origin.x
