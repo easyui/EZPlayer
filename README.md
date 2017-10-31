@@ -287,9 +287,9 @@ open  var controlViewForIntercept : UIView?
 | onPlayerDidPersistContentKey |FairPlay DRM| PropTypes.func |
 
 ### 方法
-| function | description |                   
-| --- | --- |
-| play() | 播放  | 
+| function | description |                    
+| --- | --- | 
+| play() | 播放  |
 | pause() | 暂停 | 
 | stop() | 结束 | 
 | seek(time, callback) | 设置播放进度，单位秒 | 
