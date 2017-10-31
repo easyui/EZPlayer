@@ -290,17 +290,17 @@ open  var controlViewForIntercept : UIView?
 | function | description |                   
 | --- | --- |
 | play() | 播放  | 
-| pause() |暂停| 
-| stop() |结束| 
-| seek(time, callback) |设置播放进度，单位秒| 
-| replaceToPlay(source) |替换播放源|
-| rate(rate) |设置播放速率| 
-| autoPlay(autoPlay) |设置自动播放，autoPlay是PropTypes.bool| 
-| videoGravity(videoGravity) |设置视频画面比例，videoGravity：aspect,aspectFill,scaleFill| 
-| toEmbedded(animated = true, callback) |进入嵌入屏模式|
-| toFloat(animated = true, callback) |进入悬浮屏模式|
-| toFull(orientation = 'landscapeLeft', animated = true, callback) |进入全屏模式，orientation: landscapeLeft , landscapeRight| 
-| fullScreenMode(fullScreenMode)|设置全屏的模式，fullScreenMode:portrait , landscape| 
+| pause() | 暂停 | 
+| stop() | 结束 | 
+| seek(time, callback) | 设置播放进度，单位秒 | 
+| replaceToPlay(source) | 替换播放源 |
+| rate(rate) | 设置播放速率 | 
+| autoPlay(autoPlay) | 设置自动播放，autoPlay是PropTypes.bool | 
+| videoGravity(videoGravity) | 设置视频画面比例，videoGravity：aspect,aspectFill,scaleFill | 
+| toEmbedded(animated = true, callback) | 进入嵌入屏模式 |
+| toFloat(animated = true, callback) | 进入悬浮屏模式 |
+| toFull(orientation = 'landscapeLeft', animated = true, callback) | 进入全屏模式，orientation: landscapeLeft , landscapeRight | 
+| fullScreenMode(fullScreenMode)| 设置全屏的模式，fullScreenMode:portrait , landscape | 
 
 主要文件：
 
