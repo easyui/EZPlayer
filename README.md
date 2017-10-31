@@ -10,7 +10,7 @@
 
 ## 预览
 ### native
-![EZPlayer](EZPlayer.gif)
+![EZPlayer](EZPlayer.gif) ![EZPlayer1](EZPlayer1.gif)
 
 ### react native
 ![EZPlayerRNBase](EZPlayerRNBase.gif) ![EZPlayerRNList](EZPlayerRNList.gif)
@@ -263,6 +263,70 @@ open  var controlViewForIntercept : UIView?
 <a name="rn"></a>
 
 - 支持React Native
+
+可以参考[EZPlayerExample_RN](https://github.com/easyui/EZPlayer/tree/master/EZPlayerExample_RN)项目，使用最新的`swift4`和最新的`react native`版本对EZPlayer的封装，实现EZPlayer的大部分功能。
+
+##### Properties
+
+
+
+| key | description | value |                   
+| --- | --- | --- | 
+| source | 视频数据源  | PropTypes.object |
+| autoPlay|设置数据源后自动播放| PropTypes.bool |
+| useDefaultUI|使用EZPlayer自带皮肤| PropTypes.bool |
+| videoGravity|视频画面比例| PropTypes.string(aspect,aspectFill,scaleFill) |
+| fullScreenMode|全屏模式是竖屏还是横屏| PropTypes.string(portrait,landscape) |
+| onPlayerHeartbeat|播放器声明周期心跳| PropTypes.func |
+| onPlayerPlaybackTimeDidChange|addPeriodicTimeObserver方法的触发| PropTypes.func |
+| onPlayerStatusDidChange|播放器状态改变| PropTypes.func |
+| onPlayerPlaybackDidFinish|视频结束| PropTypes.func | 
+| onPlayerLoadingDidChange|loading状态改变| PropTypes.func | 
+| onPlayerControlsHiddenDidChange|播放器控制条隐藏显示| PropTypes.func | 
+| onPlayerDisplayModeDidChange|播放器显示模式改变了（全屏，嵌入屏，浮动）| PropTypes.object | 
+| onPlayerDisplayModeChangedWillAppear |播放器显示模式动画开始| PropTypes.func |
+| onPlayerDisplayModeChangedDidAppear |播放器显示模式动画结束| PropTypes.func |
+| onPlayerTapGestureRecognizer |点击播放器手势通知| PropTypes.func |
+| onPlayerDidPersistContentKey |FairPlay DRM| PropTypes.func |
+
+
+| function | description | value |                   
+| --- | --- | --- | 
+| play() | 播放  | PropTypes.object |
+| pause() |暂停| PropTypes.bool |
+| stop() |结束| PropTypes.bool |
+| seek(time, callback) |设置播放进度，单位秒| PropTypes.string(aspect,aspectFill,scaleFill) |
+| replaceToPlay(source) |替换播放源| PropTypes.string(portrait,landscape) |
+| rate(rate) |设置播放速率| PropTypes.func |
+| autoPlay(autoPlay) |设置自动播放，autoPlay是PropTypes.bool| PropTypes.func |
+| videoGravity(videoGravity) |设置视频画面比例，| PropTypes.func |
+| toEmbedded(animated = true, callback) |进入嵌入屏模式| PropTypes.func | 
+| toFloat(animated = true, callback) |进入悬浮屏模式| PropTypes.func | 
+| toFull(orientation = 'landscapeLeft', animated = true, callback) |进入全屏模式| PropTypes.func | 
+| fullScreenMode(fullScreenMode)|播放器显示模式改变了（全屏，嵌入屏，浮动）| PropTypes.object | 
+| onPlayerDisplayModeChangedWillAppear |播放器显示模式动画开始| PropTypes.func |
+| onPlayerDisplayModeChangedDidAppear |播放器显示模式动画结束| PropTypes.func |
+| onPlayerTapGestureRecognizer |点击播放器手势通知| PropTypes.func |
+| onPlayerDidPersistContentKey |FairPlay DRM| PropTypes.func |
+
+
+
+主要文件：
+
+EZRNPlayerView.swift ： 对EZPlayer的封装
+
+EZRNPlayerViewManager.swift ： EZPlayer组件管理器
+
+EZRNPlayerViewBridge.h & EZRNPlayerViewBridge.m ： oc桥接
+
+EZPlayer.js ： 对EZPlayer封装的js api
+
+demo文件：
+BasePlayerExample.js ： EZPlayer的基础功能演示
+TablePlayerExample.js ：EZPlayer 在列表中的演示
+TablePlayerCell.js ： 列表的cell
+EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义ui可参考。
+Utils.js ： 工具类
 
 ## Todo
 - 支持VR
