@@ -266,10 +266,7 @@ open  var controlViewForIntercept : UIView?
 
 可以参考[EZPlayerExample_RN](https://github.com/easyui/EZPlayer/tree/master/EZPlayerExample_RN)项目，使用最新的`swift4`和最新的`react native`版本对EZPlayer的封装，实现EZPlayer的大部分功能。
 
-##### Properties
-
-
-
+### 属性
 | key | description | value |                   
 | --- | --- | --- | 
 | source | 视频数据源  | PropTypes.object |
@@ -289,27 +286,21 @@ open  var controlViewForIntercept : UIView?
 | onPlayerTapGestureRecognizer |点击播放器手势通知| PropTypes.func |
 | onPlayerDidPersistContentKey |FairPlay DRM| PropTypes.func |
 
-
-| function | description | value |                   
-| --- | --- | --- | 
-| play() | 播放  | PropTypes.object |
-| pause() |暂停| PropTypes.bool |
-| stop() |结束| PropTypes.bool |
-| seek(time, callback) |设置播放进度，单位秒| PropTypes.string(aspect,aspectFill,scaleFill) |
-| replaceToPlay(source) |替换播放源| PropTypes.string(portrait,landscape) |
-| rate(rate) |设置播放速率| PropTypes.func |
-| autoPlay(autoPlay) |设置自动播放，autoPlay是PropTypes.bool| PropTypes.func |
-| videoGravity(videoGravity) |设置视频画面比例，| PropTypes.func |
-| toEmbedded(animated = true, callback) |进入嵌入屏模式| PropTypes.func | 
-| toFloat(animated = true, callback) |进入悬浮屏模式| PropTypes.func | 
-| toFull(orientation = 'landscapeLeft', animated = true, callback) |进入全屏模式| PropTypes.func | 
-| fullScreenMode(fullScreenMode)|播放器显示模式改变了（全屏，嵌入屏，浮动）| PropTypes.object | 
-| onPlayerDisplayModeChangedWillAppear |播放器显示模式动画开始| PropTypes.func |
-| onPlayerDisplayModeChangedDidAppear |播放器显示模式动画结束| PropTypes.func |
-| onPlayerTapGestureRecognizer |点击播放器手势通知| PropTypes.func |
-| onPlayerDidPersistContentKey |FairPlay DRM| PropTypes.func |
-
-
+### 方法
+| function | description |                   
+| --- | --- |
+| play() | 播放  | 
+| pause() |暂停| 
+| stop() |结束| 
+| seek(time, callback) |设置播放进度，单位秒| 
+| replaceToPlay(source) |替换播放源|
+| rate(rate) |设置播放速率| 
+| autoPlay(autoPlay) |设置自动播放，autoPlay是PropTypes.bool| 
+| videoGravity(videoGravity) |设置视频画面比例，videoGravity：aspect,aspectFill,scaleFill| 
+| toEmbedded(animated = true, callback) |进入嵌入屏模式|
+| toFloat(animated = true, callback) |进入悬浮屏模式|
+| toFull(orientation = 'landscapeLeft', animated = true, callback) |进入全屏模式，orientation: landscapeLeft , landscapeRight| 
+| fullScreenMode(fullScreenMode)|设置全屏的模式，fullScreenMode:portrait , landscape| 
 
 主要文件：
 
@@ -322,10 +313,15 @@ EZRNPlayerViewBridge.h & EZRNPlayerViewBridge.m ： oc桥接
 EZPlayer.js ： 对EZPlayer封装的js api
 
 demo文件：
+
 BasePlayerExample.js ： EZPlayer的基础功能演示
+
 TablePlayerExample.js ：EZPlayer 在列表中的演示
+
 TablePlayerCell.js ： 列表的cell
+
 EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义ui可参考。
+
 Utils.js ： 工具类
 
 ## Todo
