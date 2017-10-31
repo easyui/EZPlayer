@@ -323,6 +323,8 @@ TablePlayerCell.js ： 列表的cell
 
 EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义ui可参考
 
+Utils.js ： 工具类
+
 #### 使用
 ```js
 //基本使用
@@ -366,7 +368,7 @@ EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义
             </TouchableWithoutFeedback>
 ```
 
-Utils.js ： 工具类
+> ps: [react-native-ezplayer](https://github.com/easyui/react-native-ezplayer)整理中
 
 ## Todo
 - 支持VR
