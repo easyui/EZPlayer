@@ -9,7 +9,12 @@
 ![License](https://img.shields.io/cocoapods/l/EZPlayer.svg?style=flat)
 
 ## 预览
+### native
 ![EZPlayer](EZPlayer.gif)
+
+### react native
+![EZPlayerRNBase](EZPlayerRNBase.gif) ![EZPlayerRNList](EZPlayerRNList.gif)
+
 
 ## 介绍
 基于AVPlayer封装的视频播放器，功能丰富，快速集成，可定制性强。
