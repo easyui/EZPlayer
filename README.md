@@ -266,6 +266,16 @@ open  var controlViewForIntercept : UIView?
 
 可以参考[EZPlayerExample_RN](https://github.com/easyui/EZPlayer/tree/master/EZPlayerExample_RN)项目，使用最新的`swift4`和最新的`react native`版本对EZPlayer的封装，实现EZPlayer的大部分功能。
 
+### react-native-ezplayer 文件：
+
+EZRNPlayerView.swift ： 对EZPlayer的封装，对接javascript
+
+EZRNPlayerViewManager.swift ： EZPlayer组件管理器
+
+EZRNPlayerViewBridge.h & EZRNPlayerViewBridge.m ： oc桥接
+
+EZPlayer.js ： 对EZPlayer封装的js api
+
 ### 属性
 | key | description | value |                   
 | --- | --- | --- | 
@@ -302,17 +312,8 @@ open  var controlViewForIntercept : UIView?
 | toFull(orientation = 'landscapeLeft', animated = true, callback) | 进入全屏模式，orientation: landscapeLeft , landscapeRight | 
 | fullScreenMode(fullScreenMode)| 设置全屏的模式，fullScreenMode:portrait , landscape | 
 
-主要文件：
 
-EZRNPlayerView.swift ： 对EZPlayer的封装
-
-EZRNPlayerViewManager.swift ： EZPlayer组件管理器
-
-EZRNPlayerViewBridge.h & EZRNPlayerViewBridge.m ： oc桥接
-
-EZPlayer.js ： 对EZPlayer封装的js api
-
-demo文件：
+### demo文件：
 
 BasePlayerExample.js ： EZPlayer的基础功能演示
 
@@ -320,7 +321,50 @@ TablePlayerExample.js ：EZPlayer 在列表中的演示
 
 TablePlayerCell.js ： 列表的cell
 
-EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义ui可参考。
+EZCustomPlayer.js ： 对EZPlayer.js进行封装，使用自定义ui，自定义ui可参考
+
+#### 使用
+```js
+//基本使用
+//BasePlayerExample.js
+        <EZPlayer
+          ref={(e) => this._ezPlayer = e}
+          style={styles.player}
+          source={this.state.source }
+
+          autoPlay={true}
+          videoGravity={'aspect'} 
+          fullScreenMode={'landscape'}
+        />
+```
+
+```js
+//自定义ui
+//EZCustomPlayer.js
+          <TouchableWithoutFeedback onPress={this.action.onScreenTouch}>
+                <View>
+                    <EZPlayer
+                        {...this.props}
+                        useDefaultUI={false}
+                        ref={(nativePlayer) => this.player.ref = nativePlayer}
+                        style={this.props.style}
+                        onPlayerHeartbeat={this.events.onPlayerHeartbeat}
+                        onPlayerPlaybackTimeDidChange={this.events.onPlayerPlaybackTimeDidChange}
+                        onPlayerStatusDidChange={this.events.onPlayerStatusDidChange}
+                        onPlayerPlaybackDidFinish={this.events.onPlayerPlaybackDidFinish}
+                        onPlayerLoadingDidChange={this.events.onPlayerLoadingDidChange}
+                        onPlayerControlsHiddenDidChange={this.events.onPlayerControlsHiddenDidChange}
+                        onPlayerDisplayModeDidChange={this.events.onPlayerDisplayModeDidChange}
+                        onPlayerDisplayModeChangedWillAppear={this.events.onPlayerDisplayModeChangedWillAppear}
+                        onPlayerDisplayModeChangedDidAppear={this.events.onPlayerDisplayModeChangedDidAppear}
+                        onPlayerTapGestureRecognizer={this.events.onPlayerTapGestureRecognizer}
+                        onPlayerDidPersistContentKey={this.events.onPlayerDidPersistContentKey}
+                    />
+                    {this.renderLoader()}
+                    {this.renderBottomControls()}
+                </View>
+            </TouchableWithoutFeedback>
+```
 
 Utils.js ： 工具类
 
