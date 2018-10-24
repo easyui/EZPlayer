@@ -13,12 +13,12 @@ public extension Timer {
         return self.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(Timer.executeBlockWithTimer(_:)), userInfo: AnyObject.self, repeats: repeats)
     }
 
-    public class func timerWithTimeInterval(_ timeInterval: TimeInterval, block: ()->(),  repeats: Bool) -> Timer{
+    public class func timerWithTimeInterval(_ timeInterval: TimeInterval, block: @escaping()->(),  repeats: Bool) -> Timer{
         return Timer(timeInterval: timeInterval, target: self, selector: #selector(Timer.executeBlockWithTimer(_:)), userInfo: block, repeats: repeats)
     }
 
     @objc private class func executeBlockWithTimer(_ timer: Timer){
-        let block: ()->() = timer.userInfo as! ()->()
+        let block:  ()->() = timer.userInfo as! ()->()
         block()
     }
 
