@@ -685,12 +685,16 @@ open class EZPlayer: NSObject {
                         
                     }
                     
+                    var bounds = embeddedContentView.bounds
+                    if let  window = UIApplication.shared.keyWindow{
+                        bounds = window.convert(embeddedContentView.frame, from: embeddedContentView.superview)
+                    }
+                    
                     UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                         if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                             self.view.transform = CGAffineTransform.identity
                         }
-                        self.view.bounds = embeddedContentView.bounds
-                        self.view.center = embeddedContentView.center
+                        self.view.frame = bounds
                     }, completion: {finished in
                         __endToEmbedded(finished: finished)
                         
