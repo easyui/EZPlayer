@@ -2,7 +2,7 @@
 
 
 # EZPlayer
-![Swift 4](https://img.shields.io/badge/Swift-4.0-brightgreen.svg?style=flat) 
+![Swift 5](https://img.shields.io/badge/Swift-5.0-brightgreen.svg?style=flat) 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 <a href="https://img.shields.io/cocoapods/v/EZPlayer.svg"><img src="https://img.shields.io/cocoapods/v/EZPlayer.svg"></a>
 [![Platform](https://img.shields.io/cocoapods/p/EZPlayer.svg?style=flat)](http://cocoadocs.org/docsets/EZPlayer)

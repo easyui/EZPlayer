@@ -74,7 +74,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
             self.currentOrientation = .portrait
             return .portrait
         case .landscape:
-            self.statusbarBackgroundView.isHidden = EZPlayerUtils.isPhoneX
+            self.statusbarBackgroundView.isHidden = EZPlayerUtils.hasSafeArea
             return self.preferredlandscapeForPresentation
         }
     }

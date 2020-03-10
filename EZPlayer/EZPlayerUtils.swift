@@ -166,14 +166,19 @@ public class EZPlayerUtils{
     }
     
     /// is iPhone X
-    public static var isPhoneX: Bool{
-        return UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.size == CGSize(width: 1125, height: 2436)
+    public static var hasSafeArea: Bool{
+        if #available(iOS 13.0,  *){
+                  return UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0 > 0
+        }else if #available(iOS 11.0,  *) {
+                  return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0 > 0
+        }
+        return false
     }
     
     /// is iPhone X
     public static var statusBarHeight: CGFloat{
-        return EZPlayerUtils.isPhoneX ? 44 : 20
+        return EZPlayerUtils.hasSafeArea ? 44 : 20
     }
-    
+        
     
 }
