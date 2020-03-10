@@ -114,8 +114,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
 
     }
     
-    
-    open override func prefersHomeIndicatorAutoHidden() -> Bool {
+    open override var prefersHomeIndicatorAutoHidden: Bool{
         return self.player.controlsHidden
     }
 

@@ -221,6 +221,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -441,7 +442,7 @@
 				PROVISIONING_PROFILE = "2657682a-3417-4273-8f10-3cb693f836dd";
 				PROVISIONING_PROFILE_SPECIFIER = allDev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -461,7 +462,7 @@
 				PROVISIONING_PROFILE = "31668c18-3b12-4845-b51c-88e8f2c2dd79";
 				PROVISIONING_PROFILE_SPECIFIER = FreeForAll_dev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

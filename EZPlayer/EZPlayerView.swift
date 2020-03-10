@@ -150,8 +150,8 @@ extension EZPlayerView {
         switch pan.state {
         case UIGestureRecognizerState.began:
             
-            let x = fabs(velocityPoint.x)
-            let y = fabs(velocityPoint.y)
+            let x = abs(velocityPoint.x)
+            let y = abs(velocityPoint.y)
             
             if x > y {
                 

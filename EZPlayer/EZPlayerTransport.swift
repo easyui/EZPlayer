@@ -21,7 +21,7 @@ public protocol EZPlayerGestureRecognizer: class {
 
 
 public protocol EZPlayerCustomAction:class {
-    weak var player: EZPlayer? { get set }
+    var player: EZPlayer? { get set }
     var autohidedControlViews: [UIView] { get set }
 
 

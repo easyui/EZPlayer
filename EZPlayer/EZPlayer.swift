@@ -501,7 +501,7 @@ open class EZPlayer: NSObject {
         }
         
         
-        player.seek(to: CMTimeMakeWithSeconds(time,CMTimeScale(NSEC_PER_SEC)), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: {  [weak self]  (finished) in
+        player.seek(to: CMTimeMakeWithSeconds(time,preferredTimescale: CMTimeScale(NSEC_PER_SEC)), toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero, completionHandler: {  [weak self]  (finished) in
             guard let weakSelf = self else {
                 return
             }
@@ -549,7 +549,7 @@ open class EZPlayer: NSObject {
                 activityViewController.present(self.fullScreenViewController!, animated: false, completion: {
                     self.view.removeFromSuperview()
                     self.fullScreenViewController!.view.addSubview(self.view)
-                    self.fullScreenViewController!.view.sendSubview(toBack: self.view)
+                    self.fullScreenViewController!.view.sendSubviewToBack(self.view)
                     if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                         self.view.transform = CGAffineTransform(rotationAngle:orientation == .landscapeRight ? CGFloat(Double.pi / 2) : -CGFloat(Double.pi / 2))
                         self.view.frame = orientation == .landscapeRight ?  CGRect(x:  y, y: rect.origin.x, width: rect.size.height, height: rect.size.width) : CGRect(x: rect.origin.y, y: x, width: rect.size.height, height: rect.size.width)
@@ -576,7 +576,7 @@ open class EZPlayer: NSObject {
                 activityViewController.present(self.fullScreenViewController!, animated: false, completion: {
                     self.view.removeFromSuperview()
                     self.fullScreenViewController!.view.addSubview(self.view)
-                    self.fullScreenViewController!.view.sendSubview(toBack: self.view)
+                    self.fullScreenViewController!.view.sendSubviewToBack(self.view)
                     
                     self.view.bounds = self.fullScreenViewController!.view.bounds
                     self.view.center = self.fullScreenViewController!.view.center
@@ -619,7 +619,7 @@ open class EZPlayer: NSObject {
             
             self.view.frame = self.fullScreenViewController!.view.bounds
             self.fullScreenViewController!.view.addSubview(self.view)
-            self.fullScreenViewController!.view.sendSubview(toBack: self.view)
+            self.fullScreenViewController!.view.sendSubviewToBack(self.view)
             activityViewController.present(self.fullScreenViewController!, animated: animated, completion: {
                 self.floatContainer?.hidden()
                 self.setControlsHidden(false, animated: true)
@@ -899,13 +899,13 @@ open class EZPlayer: NSObject {
     // MARK: - private
     private func commonInit() {
         self.updateCustomView()//走case .none:，防止没有初始化
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillResignActive(_:)), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationDidChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
         //        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         self.timer?.invalidate()
         self.timer = nil
@@ -931,7 +931,7 @@ open class EZPlayer: NSObject {
             NotificationCenter.default.post(name: .EZPlayerHeartbeat, object: self, userInfo:nil)
             
             }, repeats: true)
-        RunLoop.current.add(self.timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     
     private func prepareToPlay(){
@@ -965,7 +965,7 @@ open class EZPlayer: NSObject {
     
     
     private func addPlayerItemTimeObserver(){
-        self.timeObserver = self.player?.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main, using: {  [weak self] time in
+        self.timeObserver = self.player?.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main, using: {  [weak self] time in
             guard let weakSelf = self else {
                 return
             }
@@ -1167,7 +1167,7 @@ extension EZPlayer {
         
         var values = [NSValue]()
         for time in times {
-            values.append(NSValue(time: CMTimeMakeWithSeconds(time,CMTimeScale(NSEC_PER_SEC))))
+            values.append(NSValue(time: CMTimeMakeWithSeconds(time,preferredTimescale: CMTimeScale(NSEC_PER_SEC))))
         }
         
         var thumbnailCount = values.count
@@ -1175,7 +1175,7 @@ extension EZPlayer {
         imageGenerator.cancelAllCGImageGeneration()
         imageGenerator.appliesPreferredTrackTransform = true
         imageGenerator.maximumSize = maximumSize
-        imageGenerator.generateCGImagesAsynchronously(forTimes:values) { (requestedTime: CMTime,image: CGImage?,actualTime: CMTime,result: AVAssetImageGeneratorResult,error: Error?) in
+        imageGenerator.generateCGImagesAsynchronously(forTimes:values) { (requestedTime: CMTime,image: CGImage?,actualTime: CMTime,result: AVAssetImageGenerator.Result,error: Error?) in
             
             let thumbnail = EZPlayerThumbnail(requestedTime: requestedTime, image: image == nil ? nil :  UIImage(cgImage: image!) , actualTime: actualTime, result: result, error: error)
             thumbnails.append(thumbnail)

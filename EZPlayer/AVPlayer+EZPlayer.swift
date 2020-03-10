@@ -7,7 +7,7 @@
 //
 
 import AVFoundation
-public extension AVPlayer {
+extension AVPlayer {
 
     /// 观看了的时长（不包括暂停等）
     public var durationWatched: TimeInterval {

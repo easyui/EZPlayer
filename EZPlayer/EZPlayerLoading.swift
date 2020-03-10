@@ -74,7 +74,7 @@ open class EZPlayerLoading: UIView {
             self?.circle.removeAllAnimations()
             self?.addAnimate()
             }, repeats: true)
-        RunLoop.current.add(self.timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(self.timer!, forMode:RunLoop.Mode.common)
 
         self.isHidden = false
         UIView.animate(withDuration: 0.15, delay: 0,options: .curveEaseInOut, animations: {

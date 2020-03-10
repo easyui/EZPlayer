@@ -41,13 +41,13 @@ open class EZPlayerFloatContainer {
         self.frame = frame
         self.floatWindow = UIWindow(frame: self.frame)
         self.floatWindow.backgroundColor = UIColor.clear
-        self.floatWindow.windowLevel = UIWindowLevelNormal + 1
+        self.floatWindow.windowLevel = UIWindow.Level.normal + 1
         self.floatWindow.clipsToBounds = true
         self.floatWindow.rootViewController = rootViewController
 
 
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationDidChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.floatHandlePan))
         self.floatWindow.addGestureRecognizer(panGestureRecognizer)

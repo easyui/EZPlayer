@@ -7,7 +7,7 @@
 //
 
 import AVFoundation
-public extension AVPlayerItem {
+extension AVPlayerItem {
 
     public var bufferDuration: TimeInterval? {
         if  let first = self.loadedTimeRanges.first { //获取缓冲进度
@@ -40,7 +40,7 @@ public extension AVPlayerItem {
     public var selectedClosedCaptionOption:AVMediaSelectionOption?{
         get{
             if let option = self.selectedMediaCharacteristicLegibleOption{
-                if option.mediaType == "clcp" {
+                if option.mediaType.rawValue == "clcp" {
                     return option
                 }
             }
@@ -50,7 +50,7 @@ public extension AVPlayerItem {
             if let legibleGroup = self.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible){
                 if newValue == nil{
                     self.select(newValue, in: legibleGroup)
-                }else if newValue!.mediaType == "clcp"{
+                }else if newValue!.mediaType.rawValue == "clcp"{
                     self.select(newValue, in: legibleGroup)
                 }
             }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Timer {
+extension Timer {
     public class func scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, block: ()->(),  repeats: Bool) -> Timer{
         return self.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(Timer.executeBlockWithTimer(_:)), userInfo: AnyObject.self, repeats: repeats)
     }
