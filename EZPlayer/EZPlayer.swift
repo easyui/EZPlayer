@@ -546,6 +546,7 @@ open class EZPlayer: NSObject {
                 let rect = view.convert(self.view.frame, to: activityViewController.view)
                 let x = activityViewController.view.bounds.size.width - rect.size.width - rect.origin.x
                 let y = activityViewController.view.bounds.size.height - rect.size.height - rect.origin.y
+                self.fullScreenViewController!.modalPresentationStyle = .fullScreen
                 activityViewController.present(self.fullScreenViewController!, animated: false, completion: {
                     self.view.removeFromSuperview()
                     self.fullScreenViewController!.view.addSubview(self.view)
@@ -573,6 +574,7 @@ open class EZPlayer: NSObject {
                     })
                 })
             }else{
+                self.fullScreenViewController!.modalPresentationStyle = .fullScreen
                 activityViewController.present(self.fullScreenViewController!, animated: false, completion: {
                     self.view.removeFromSuperview()
                     self.fullScreenViewController!.view.addSubview(self.view)
@@ -620,6 +622,7 @@ open class EZPlayer: NSObject {
             self.view.frame = self.fullScreenViewController!.view.bounds
             self.fullScreenViewController!.view.addSubview(self.view)
             self.fullScreenViewController!.view.sendSubviewToBack(self.view)
+            self.fullScreenViewController!.modalPresentationStyle = .fullScreen
             activityViewController.present(self.fullScreenViewController!, animated: animated, completion: {
                 self.floatContainer?.hidden()
                 self.setControlsHidden(false, animated: true)
