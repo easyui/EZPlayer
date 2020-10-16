@@ -8,17 +8,28 @@
 
 import UIKit
 import EZPlayer
+import AVFoundation
 
 class ParamsEmbedTableViewController: UITableViewController {
     weak var  paramsViewController: ParamsViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let volume = AVAudioSession.sharedInstance().outputVolume//其他会获取不到，比如：EZPlayerUtils.systemVolumeSlider.value
+        volumeLabel.text =  String(format:"%.2f", volume)
+        volumeSilder.value = volume
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ParamsEmbedTableViewController.volumeChange(_:)) , name:Notification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification") , object: nil)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -166,18 +177,18 @@ class ParamsEmbedTableViewController: UITableViewController {
     
     @IBAction func firstVideoTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
-            MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.remoteMP4_0)
+            MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.apple_0)
         }else{
-            MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
+            MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.apple_0, embeddedContentView: self.paramsViewController.dlView)
         }
     }
     
     @IBAction func secondTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
-            MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.remoteM3U8_0)
+            MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.localMP4_0)
             
         }else{
-            MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.apple_0, embeddedContentView: self.paramsViewController.dlView)
+            MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
         }
         
     }
@@ -209,4 +220,23 @@ class ParamsEmbedTableViewController: UITableViewController {
         
         
     }
+    
+    // MARK: - Volume：
+    @IBOutlet weak var volumeSilder: UISlider!
+    @IBOutlet weak var volumeLabel: UILabel!
+    @IBAction func volumeChanged(_ sender: UISlider) {
+        if let player = MediaManager.sharedInstance.player  {
+            player.systemVolume = sender.value
+            volumeLabel.text =  String(format:"%.2f", sender.value)
+        }
+    }
+    
+    @objc func volumeChange(_ notification:NSNotification) {
+        if let userInfo = notification.userInfo{
+            let volume = userInfo["AVSystemController_AudioVolumeNotificationParameter"] as! Float
+            volumeLabel.text =  String(format:"%.2f", volume)
+            volumeSilder.value = volume
+        }
+    }
+    
 }
