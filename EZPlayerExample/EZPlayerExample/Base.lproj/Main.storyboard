@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="4Z4-ng-1JS">
+                            <tableViewSection footerTitle="" id="4Z4-ng-1JS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="testIdentifier" id="9um-2n-cbJ">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -675,6 +675,60 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="testIdentifier" rowHeight="80" id="GtK-GY-Gdj">
+                                        <rect key="frame" x="0.0" y="512" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GtK-GY-Gdj" id="575-vH-HDc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="snapshot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u24-ec-eAt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="71" height="80"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EV-vh-gaY">
+                                                    <rect key="frame" x="275" y="0.0" width="100" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="Zn5-l6-v7f"/>
+                                                        <constraint firstAttribute="height" constant="30" id="dGo-VX-vFk"/>
+                                                    </constraints>
+                                                    <state key="normal" title="sp(no m3u8)"/>
+                                                    <connections>
+                                                        <action selector="snapshotWithoutM3u8:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="aT9-OU-JnY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3va-rn-03M">
+                                                    <rect key="frame" x="275" y="30" width="100" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="CFE-J9-xS8"/>
+                                                        <constraint firstAttribute="width" constant="100" id="f2W-Me-W66"/>
+                                                    </constraints>
+                                                    <state key="normal" title="sp(yes m3u8)"/>
+                                                    <connections>
+                                                        <action selector="snapshotWithM3u8:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="8Zp-fL-aqt"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEi-Ls-3CX">
+                                                    <rect key="frame" x="71" y="0.0" width="204" height="80"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="BEi-Ls-3CX" secondAttribute="bottom" id="CcG-PG-rQi"/>
+                                                <constraint firstAttribute="trailing" secondItem="0EV-vh-gaY" secondAttribute="trailing" id="JVb-T0-c0i"/>
+                                                <constraint firstItem="BEi-Ls-3CX" firstAttribute="top" secondItem="575-vH-HDc" secondAttribute="top" id="QOi-F3-rNw"/>
+                                                <constraint firstItem="3va-rn-03M" firstAttribute="top" secondItem="0EV-vh-gaY" secondAttribute="bottom" id="SSO-PF-0Lu"/>
+                                                <constraint firstItem="u24-ec-eAt" firstAttribute="leading" secondItem="575-vH-HDc" secondAttribute="leading" id="X75-Tv-0uR"/>
+                                                <constraint firstItem="0EV-vh-gaY" firstAttribute="top" secondItem="575-vH-HDc" secondAttribute="top" id="ffb-cR-03c"/>
+                                                <constraint firstAttribute="bottom" secondItem="u24-ec-eAt" secondAttribute="bottom" id="i16-J7-YYV"/>
+                                                <constraint firstItem="u24-ec-eAt" firstAttribute="top" secondItem="575-vH-HDc" secondAttribute="top" id="pzR-4n-Tzd"/>
+                                                <constraint firstItem="BEi-Ls-3CX" firstAttribute="leading" secondItem="u24-ec-eAt" secondAttribute="trailing" id="q0O-LJ-ymo"/>
+                                                <constraint firstAttribute="trailing" secondItem="3va-rn-03M" secondAttribute="trailing" id="rnB-hO-DhM"/>
+                                                <constraint firstItem="0EV-vh-gaY" firstAttribute="leading" secondItem="BEi-Ls-3CX" secondAttribute="trailing" id="v6v-cy-qKo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -684,6 +738,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="snapshotImageView" destination="BEi-Ls-3CX" id="ZCn-48-EJq"/>
                         <outlet property="urlTextField" destination="lON-A5-e1q" id="Lwf-79-71l"/>
                         <outlet property="volumeLabel" destination="Yf7-SU-esL" id="2Fp-x9-S4l"/>
                         <outlet property="volumeSilder" destination="hNH-M5-4e4" id="XKB-QV-ENU"/>

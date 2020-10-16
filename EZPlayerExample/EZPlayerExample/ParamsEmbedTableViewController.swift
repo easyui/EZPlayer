@@ -238,5 +238,22 @@ class ParamsEmbedTableViewController: UITableViewController {
             volumeSilder.value = volume
         }
     }
+    // MARK: - snapshot：
+
+    @IBOutlet weak var snapshotImageView: UIImageView!
+    @IBAction func snapshotWithoutM3u8(_ sender: Any) {
+        if let player = MediaManager.sharedInstance.player  {
+            let width = UIScreen.main.scale * 100;
+            player.generateThumbnails(times: [player.currentTime ?? 0], maximumSize: CGSize(width:width,height:width)) {  [weak self] items in
+                self?.snapshotImageView.image = items[0].image
+            }
+        }
+    }
     
+    @IBAction func snapshotWithM3u8(_ sender: Any) {
+        if let player = MediaManager.sharedInstance.player ,let image = player.snapshotImage() {
+            self.snapshotImageView.image = image
+        }
+
+    }
 }

@@ -82,8 +82,8 @@ public class EZPlayerUtils{
     /// system volume ui
     public static let systemVolumeSlider : UISlider = {
         let volumeView = MPVolumeView()
-        volumeView.showsVolumeSlider = true
-        volumeView.showsRouteButton = false
+        volumeView.showsVolumeSlider = true//显示系统音量条
+        volumeView.showsRouteButton = false//去掉提示框
         var returnSlider : UISlider!
         for view in volumeView.subviews {
             if let slider = view as? UISlider {

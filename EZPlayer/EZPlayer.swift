@@ -11,31 +11,27 @@ import AVFoundation
 
 
 public protocol EZPlayerDelegate : class {
-    func player(_ player: EZPlayer ,playerStateDidChange state: EZPlayerState)
-    func player(_ player: EZPlayer ,playerDisplayModeDidChange displayMode: EZPlayerDisplayMode)
+    func player(_ player: EZPlayer ,playerStateDidChange state: EZPlayerState)//.EZPlayerStatusDidChange
+    func player(_ player: EZPlayer ,playerDisplayModeDidChange displayMode: EZPlayerDisplayMode)//.EZPlayerDisplayModeDidChange
     
-    func player(_ player: EZPlayer ,playerControlsHiddenDidChange controlsHidden: Bool , animated: Bool)
+    func player(_ player: EZPlayer ,playerControlsHiddenDidChange controlsHidden: Bool , animated: Bool)//.EZPlayerControlsHiddenDidChange
     
+    func player(_ player: EZPlayer ,bufferDurationDidChange  bufferDuration: TimeInterval , totalDuration: TimeInterval)//.EZPlayerPlaybackTimeDidChange
+    func player(_ player: EZPlayer , currentTime: TimeInterval , duration: TimeInterval)//.EZPlayerPlaybackTimeDidChange
+    func playerHeartbeat(_ player: EZPlayer )//.EZPlayerHeartbeat
     
-    
-    func player(_ player: EZPlayer ,bufferDurationDidChange  bufferDuration: TimeInterval , totalDuration: TimeInterval)
-    func player(_ player: EZPlayer , currentTime   : TimeInterval , duration: TimeInterval)
-    func playerHeartbeat(_ player: EZPlayer )
-    
-    //    func bmPlayer(player: BMPlayerLayerView ,playerIsPlaying      playing: Bool)
-    func player(_ player: EZPlayer ,showLoading: Bool)
-    
-    
+    func player(_ player: EZPlayer ,showLoading: Bool)//.EZPlayerLoadingDidChange
 }
 
 
-
-
+/// 播放器错误类型
 public enum EZPlayerError: Error {
-    case invalidContentURL              //
+    case invalidContentURL              //错误的url
     case playerFail                   // AVPlayer failed to load the asset.
 }
 
+
+/// 播放器的状态
 public enum EZPlayerState {
     case unknown      // 播放前
     case error(EZPlayerError)      // 出现错误
@@ -50,7 +46,7 @@ public enum EZPlayerState {
 }
 
 
-
+//播放器显示模式类型
 public enum EZPlayerDisplayMode  {
     case none
     case embedded
@@ -58,23 +54,27 @@ public enum EZPlayerDisplayMode  {
     case float
 }
 
+//播放器全屏模式类型
 public enum EZPlayerFullScreenMode  {
     case portrait
     case landscape
 }
 
+//播放器流的显示比例
 public enum EZPlayerVideoGravity : String {
     case aspect = "AVLayerVideoGravityResizeAspect"    //视频值 ,等比例填充，直到一个维度到达区域边界
     case aspectFill = "AVLayerVideoGravityResizeAspectFill"   //等比例填充，直到填充满整个视图区域，其中一个维度的部分区域会被裁剪
     case scaleFill = "AVLayerVideoGravityResize"     //非均匀模式。两个维度完全填充至整个视图区域
 }
 
+//播放器结束原因
 public enum EZPlayerPlaybackDidFinishReason  {
     case playbackEndTime
     case playbackError
     case stopByUser
 }
 
+//屏幕左右上下划动时的类型
 public enum EZPlayerSlideTrigger{
     case none
     case volume
@@ -90,7 +90,7 @@ public enum EZPlayerSlideTrigger{
 
 open class EZPlayer: NSObject {
     // MARK: -  player utils
-    public static var showLog = true
+    public static var showLog = true//是否显示log
     // MARK: -  player setting
     open weak var delegate: EZPlayerDelegate?
     
@@ -134,8 +134,8 @@ open class EZPlayer: NSObject {
     }
     
     
-    private var timeObserver: Any?
-    private var timer       : Timer?
+    private var timeObserver: Any?//addPeriodicTimeObserver的返回值
+    private var timer       : Timer?//.EZPlayerHeartbeat使用
     
     // MARK: -  player resource
     open var contentItem: EZPlayerContentItem?
@@ -542,7 +542,7 @@ open class EZPlayer: NSObject {
             self.fullScreenViewController!.player = self
             
             if animated {
-
+                
                 let rect = view.convert(self.view.frame, to: activityViewController.view)
                 let x = activityViewController.view.bounds.size.width - rect.size.width - rect.origin.x
                 let y = activityViewController.view.bounds.size.height - rect.size.height - rect.origin.y
@@ -925,7 +925,7 @@ open class EZPlayer: NSObject {
             if playerItem.isPlaybackLikelyToKeepUp && (weakSelf.state == .buffering || weakSelf.state == .readyToPlay){
                 weakSelf.state = .bufferFinished
                 if weakSelf.autoPlay {
-                  weakSelf.state = .playing
+                    weakSelf.state = .playing
                 }
             }
             
@@ -933,7 +933,7 @@ open class EZPlayer: NSObject {
             weakSelf.delegate?.playerHeartbeat(weakSelf)
             NotificationCenter.default.post(name: .EZPlayerHeartbeat, object: self, userInfo:nil)
             
-            }, repeats: true)
+        }, repeats: true)
         RunLoop.current.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     
@@ -1176,8 +1176,8 @@ extension EZPlayer {
         var thumbnailCount = values.count
         var thumbnails = [EZPlayerThumbnail]()
         imageGenerator.cancelAllCGImageGeneration()
-        imageGenerator.appliesPreferredTrackTransform = true
-        imageGenerator.maximumSize = maximumSize
+        imageGenerator.appliesPreferredTrackTransform = true// 截图的时候调整到正确的方向
+        imageGenerator.maximumSize = maximumSize//设置后可以获取缩略图
         imageGenerator.generateCGImagesAsynchronously(forTimes:values) { (requestedTime: CMTime,image: CGImage?,actualTime: CMTime,result: AVAssetImageGenerator.Result,error: Error?) in
             
             let thumbnail = EZPlayerThumbnail(requestedTime: requestedTime, image: image == nil ? nil :  UIImage(cgImage: image!) , actualTime: actualTime, result: result, error: error)
@@ -1194,7 +1194,7 @@ extension EZPlayer {
     
     
     //支持m3u8
-    func snapshotImage() -> UIImage? {
+    open func snapshotImage() -> UIImage? {
         guard let playerItem = self.playerItem else {  //playerItem is AVPlayerItem
             return nil
         }
