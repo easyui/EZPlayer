@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+/// 返回的截图对象
 public struct EZPlayerThumbnail {
     public var requestedTime: CMTime
     public var image: UIImage?

@@ -235,6 +235,7 @@ open class EZPlayer: NSObject {
         }
     }
     
+    ///cactus todo EZPlayerControlView
     /// 嵌入模式的控制皮肤
     open  var controlViewForEmbedded : UIView?
     /// 浮动模式的控制皮肤
@@ -395,7 +396,7 @@ open class EZPlayer: NSObject {
     open  var  indexPath: IndexPath?
     
     // MARK: - Life cycle
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
         self.timer?.invalidate()
@@ -458,8 +459,6 @@ open class EZPlayer: NSObject {
         self.player?.replaceCurrentItem(with: self.playerItem)
         
         self.setControlsHidden(false, animated: true)
-        
-        
     }
     
     open func play(){
@@ -478,7 +477,6 @@ open class EZPlayer: NSObject {
         let lastState = self.state
         self.state = .stopped
         self.player?.pause()
-        //        self.player.
         
         self.releasePlayerResource()
         guard case .error(_) = lastState else{
@@ -573,8 +571,6 @@ open class EZPlayer: NSObject {
                         NotificationCenter.default.post(name: .EZPlayerDisplayModeChangedDidAppear, object: self, userInfo: [Notification.Key.EZPlayerDisplayModeChangedFrom : self.lastDisplayMode, Notification.Key.EZPlayerDisplayModeChangedTo : EZPlayerDisplayMode.fullscreen])
                         completion?(finished)
                         self.isChangingDisplayMode = false
-                        
-                        
                     })
                 })
             }else{
@@ -952,7 +948,7 @@ open class EZPlayer: NSObject {
         
         let keys = ["tracks","duration","commonMetadata","availableMediaCharacteristicsWithMediaSelectionOptions"]
         self.playerItem = AVPlayerItem(asset: self.playerasset!, automaticallyLoadedAssetKeys: keys)
-        self.player     = AVPlayer(playerItem: playerItem!)
+        self.player   = AVPlayer(playerItem: playerItem!)
         //        if #available(iOS 10.0, *) {
         //            self.player!.automaticallyWaitsToMinimizeStalling = false
         //        }
@@ -1010,7 +1006,6 @@ open class EZPlayer: NSObject {
     private func  releasePlayerResource() {
         if self.fullScreenViewController != nil {
             self.fullScreenViewController!.dismiss(animated: true, completion: {
-                
             })
         }
         

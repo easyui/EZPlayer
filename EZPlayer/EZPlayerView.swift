@@ -88,7 +88,7 @@ class EZPlayerView: UIView {
         
         self.configGesture()
         
-        self.singleTapGesture.require(toFail: self.doubleTapGesture)
+//        self.singleTapGesture.require(toFail: self.doubleTapGesture)
         //                self.autohideControlView()
     }
 }

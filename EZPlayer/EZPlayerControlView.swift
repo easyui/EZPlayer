@@ -31,6 +31,7 @@ open class EZPlayerControlView: UIView{
     @IBOutlet weak var ToolBarContainerBottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var toolBarContainer: UIView!
+    @IBOutlet weak var safeAreaBottomView: UIView!
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
