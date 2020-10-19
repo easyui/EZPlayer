@@ -179,6 +179,7 @@ open class EZPlayer: NSObject {
                     
                     NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
                     item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: NSKeyValueObservingOptions.new, context: nil)
+                    //缓冲区大小
                     item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: NSKeyValueObservingOptions.new, context: nil)
                     // 缓冲区空了，需要等待数据
                     item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackBufferEmpty), options: NSKeyValueObservingOptions.new, context: nil)
@@ -210,6 +211,7 @@ open class EZPlayer: NSObject {
     
     // MARK: -  player component
     
+    //只读
     open  var controlView : UIView?{
         if let view = self.controlViewForIntercept{
             return view
@@ -237,7 +239,7 @@ open class EZPlayer: NSObject {
     open  var controlViewForEmbedded : UIView?
     /// 浮动模式的控制皮肤
     open  var controlViewForFloat : UIView?
-    /// 浮动模式的控制皮肤
+    /// 全屏模式的控制皮肤
     open  var controlViewForFullscreen : UIView?
     
     
@@ -245,7 +247,7 @@ open class EZPlayer: NSObject {
     /// 全屏模式控制器
     open private(set) var fullScreenViewController : EZPlayerFullScreenViewController?
     
-    /// 视频视图
+    /// 视频控制器视图
     private var playerView: EZPlayerView?
     open var view: UIView{
         if self.playerView == nil{
@@ -285,7 +287,7 @@ open class EZPlayer: NSObject {
                 self.delegate?.player(self, playerStateDidChange: state)
                 NotificationCenter.default.post(name: .EZPlayerStatusDidChange, object: self, userInfo: [Notification.Key.EZPlayerNewStateKey: state,Notification.Key.EZPlayerOldStateKey: oldValue])
                 switch state {
-                case  .readyToPlay,.playing ,.pause,.seekingForward,.seekingBackward,.stopped,.bufferFinished:
+                case  .readyToPlay,.playing ,.pause,.seekingForward,.seekingBackward,.stopped,.bufferFinished://cactus todo
                     (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: false)
                     self.delegate?.player(self, showLoading: false)
                     NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: false])
@@ -301,10 +303,8 @@ open class EZPlayer: NSObject {
                     NotificationCenter.default.post(name: .EZPlayerPlaybackDidFinish, object: self, userInfo: [Notification.Key.EZPlayerPlaybackDidFinishReasonKey: EZPlayerPlaybackDidFinishReason.playbackError])
                     
                 }
-                
             }
         }
-        
     }
     
     open private(set)  var displayMode = EZPlayerDisplayMode.none{
@@ -323,7 +323,11 @@ open class EZPlayer: NSObject {
         guard let player = self.player else {
             return false
         }
-        return player.rate > Float(0) && player.error == nil
+        if #available(iOS 10.0, *) {
+            return player.timeControlStatus == .playing;
+        }else{
+            return player.rate > Float(0) && player.error == nil
+        }
     }
     
     /// 视频长度，live是NaN
@@ -1092,8 +1096,9 @@ extension EZPlayer {
             if item == self.playerItem {
                 switch keyPath {
                 case #keyPath(AVPlayerItem.status):
+                    //3）然后是kAVPlayerItemStatus的变化，从0变为1，即变为readyToPlay
                     printLog("AVPlayerItem's status is changed: \(item.status.rawValue)")
-                    if item.status == .readyToPlay {
+                    if item.status == .readyToPlay {//可以播放
                         let lastState = self.state
                         if self.state != .playing{
                             self.state = .readyToPlay
@@ -1111,8 +1116,11 @@ extension EZPlayer {
                     (self.controlView as? EZPlayerDelegate)?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
                     self.delegate?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
                 case #keyPath(AVPlayerItem.playbackBufferEmpty):
+                    //1）首先是观察到kAVPlayerItemPlaybackBufferEmpty的变化，从1变为0，说有缓存到内容了，已经有loadedTimeRanges了，但这时候还不一定能播放，因为数据可能还不够播放；
                     printLog("AVPlayerItem's playbackBufferEmpty is changed")
                 case #keyPath(AVPlayerItem.playbackLikelyToKeepUp):
+                    //2）然后是kAVPlayerItemPlaybackLikelyToKeepUp，从0变到1，说明可以播放了，这时候会自动开始播放
+
                     printLog("AVPlayerItem's playbackLikelyToKeepUp is changed")
                 default:
                     break
