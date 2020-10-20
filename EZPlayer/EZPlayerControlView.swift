@@ -198,7 +198,7 @@ open class EZPlayerControlView: UIView{
             }
             UIView.animate(withDuration: EZPlayerAnimatedDuration, delay: 0,options: .curveEaseInOut, animations: {
                 if self.player?.displayMode == .fullscreen{
-                    self.navBarContainerTopConstraint.constant =  ((EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13)) && self.player?.fullScreenMode == .landscape) ? 0 : EZPlayerUtils.statusBarHeight
+                    self.navBarContainerTopConstraint.constant =  ((EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13)) && self.player?.fullScreenMode == .landscape) ? 20 : EZPlayerUtils.statusBarHeight
                     self.ToolBarContainerBottomConstraint.constant = EZPlayerUtils.hasSafeArea ? self.player?.fullScreenMode == .portrait ? 34 : 21 : 0
 
                 }else{
@@ -218,7 +218,7 @@ open class EZPlayerControlView: UIView{
                 $0.alpha = 1
             }
             if self.player?.displayMode == .fullscreen{
-                self.navBarContainerTopConstraint.constant =  ((EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13)) && self.player?.fullScreenMode == .landscape) ? 0 : EZPlayerUtils.statusBarHeight
+                self.navBarContainerTopConstraint.constant =  ((EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13)) && self.player?.fullScreenMode == .landscape) ? 20 : EZPlayerUtils.statusBarHeight
                 self.ToolBarContainerBottomConstraint.constant = EZPlayerUtils.hasSafeArea ? self.player?.fullScreenMode == .portrait ? 34 : 21 : 0
             }else{
                 self.navBarContainerTopConstraint.constant = 0

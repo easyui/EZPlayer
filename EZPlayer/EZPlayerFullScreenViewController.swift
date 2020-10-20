@@ -74,7 +74,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
             self.currentOrientation = .portrait
             return .portrait
         case .landscape:
-            self.statusbarBackgroundView.isHidden = (EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13))
+//            self.statusbarBackgroundView.isHidden = (EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13))
             return self.preferredlandscapeForPresentation
         }
     }
@@ -83,6 +83,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     private var statusBarHiddenAnimated = true
 
     override open var prefersStatusBarHidden: Bool{
+        self.statusbarBackgroundView.frame = CGRect(x: 0, y: 0, width: self.statusbarBackgroundView.bounds.width, height: (self.player.fullScreenMode == .portrait) ? EZPlayerUtils.statusBarHeight : 20.0)
         if self.statusBarHiddenAnimated {
             UIView.animate(withDuration: EZPlayerAnimatedDuration, animations: {
                 self.statusbarBackgroundView.alpha = self.player.controlsHidden ? 0 : 1
@@ -91,7 +92,6 @@ open class EZPlayerFullScreenViewController: UIViewController {
         }else{
             self.statusbarBackgroundView.alpha = self.player.controlsHidden ? 0 : 1
         }
-
         return self.player.controlsHidden
     }
 
@@ -102,6 +102,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     // MARK: - notification
     @objc func playerControlsHiddenDidChange(_ notifiaction: Notification) {
         self.statusBarHiddenAnimated = notifiaction.userInfo?[Notification.Key.EZPlayerControlsHiddenDidChangeByAnimatedKey] as? Bool ?? true
+        _ = self.prefersStatusBarHidden
         self.setNeedsStatusBarAppearanceUpdate()
         if #available(iOS 11.0, *) {
             self.setNeedsUpdateOfHomeIndicatorAutoHidden()
