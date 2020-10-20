@@ -37,6 +37,8 @@ class MediaManager {
           self.player = EZPlayer()
         }
         
+//        self.player!.slideTrigger = (left:EZPlayerSlideTrigger.none,right:EZPlayerSlideTrigger.none)
+        
         if let autoPlay = userinfo?["autoPlay"] as? Bool{
             self.player!.autoPlay = autoPlay
         }
