@@ -70,7 +70,7 @@ open class EZPlayerControlView: UIView{
 
 
 
-        self.autohidedControlViews = [self.navBarContainer,self.toolBarContainer]
+        self.autohidedControlViews = [self.navBarContainer,self.toolBarContainer,self.safeAreaBottomView]
         //        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureTapped(_:)))
         //        self.tapGesture.delegate = self
         //        self.addGestureRecognizer(self.tapGesture)
