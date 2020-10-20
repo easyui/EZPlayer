@@ -113,27 +113,6 @@ open class EZPlayerControlView: UIView{
         }
         
         self.player(player, progressChanging: TimeInterval(self.timeSlider.value))
-        
-        if !player.isM3U8 {
-            self.videoshotPreview.isHidden = false
-            player.generateThumbnails(times:  [ TimeInterval(self.timeSlider.value)],maximumSize:CGSize(width: self.videoshotImageView.bounds.size.width, height: self.videoshotImageView.bounds.size.height)) { (thumbnails) in
-                let trackRect = self.timeSlider.convert(self.timeSlider.bounds, to: nil)
-                let thumbRect = self.timeSlider.thumbRect(forBounds: self.timeSlider.bounds, trackRect: trackRect, value: self.timeSlider.value)
-                var lead = thumbRect.origin.x + thumbRect.size.width/2 - self.videoshotPreview.bounds.size.width/2
-                if lead < 0 {
-                    lead = 0
-                }else if lead + self.videoshotPreview.bounds.size.width > player.view.bounds.width {
-                    lead = player.view.bounds.width - self.videoshotPreview.bounds.size.width
-                }
-                self.videoshotPreviewLeadingConstraint.constant = lead
-                if thumbnails.count > 0 {
-                    let thumbnail = thumbnails[0]
-                    if thumbnail.result == .succeeded {
-                        self.videoshotImageView.image = thumbnail.image
-                    }
-                }
-            }
-        }
     }
     
     @IBAction func progressSliderTouchEnd(_ sender: Any) {
@@ -237,8 +216,33 @@ open class EZPlayerControlView: UIView{
             //            weakSelf.hideControlView()
             weakSelf.player?.setControlsHidden(true, animated: true)
         })
-        
-        
+    }
+    
+    fileprivate func showThumbnail(){
+        guard let player = self.player  else {
+            return
+        }
+  
+        if !player.isM3U8 {
+            self.videoshotPreview.isHidden = false
+            player.generateThumbnails(times:  [ TimeInterval(self.timeSlider.value)],maximumSize:CGSize(width: self.videoshotImageView.bounds.size.width, height: self.videoshotImageView.bounds.size.height)) { (thumbnails) in
+                let trackRect = self.timeSlider.convert(self.timeSlider.bounds, to: nil)
+                let thumbRect = self.timeSlider.thumbRect(forBounds: self.timeSlider.bounds, trackRect: trackRect, value: self.timeSlider.value)
+                var lead = thumbRect.origin.x + thumbRect.size.width/2 - self.videoshotPreview.bounds.size.width/2
+                if lead < 0 {
+                    lead = 0
+                }else if lead + self.videoshotPreview.bounds.size.width > player.view.bounds.width {
+                    lead = player.view.bounds.width - self.videoshotPreview.bounds.size.width
+                }
+                self.videoshotPreviewLeadingConstraint.constant = lead
+                if thumbnails.count > 0 {
+                    let thumbnail = thumbnails[0]
+                    if thumbnail.result == .succeeded {
+                        self.videoshotImageView.image = thumbnail.image
+                    }
+                }
+            }
+        }
     }
     
 }
@@ -318,6 +322,7 @@ extension EZPlayerControlView: EZPlayerCustom {
         if player.isLive ?? true{
             return
         }
+        self.showControlView(true)
         cancel(self.hideControlViewTask)
         self.isProgressSliderSliding = true
     }
@@ -330,6 +335,8 @@ extension EZPlayerControlView: EZPlayerCustom {
         if !self.timeSlider.isTracking {
             self.timeSlider.value = Float(value)
         }
+        
+        self.showThumbnail()
     }
     
     public func player(_ player: EZPlayer, progressDidChange value: TimeInterval) {
