@@ -692,11 +692,14 @@ open class EZPlayer: NSObject {
                         if self.autoLandscapeFullScreenLandscape && self.fullScreenMode == .landscape{
                             self.view.transform = CGAffineTransform.identity
                         }
+                        var center = embeddedContentView.center
+                        if let embeddedContentSuperview  = embeddedContentView.superview {
+                            center = embeddedContentSuperview.convert(embeddedContentView.center, to: UIApplication.shared.keyWindow)
+                        }
                         self.view.bounds = embeddedContentView.bounds
-                        self.view.center = embeddedContentView.center
+                        self.view.center = center
                     }, completion: {finished in
                         __endToEmbedded(finished: finished)
-                        
                         
                     })
                 })
@@ -1124,6 +1127,9 @@ extension EZPlayer {
         }else if let view = object as? UITableView ,let keyPath = keyPath{
             switch keyPath {
             case #keyPath(UITableView.contentOffset):
+                if isChangingDisplayMode == true{
+                    return
+                }
                 if view == self.scrollView {
                     if let index = self.indexPath {
                         let cellrectInTable = view.rectForRow(at: index)
