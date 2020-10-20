@@ -53,7 +53,8 @@ class VideosTableViewController: UITableViewController {
         }
         let cell = tableView.cellForRow(at: indexPath)
         self.index = indexPath
-        MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: cell?.contentView)
+//        MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: cell?.contentView)
+        MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: cell?.textLabel)
         MediaManager.sharedInstance.player?.indexPath = indexPath
         MediaManager.sharedInstance.player?.scrollView = tableView
     }

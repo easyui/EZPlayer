@@ -1134,8 +1134,8 @@ extension EZPlayer {
                             if let cell = view.cellForRow(at: index){
                                 if  !cell.contentView.subviews.contains(self.view){
                                     self.view.removeFromSuperview()
-                                    cell.contentView.addSubview( self.view)
-                                    self.embeddedContentView = cell.contentView
+                                    self.embeddedContentView = self.embeddedContentView ?? cell.contentView
+                                    self.embeddedContentView!.addSubview(self.view)
                                 }
                                 self.toEmbedded(animated: false, completion: { flag in
                                 })
