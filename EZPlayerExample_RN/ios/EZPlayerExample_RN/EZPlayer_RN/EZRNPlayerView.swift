@@ -10,6 +10,7 @@ import UIKit
 
 import EZPlayer
 
+@objcMembers
 open class EZRNPlayerView: UIView {
   var player: EZPlayer?
   

@@ -12,6 +12,10 @@ import Foundation
 @objc(EZRNPlayerViewManager)
 class EZRNPlayerViewManager : RCTViewManager {
   
+  override class func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+  
   override func view() -> UIView! {
     return EZRNPlayerView();
   }
