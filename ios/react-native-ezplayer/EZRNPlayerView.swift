@@ -2,7 +2,7 @@
 //  EZRNPlayerView.swift
 //  EZPlayerExample_RN
 //
-//  Created by IQIYI on 2017/9/30.
+//  Created by Zhu yangjun on 2017/9/30.
 //  Copyright © 2017年 Facebook. All rights reserved.
 //
 

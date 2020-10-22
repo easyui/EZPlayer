@@ -1,6 +1,6 @@
 {
   "name": "react-native-ezplayer",
-  "version": "0.0.5",
+  "version": "1.1.0",
   "description": "EZPlayer component for react-native apps",
   "main": "index.js",
   "scripts": {
