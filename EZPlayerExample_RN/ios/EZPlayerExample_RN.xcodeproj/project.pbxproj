@@ -724,6 +724,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1219,7 +1220,7 @@
 				PRODUCT_NAME = EZPlayerExample_RN;
 				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1240,7 +1241,7 @@
 				);
 				PRODUCT_NAME = EZPlayerExample_RN;
 				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
