@@ -264,7 +264,7 @@ open  var controlViewForIntercept : UIView?
 
 - 支持React Native
 
-可以参考[EZPlayerExample_RN](https://github.com/easyui/EZPlayer/tree/master/EZPlayerExample_RN)项目，使用最新的`swift4`和最新的`react native`版本对EZPlayer的封装，实现EZPlayer的大部分功能。
+可以参考[EZPlayerExample_RN](https://github.com/easyui/EZPlayer/tree/master/EZPlayerExample_RN)项目，使用最新的`swift5`和最新的`react native 0.63.3 `版本对EZPlayer的封装，实现EZPlayer的大部分功能。
 
 ### react-native-ezplayer 文件：
 

@@ -439,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X4R4KE83C;
 				INFOPLIST_FILE = EZPlayerExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayerExample2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,7 +459,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: yangjun zhu (8NM4W5ZF88)";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = EZPlayerExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayerExample444;
 				PRODUCT_NAME = "$(TARGET_NAME)";
