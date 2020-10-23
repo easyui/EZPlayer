@@ -76,7 +76,7 @@
 		764F4C7AB2C6CFAAAD383C67 /* Pods-EZPlayerExample_RN-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZPlayerExample_RN-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-EZPlayerExample_RN-tvOSTests/Pods-EZPlayerExample_RN-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		7D90CB995A32A4EA542178CC /* Pods-EZPlayerExample_RN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZPlayerExample_RN.debug.xcconfig"; path = "Target Support Files/Pods-EZPlayerExample_RN/Pods-EZPlayerExample_RN.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EZPlayerExample_RN/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A60453832541354C00267BB4 /* EZPlayerExample_RN-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EZPlayerExample_RN-Bridging-Header.h"; sourceTree = "<group>"; };
+		A60453832541354C00267BB4 /* react-native-ezplayer-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "react-native-ezplayer-Bridging-Header.h"; sourceTree = "<group>"; };
 		A60453842541354C00267BB4 /* EZRNPlayerViewBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZRNPlayerViewBridge.h; sourceTree = "<group>"; };
 		A60453852541354C00267BB4 /* EZRNPlayerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZRNPlayerViewManager.swift; sourceTree = "<group>"; };
 		A60453862541354C00267BB4 /* EZRNPlayerViewBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZRNPlayerViewBridge.m; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		A60453822541354C00267BB4 /* EZPlayer_RN */ = {
 			isa = PBXGroup;
 			children = (
-				A60453832541354C00267BB4 /* EZPlayerExample_RN-Bridging-Header.h */,
+				A60453832541354C00267BB4 /* react-native-ezplayer-Bridging-Header.h */,
 				A60453842541354C00267BB4 /* EZRNPlayerViewBridge.h */,
 				A60453852541354C00267BB4 /* EZRNPlayerViewManager.swift */,
 				A60453862541354C00267BB4 /* EZRNPlayerViewBridge.m */,
@@ -738,7 +738,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = EZPlayerExample_RN;
-				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/react-native-ezplayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -761,7 +761,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = EZPlayerExample_RN;
-				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/EZPlayerExample_RN-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/react-native-ezplayer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
