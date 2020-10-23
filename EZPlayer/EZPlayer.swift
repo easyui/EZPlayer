@@ -8,7 +8,7 @@
 
 import Foundation
 import AVFoundation
-import AVKit
+
 
 public protocol EZPlayerDelegate : class {
     func player(_ player: EZPlayer ,playerStateDidChange state: EZPlayerState)//.EZPlayerStatusDidChange
@@ -249,7 +249,7 @@ open class EZPlayer: NSObject {
     open private(set) var fullScreenViewController : EZPlayerFullScreenViewController?
     
     /// 视频控制器视图
-    fileprivate var playerView: EZPlayerView?
+    private var playerView: EZPlayerView?
     open var view: UIView{
         if self.playerView == nil{
             self.playerView = EZPlayerView(controlView: self.controlView)
@@ -395,9 +395,6 @@ open class EZPlayer: NSObject {
     }
     open  var  indexPath: IndexPath?
     
-    // MARK: - Picture in Picture
-    open var pipController: AVPictureInPictureController?
-
     // MARK: - Life cycle
 
     deinit {
@@ -1236,93 +1233,4 @@ extension EZPlayer {
         }
         return nil
     }
-}
-
-
-// MARK: - Picture in Picture Mode
-extension EZPlayer: AVPictureInPictureControllerDelegate {
-    
-    /// 是否支持pip
-    open var isPIPSupported: Bool{
-        return AVPictureInPictureController.isPictureInPictureSupported()
-    }
-    
-    /// 当前是否处于画中画状态显示在屏幕上
-    open var isPIPActive: Bool{
-        return self.pipController?.isPictureInPictureActive ?? false
-    }
-    
-    /// 如果你的app因为其他的app在使用PiP而导致你的视频后台播放播放状态为暂停并且不可见，将会返回true。当其他的app离开了PiP时，你的视频会被重新播放
-    open var isPIPSuspended: Bool{
-        return self.pipController?.isPictureInPictureSuspended ?? false
-    }
-    
-    /// 告诉你画中画窗口是可用的。如果其他的app再使用PiP模式，他将会返回false。这个实行也能够通过KVO来观察，同样通过观察这种状态的改变，你也能够很好地额处理PiP按钮的的隐藏于展示。
-    open var isPIPPossible: Bool{
-        return self.pipController?.isPictureInPicturePossible ?? false
-    }
-    
-    open func startPIP(){
-        
-        //isPIPSupported和isPIPPossible为true才有效
-        self.pipController?.startPictureInPicture()
-        
-    }
-    
-    open func stopPIP(){
-        self.pipController?.stopPictureInPicture()
-    }
-    
-    private func __configPIP(){
-        if isPIPSupported && playerView != nil && pipController == nil {
-            pipController = AVPictureInPictureController(playerLayer: playerView!.layer as! AVPlayerLayer)
-            pipController?.delegate = self
-        }
-    }
-    
-    /// 即将开启画中画
-    /// - Parameter pictureInPictureController: <#pictureInPictureController description#>
-    public func pictureInPictureControllerWillStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        printLog("pip 即将开启画中画")
-        
-    }
-    
-    /// 已经开启画中画
-    /// - Parameter pictureInPictureController: <#pictureInPictureController description#>
-    public func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        printLog("pip 已经开启画中画")
-
-    }
-    
-    /// 开启画中画失败
-    /// - Parameters:
-    ///   - pictureInPictureController: <#pictureInPictureController description#>
-    ///   - error: <#error description#>
-    public func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, failedToStartPictureInPictureWithError error: Error) {
-        printLog("pip 开启画中画失败")
-
-    }
-    
-    /// 即将关闭画中画
-    /// - Parameter pictureInPictureController: <#pictureInPictureController description#>
-    public func pictureInPictureControllerWillStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        printLog("pip 即将关闭画中画")
-    }
-    
-    /// 已经关闭画中画
-    /// - Parameter pictureInPictureController: <#pictureInPictureController description#>
-    public func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        printLog("pip 已经关闭画中画")
-
-    }
-    
-    /// 关闭画中画且恢复播放界面
-    /// - Parameters:
-    ///   - pictureInPictureController: <#pictureInPictureController description#>
-    ///   - completionHandler: <#completionHandler description#>
-    public func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
-        printLog("pip 关闭画中画且恢复播放界面")
-
-    }
-
 }
