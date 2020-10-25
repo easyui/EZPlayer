@@ -64,7 +64,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -117,7 +117,7 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-  s.frameworks = "UIKit", "AVFoundation", "MediaPlayer"
+  s.frameworks = "AVKit", "UIKit", "AVFoundation", "MediaPlayer"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
