@@ -20,6 +20,7 @@ class EZPlayer extends Component {
     useDefaultUI: PropTypes.bool,
     videoGravity: PropTypes.string, //aspect,aspectFill,scaleFill
     fullScreenMode: PropTypes.string, //portrait,landscape
+    floatMode: PropTypes.string, //none,auto,system,window
 
     onPlayerHeartbeat: PropTypes.func,
     onPlayerPlaybackTimeDidChange: PropTypes.func,
@@ -41,6 +42,7 @@ class EZPlayer extends Component {
     useDefaultUI: true,
     videoGravity: 'aspect',
     fullScreenMode: 'landscape',
+    floatMode: 'auto',
   };
 
   /**
@@ -334,6 +336,14 @@ class EZPlayer extends Component {
     EZRNPlayerViewManager.fullScreenMode(
       this._getEZRNPlayerViewNativeHandle(),
       fullScreenMode,
+    );
+  }
+
+  //fullScreenMode:portrait , landscape
+  floatMode(floatMode) {
+    EZRNPlayerViewManager.floatMode(
+      this._getEZRNPlayerViewNativeHandle(),
+      floatMode,
     );
   }
 

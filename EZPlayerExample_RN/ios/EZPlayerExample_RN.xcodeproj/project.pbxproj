@@ -22,6 +22,8 @@
 		A604538B2541354D00267BB4 /* EZRNPlayerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60453852541354C00267BB4 /* EZRNPlayerViewManager.swift */; };
 		A604538C2541354E00267BB4 /* EZRNPlayerViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A60453862541354C00267BB4 /* EZRNPlayerViewBridge.m */; };
 		A604538D2541354E00267BB4 /* EZRNPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60453872541354C00267BB4 /* EZRNPlayerView.swift */; };
+		A613577A2545F1F700BB581D /* EZPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60453D325417BF000267BB4 /* EZPlayer.framework */; };
+		A613577B2545F1F700BB581D /* EZPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A60453D325417BF000267BB4 /* EZPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD26EEB9C2FA91D455A51343 /* libPods-EZPlayerExample_RN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9EBB3052429EB2A922D42CF /* libPods-EZPlayerExample_RN.a */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +49,7 @@
 			remoteGlobalIDString = 995E79171DD99D5A006CE7E9;
 			remoteInfo = EZPlayer;
 		};
-		A60453DB25417BFB00267BB4 /* PBXContainerItemProxy */ = {
+		A61357462545F16200BB581D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A60453CC25417BF000267BB4 /* EZPlayer.xcodeproj */;
 			proxyType = 1;
@@ -55,6 +57,20 @@
 			remoteInfo = EZPlayer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A613577C2545F1F700BB581D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A613577B2545F1F700BB581D /* EZPlayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -105,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A613577A2545F1F700BB581D /* EZPlayer.framework in Frameworks */,
 				FD26EEB9C2FA91D455A51343 /* libPods-EZPlayerExample_RN.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,11 +294,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C1D7B16DB6D1FDA26E2224F8 /* [CP] Copy Pods Resources */,
+				A613577C2545F1F700BB581D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A60453DC25417BFB00267BB4 /* PBXTargetDependency */,
+				A61357472545F16200BB581D /* PBXTargetDependency */,
 			);
 			name = EZPlayerExample_RN;
 			productName = EZPlayerExample_RN;
@@ -340,6 +358,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 3X4R4KE83C;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -668,10 +687,10 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* EZPlayerExample_RN-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
-		A60453DC25417BFB00267BB4 /* PBXTargetDependency */ = {
+		A61357472545F16200BB581D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EZPlayer;
-			targetProxy = A60453DB25417BFB00267BB4 /* PBXContainerItemProxy */;
+			targetProxy = A61357462545F16200BB581D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -728,6 +747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3X4R4KE83C;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EZPlayerExample_RN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -736,7 +756,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayerExample2020;
 				PRODUCT_NAME = EZPlayerExample_RN;
 				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/react-native-ezplayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -752,6 +772,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3X4R4KE83C;
 				INFOPLIST_FILE = EZPlayerExample_RN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -759,7 +780,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ouka.EZPlayerExample2020;
 				PRODUCT_NAME = EZPlayerExample_RN;
 				SWIFT_OBJC_BRIDGING_HEADER = "EZPlayerExample_RN/EZPlayer_RN/react-native-ezplayer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

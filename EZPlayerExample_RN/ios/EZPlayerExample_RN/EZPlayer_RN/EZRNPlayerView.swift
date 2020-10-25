@@ -75,6 +75,12 @@ open class EZRNPlayerView: UIView {
     }
   }
   
+  public var floatMode: String = "auto"{
+    didSet {
+      self.player?.floatMode = self.getEZPlayerFloatMode(floatMode: floatMode)
+    }
+  }
+  
   
   
 
@@ -90,7 +96,12 @@ open class EZRNPlayerView: UIView {
   public var onPlayerDisplayModeChangedDidAppear: RCTDirectEventBlock?
   public var onPlayerTapGestureRecognizer: RCTDirectEventBlock?
   public var onPlayerDidPersistContentKey: RCTDirectEventBlock?
-  
+  public var onPlayerPIPControllerWillStart: RCTDirectEventBlock?
+  public var onPlayerPIPControllerDidStart: RCTDirectEventBlock?
+  public var onPlayerPIPFailedToStart: RCTDirectEventBlock?
+  public var onPlayerPIPControllerWillEnd: RCTDirectEventBlock?
+  public var onPlayerPIPControllerDidEnd: RCTDirectEventBlock?
+  public var onPlayerPIPRestoreUserInterfaceForStop: RCTDirectEventBlock?
   // MARK: - Life
 
   public override init(frame: CGRect) {
@@ -215,6 +226,17 @@ open class EZRNPlayerView: UIView {
     return ezPlayerFullScreenMode
   }
   
+  private func getEZPlayerFloatMode(floatMode: String) -> EZPlayerFloatMode{
+    var ezPlayerFloatMode = EZPlayerFloatMode.auto
+    switch(floatMode){
+    case "none": ezPlayerFloatMode = EZPlayerFloatMode.none
+    case "auto": ezPlayerFloatMode = EZPlayerFloatMode.auto
+    case "system": ezPlayerFloatMode = EZPlayerFloatMode.system
+    case "window": ezPlayerFloatMode = EZPlayerFloatMode.window
+    default:ezPlayerFloatMode = EZPlayerFloatMode.auto
+    }
+    return ezPlayerFloatMode
+  }
 }
 
 
@@ -243,6 +265,22 @@ extension EZRNPlayerView {
     NotificationCenter.default.addObserver(self, selector: #selector(self.playerTapGestureRecognizer(_:)), name: NSNotification.Name.EZPlayerTapGestureRecognizer, object: nil)
     
     NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPersistContentKey(_:)), name: NSNotification.Name.EZPlayerDidPersistContentKey, object: nil)
+    
+    //pip
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPControllerWillStart(_:)), name: NSNotification.Name.EZPlayerPIPControllerWillStart, object: nil)
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPControllerDidStart(_:)), name: NSNotification.Name.EZPlayerPIPControllerDidStart, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPFailedToStart(_:)), name: NSNotification.Name.EZPlayerPIPFailedToStart, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPControllerWillEnd(_:)), name: NSNotification.Name.EZPlayerPIPControllerWillEnd, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPControllerDidEnd(_:)), name: NSNotification.Name.EZPlayerPIPControllerDidEnd, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.playerPIPRestoreUserInterfaceForStop(_:)), name: NSNotification.Name.EZPlayerPIPRestoreUserInterfaceForStop, object: nil)
+
+    
+    
   }
   
   open func removeObservers(){
@@ -347,6 +385,48 @@ extension EZRNPlayerView {
       return
     }
     self.onPlayerDidPersistContentKey?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPControllerWillStart(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPControllerWillStart?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPControllerDidStart(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPControllerDidStart?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPFailedToStart(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPFailedToStart?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPControllerWillEnd(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPControllerWillEnd?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPControllerDidEnd(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPControllerDidEnd?(notifiaction.userInfo)
+  }
+  
+  @objc  func playerPIPRestoreUserInterfaceForStop(_ notifiaction: Notification) {
+    guard let player = notifiaction.object as? EZPlayer ,let selfPlayer = self.player , player == selfPlayer else{
+      return
+    }
+    self.onPlayerPIPRestoreUserInterfaceForStop?(notifiaction.userInfo)
   }
   
   private func stateName(state: EZPlayerState) -> String{

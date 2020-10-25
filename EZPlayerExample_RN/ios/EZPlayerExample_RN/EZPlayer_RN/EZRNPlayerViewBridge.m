@@ -16,6 +16,7 @@ RCT_EXPORT_VIEW_PROPERTY(source, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(autoPlay, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(videoGravity, NSString)
 RCT_EXPORT_VIEW_PROPERTY(fullScreenMode, NSString)
+RCT_EXPORT_VIEW_PROPERTY(floatMode, NSString)
 RCT_EXPORT_VIEW_PROPERTY(useDefaultUI, BOOL)
 
 
@@ -30,6 +31,12 @@ RCT_EXPORT_VIEW_PROPERTY(onPlayerDisplayModeChangedWillAppear, RCTBubblingEventB
 RCT_EXPORT_VIEW_PROPERTY(onPlayerDisplayModeChangedDidAppear, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPlayerTapGestureRecognizer, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPlayerDidPersistContentKey, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPControllerWillStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPControllerDidStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPFailedToStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPControllerWillEnd, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPControllerDidEnd, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlayerPIPRestoreUserInterfaceForStop, RCTBubblingEventBlock)
 
 RCT_EXTERN_METHOD( play: (nonnull NSNumber *)reactTag )
 RCT_EXTERN_METHOD( pause: (nonnull NSNumber *)reactTag )
@@ -46,6 +53,7 @@ RCT_EXTERN_METHOD( toEmbedded: (nonnull NSNumber *)reactTag animated:(BOOL *)ani
 RCT_EXTERN_METHOD( toFloat: (nonnull NSNumber *)reactTag animated:(BOOL *)animated callback:( RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD( toFull: (nonnull NSNumber *)reactTag orientation:(NSString*)orientation animated:(BOOL *)animated callback:( RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD( fullScreenMode: (nonnull NSNumber *)reactTag fullScreenMode:(NSString *)fullScreenMode )
+RCT_EXTERN_METHOD( floatMode: (nonnull NSNumber *)reactTag floatMode:(NSString *)floatMode )
 
 //RCT_EXPORT_VIEW_PROPERTY(imageNumber, NSInteger)
 //

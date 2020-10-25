@@ -227,6 +227,7 @@ export default class EZPlayerExample_RN extends Component {
           source={{uri: info.item.url}}
           showControls={true}
           controlTimeout={8000}
+          floatMode={'window'}
           onPlayerPlaybackDidFinish={(event) => {
             if (info.index === this.state.playerIndex) {
               this.setState({

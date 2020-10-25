@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -31,6 +32,14 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
+  AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+  NSError *error = nil;
+  [audioSession setCategory:AVAudioSessionCategoryPlayback error:&error];
+  [audioSession setActive:YES error:nil];
+  if (error) {
+      NSLog(@"error = %@",[error description]);
+  }
+  
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"EZPlayerExample_RN"

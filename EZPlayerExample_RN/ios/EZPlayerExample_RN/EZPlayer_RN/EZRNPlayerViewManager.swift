@@ -8,6 +8,7 @@
 
 import Foundation
 
+import EZPlayer
 
 @objc(EZRNPlayerViewManager)
 class EZRNPlayerViewManager : RCTViewManager {
@@ -98,6 +99,20 @@ class EZRNPlayerViewManager : RCTViewManager {
   @objc func fullScreenMode(_ reactTag: NSNumber, fullScreenMode:String =  "portrait") {
     self.execute(reactTag: reactTag) { (playerView) in
       playerView.player?.fullScreenMode = fullScreenMode == "portrait" ? .portrait : .landscape
+    }
+  }
+  
+  @objc func floatMode(_ reactTag: NSNumber, floatMode:String =  "auto") {
+    self.execute(reactTag: reactTag) { (playerView) in
+      var ezPlayerFloatMode:EZPlayerFloatMode = .auto
+      switch(floatMode){
+      case "none": ezPlayerFloatMode = .none
+      case "auto": ezPlayerFloatMode = .auto
+      case "system": ezPlayerFloatMode = .system
+      case "window": ezPlayerFloatMode = .window
+      default:ezPlayerFloatMode = .auto
+      }
+      playerView.player?.floatMode = ezPlayerFloatMode
     }
   }
   
