@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class EZPlayerFloatContainerRootViewController: UIViewController {
-    weak var floatContainer: EZPlayerFloatContainer!
+open class EZPlayerWindowContainerRootViewController: UIViewController {
+    weak var floatContainer: EZPlayerWindowContainer!
     override open func viewDidLoad() {
         super.viewDidLoad()
 

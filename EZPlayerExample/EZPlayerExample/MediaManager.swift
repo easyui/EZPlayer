@@ -42,6 +42,10 @@ class MediaManager {
         if let autoPlay = userinfo?["autoPlay"] as? Bool{
             self.player!.autoPlay = autoPlay
         }
+        
+        if let floatMode = userinfo?["floatMode"] as? EZPlayerFloatMode{
+            self.player!.floatMode = floatMode
+        }
 
         if let fullScreenMode = userinfo?["fullScreenMode"] as? EZPlayerFullScreenMode{
             self.player!.fullScreenMode = fullScreenMode
@@ -56,7 +60,9 @@ class MediaManager {
                 }
                 
             }else if fromDisplayMode == .float {
-                self.releasePlayer()
+                if self.player!.lastDisplayMode == .none{
+                    self.releasePlayer()
+                }
             }
             
         }

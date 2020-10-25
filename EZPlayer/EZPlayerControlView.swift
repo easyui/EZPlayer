@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import AVKit
 
 
 open class EZPlayerControlView: UIView{
@@ -48,7 +49,7 @@ open class EZPlayerControlView: UIView{
     
     @IBOutlet weak var loading: EZPlayerLoading!
     @IBOutlet weak var audioSubtitleCCButtonWidthConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var pipButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var airplayContainer: UIView!
     
     // MARK: - Life cycle
@@ -67,7 +68,8 @@ open class EZPlayerControlView: UIView{
         self.videoshotPreview.isHidden = true
         
         self.audioSubtitleCCButtonWidthConstraint.constant = 0
-        
+        self.pipButtonWidthConstraint.constant = 0
+
         self.autohidedControlViews = [self.navBarContainer,self.toolBarContainer,self.safeAreaBottomView]
         //        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureTapped(_:)))
         //        self.tapGesture.delegate = self
@@ -295,6 +297,7 @@ extension EZPlayerControlView: EZPlayerCustom {
         guard let player = self.player else {
             return
         }
+//        let floatModelSupported = EZPlayerUtils.floatModelSupported(player)
         let displayMode = player.displayMode
         if displayMode == .fullscreen {
             if player.lastDisplayMode == .embedded{
@@ -303,9 +306,18 @@ extension EZPlayerControlView: EZPlayerCustom {
                 player.toFloat()
             }
         }
+//        else if(displayMode == .float){
+//
+//        }
         player.backButtonBlock?(displayMode)
     }
     
+    @IBAction public func pipButtonPressed(_ sender: Any) {
+        guard let player = self.player else {
+            return
+        }
+        player.toFloat()
+    }
     
     // MARK: - EZPlayerGestureRecognizer
     public func player(_ player: EZPlayer, singleTapGestureTapped singleTap: UITapGestureRecognizer) {
@@ -362,6 +374,8 @@ extension EZPlayerControlView: EZPlayerCustom {
             }
         }
         self.airplayContainer.isHidden = !player.allowsExternalPlayback
+        self.pipButtonWidthConstraint.constant = (player.scrollView != nil || player.floatMode == .none || player.displayMode == .float || player.displayMode == .none) ? 0 : 50
+
     }
     
     
@@ -372,13 +386,17 @@ extension EZPlayerControlView: EZPlayerCustom {
         case .embedded:
             self.fullEmbeddedScreenButtonWidthConstraint.constant = 50
             self.fullEmbeddedScreenButton.setImage(UIImage(named: "btn_fullscreen22x22", in: Bundle(for: EZPlayerControlView.self), compatibleWith: nil), for: .normal)
+            self.pipButtonWidthConstraint.constant = (player.scrollView != nil || player.floatMode == .none ) ? 0 : 50
         case .fullscreen:
             self.fullEmbeddedScreenButtonWidthConstraint.constant = 50
             self.fullEmbeddedScreenButton.setImage(UIImage(named: "btn_normalscreen22x22", in: Bundle(for: EZPlayerControlView.self), compatibleWith: nil), for: .normal)
             if player.lastDisplayMode == .none{
                 self.fullEmbeddedScreenButtonWidthConstraint.constant = 0
             }
+            self.pipButtonWidthConstraint.constant = (player.scrollView != nil || player.floatMode == .none) ? 0 : 50
         case .float:
+            self.fullEmbeddedScreenButtonWidthConstraint.constant = 0
+            self.pipButtonWidthConstraint.constant = 0
             break
             
         }
@@ -453,5 +471,8 @@ extension EZPlayerControlView: EZPlayerCustom {
         }
     }
     
+    
+    
+
     
 }

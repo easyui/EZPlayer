@@ -256,4 +256,18 @@ class ParamsEmbedTableViewController: UITableViewController {
         }
 
     }
+    
+    // MARK: - pip：
+    @IBAction func startPIP(_ sender: Any) {
+        if let player = MediaManager.sharedInstance.player  {
+            player.startPIP()
+        }
+    }
+    
+    @IBAction func stopPIP(_ sender: Any) {
+        if let player = MediaManager.sharedInstance.player  {
+            player.stopPIP()
+        }
+    }
+    
 }

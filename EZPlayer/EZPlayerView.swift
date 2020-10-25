@@ -59,8 +59,10 @@ class EZPlayerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.controlView?.frame = self.bounds
-        
+        if let controlView = self.controlView {
+            controlView.frame = self.bounds
+            self.bringSubviewToFront(controlView)//pip关闭的时候
+        }
     }
     
     

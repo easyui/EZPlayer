@@ -42,6 +42,20 @@ public extension Notification.Name {
     /// FairPlay DRM
     static let EZPlayerDidPersistContentKey = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKey")
     
+    /// PIP
+    static let EZPlayerPIPControllerWillStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillStart")
+    
+    static let EZPlayerPIPControllerDidStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidStart")
+
+    static let EZPlayerPIPFailedToStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPFailedToStart")
+
+    static let EZPlayerPIPControllerWillEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillEnd")
+    
+    static let EZPlayerPIPControllerDidEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidEnd")
+    
+    static let EZPlayerPIPRestoreUserInterfaceForStop = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPRestoreUserInterfaceForStop")
+
+    
 }
 
 extension Notification {
@@ -71,6 +85,12 @@ extension Notification {
 
         /// FairPlay DRM=
         public static let EZPlayerDidPersistAssetIdentifierKey = "EZPlayerDidPersistAssetIdentifierKey"
+        
+        /// PIP 启动失败
+        public static let EZPlayerPIPFailedToStart =  "EZPlayerPIPFailedToStart"
+        /// PIP 关闭画中画且恢复播放界面
+        public static let EZPlayerPIPStopWithCompletionHandler =  "EZPlayerPIPStopWithCompletionHandler"
+
 
     }
 

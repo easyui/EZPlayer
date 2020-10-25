@@ -26,9 +26,9 @@ public let EZPlayerErrorDomain = "EZPlayerErrorDomain"
 ///   - method: 打印log所属的方法
 ///   - line: 打印log所在的行
 public func printLog<T>(_ message: T...,
-    file: String = #file,
-    method: String = #function,
-    line: Int = #line)
+                        file: String = #file,
+                        method: String = #function,
+                        line: Int = #line)
 {
     if EZPlayer.showLog {
         print("EZPlayer Log-->\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
@@ -168,9 +168,9 @@ public class EZPlayerUtils{
     /// is iPhone X
     public static var hasSafeArea: Bool{
         if #available(iOS 13.0,  *){
-                  return UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0 > 0
+            return UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0 > 0
         }else if #available(iOS 11.0,  *) {
-                  return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0 > 0
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0 > 0
         }
         return false
     }
@@ -179,6 +179,24 @@ public class EZPlayerUtils{
     public static var statusBarHeight: CGFloat{
         return EZPlayerUtils.hasSafeArea ? 44 : 20
     }
-        
+    
+    
+    public static func floatModelSupported(_ player :EZPlayer) -> EZPlayerFloatMode{
+        if player.floatMode == .auto {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                if #available(iOS 9.0,  *) {
+                    return .system
+                }
+                return .window
+            }else if  UIDevice.current.userInterfaceIdiom == .phone {
+                if #available(iOS 14.0,  *) {
+                    return .system
+                }
+                return .window
+            }
+            return .none
+        }
+        return  player.floatMode
+    }
     
 }

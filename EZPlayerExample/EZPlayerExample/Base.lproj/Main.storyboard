@@ -729,6 +729,55 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="testIdentifier" rowHeight="80" id="rtO-VX-AAm">
+                                        <rect key="frame" x="0.0" y="592" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rtO-VX-AAm" id="YM8-hw-zV0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq5-Ft-yWG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="23.666666666666668" height="80"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScR-IE-1jl">
+                                                    <rect key="frame" x="28.666666666666671" y="0.0" width="50" height="80"/>
+                                                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="86D-Vt-Bgt"/>
+                                                    </constraints>
+                                                    <state key="normal" title="start"/>
+                                                    <connections>
+                                                        <action selector="startPIP:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="RY6-B4-lf3"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f97-lT-WBh">
+                                                    <rect key="frame" x="83.666666666666671" y="0.0" width="50.000000000000014" height="80"/>
+                                                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="0uO-pZ-AY1"/>
+                                                    </constraints>
+                                                    <state key="normal" title="stop"/>
+                                                    <connections>
+                                                        <action selector="stopPIP:" destination="Fi6-HC-XzT" eventType="touchUpInside" id="kvy-eZ-jM5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="yq5-Ft-yWG" secondAttribute="bottom" id="C15-Fn-cCJ"/>
+                                                <constraint firstItem="ScR-IE-1jl" firstAttribute="leading" secondItem="yq5-Ft-yWG" secondAttribute="trailing" constant="5" id="D7B-o3-i44"/>
+                                                <constraint firstItem="ScR-IE-1jl" firstAttribute="top" secondItem="YM8-hw-zV0" secondAttribute="top" id="H7k-Cf-SpW"/>
+                                                <constraint firstAttribute="bottom" secondItem="f97-lT-WBh" secondAttribute="bottom" id="LUj-RU-YKP"/>
+                                                <constraint firstAttribute="bottom" secondItem="ScR-IE-1jl" secondAttribute="bottom" id="QXc-F8-uPt"/>
+                                                <constraint firstItem="f97-lT-WBh" firstAttribute="top" secondItem="YM8-hw-zV0" secondAttribute="top" id="WxG-fx-NHq"/>
+                                                <constraint firstItem="yq5-Ft-yWG" firstAttribute="leading" secondItem="YM8-hw-zV0" secondAttribute="leading" id="Xao-tm-OVE"/>
+                                                <constraint firstItem="f97-lT-WBh" firstAttribute="leading" secondItem="ScR-IE-1jl" secondAttribute="trailing" constant="5" id="aSf-SV-nbV"/>
+                                                <constraint firstItem="yq5-Ft-yWG" firstAttribute="top" secondItem="YM8-hw-zV0" secondAttribute="top" id="ag1-xa-ZxP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

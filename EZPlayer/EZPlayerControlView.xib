@@ -78,7 +78,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMB-MH-1gD">
-                                    <rect key="frame" x="540" y="0.0" width="50" height="41"/>
+                                    <rect key="frame" x="490" y="0.0" width="50" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="PqH-Mf-V9D"/>
                                     </constraints>
@@ -88,12 +88,22 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W05-DL-zOG">
-                                    <rect key="frame" x="490" y="0.0" width="50" height="41"/>
+                                    <rect key="frame" x="440" y="0.0" width="50" height="41"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="vaB-qY-krT"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6G-9J-Ilw">
+                                    <rect key="frame" x="540" y="0.0" width="50" height="41"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="2LS-n9-gnR"/>
+                                    </constraints>
+                                    <state key="normal" image="btn_pip_start"/>
+                                    <connections>
+                                        <action selector="pipButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Jfc-f9-Jvf"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29935344829999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -101,16 +111,19 @@
                                 <constraint firstItem="gtW-nP-Fol" firstAttribute="leading" secondItem="wUq-7Y-r9U" secondAttribute="leading" id="9QL-Vf-B5G"/>
                                 <constraint firstItem="FJM-T1-mP9" firstAttribute="leading" secondItem="gtW-nP-Fol" secondAttribute="trailing" id="AbE-eA-SVj"/>
                                 <constraint firstAttribute="bottom" secondItem="btt-NP-HOU" secondAttribute="bottom" id="B6C-36-cU4"/>
+                                <constraint firstItem="g6G-9J-Ilw" firstAttribute="leading" secondItem="EMB-MH-1gD" secondAttribute="trailing" id="Bah-MB-e0D"/>
                                 <constraint firstItem="W05-DL-zOG" firstAttribute="top" secondItem="wUq-7Y-r9U" secondAttribute="top" id="H5W-7p-GVE"/>
                                 <constraint firstItem="FJM-T1-mP9" firstAttribute="centerY" secondItem="wUq-7Y-r9U" secondAttribute="centerY" id="L5D-YQ-r6L"/>
                                 <constraint firstAttribute="bottom" secondItem="EMB-MH-1gD" secondAttribute="bottom" id="O9S-Sm-kZO"/>
                                 <constraint firstAttribute="bottom" secondItem="gtW-nP-Fol" secondAttribute="bottom" id="Phv-qL-U4M"/>
+                                <constraint firstAttribute="bottom" secondItem="g6G-9J-Ilw" secondAttribute="bottom" id="S12-iR-Wp2"/>
+                                <constraint firstItem="btt-NP-HOU" firstAttribute="leading" secondItem="g6G-9J-Ilw" secondAttribute="trailing" id="TbS-Np-pdh"/>
                                 <constraint firstItem="btt-NP-HOU" firstAttribute="top" secondItem="wUq-7Y-r9U" secondAttribute="top" id="alR-D8-OC6"/>
                                 <constraint firstItem="EMB-MH-1gD" firstAttribute="top" secondItem="wUq-7Y-r9U" secondAttribute="top" id="hy4-LU-bQn"/>
                                 <constraint firstItem="EMB-MH-1gD" firstAttribute="leading" secondItem="W05-DL-zOG" secondAttribute="trailing" id="tNQ-Yo-5Cx"/>
+                                <constraint firstItem="g6G-9J-Ilw" firstAttribute="top" secondItem="wUq-7Y-r9U" secondAttribute="top" id="umc-3y-qEG"/>
                                 <constraint firstAttribute="trailing" secondItem="btt-NP-HOU" secondAttribute="trailing" id="vFR-d6-GD4"/>
                                 <constraint firstItem="gtW-nP-Fol" firstAttribute="top" secondItem="wUq-7Y-r9U" secondAttribute="top" id="vdT-Bi-PYc"/>
-                                <constraint firstItem="btt-NP-HOU" firstAttribute="leading" secondItem="EMB-MH-1gD" secondAttribute="trailing" id="yxi-fk-8X9"/>
                             </constraints>
                         </view>
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hQE-RR-3tG">
@@ -201,12 +214,13 @@
             <connections>
                 <outlet property="ToolBarContainerBottomConstraint" destination="zqL-CH-YMa" id="hYG-2p-wMA"/>
                 <outlet property="airplayContainer" destination="W05-DL-zOG" id="cHQ-sz-QNL"/>
-                <outlet property="audioSubtitleCCButtonWidthConstraint" destination="PqH-Mf-V9D" id="vl7-t6-M4p"/>
+                <outlet property="audioSubtitleCCButtonWidthConstraint" destination="PqH-Mf-V9D" id="ZDm-dL-z58"/>
                 <outlet property="fullEmbeddedScreenButton" destination="btt-NP-HOU" id="Ojc-5k-Z2B"/>
                 <outlet property="fullEmbeddedScreenButtonWidthConstraint" destination="9U3-R8-TRL" id="whc-W8-XdW"/>
                 <outlet property="loading" destination="0fc-Wh-O2V" id="fwr-FF-hPk"/>
                 <outlet property="navBarContainer" destination="y8x-Mk-Wfn" id="GTh-QO-nQP"/>
                 <outlet property="navBarContainerTopConstraint" destination="ItG-mw-mZa" id="XvX-T1-fxe"/>
+                <outlet property="pipButtonWidthConstraint" destination="2LS-n9-gnR" id="lbf-96-beP"/>
                 <outlet property="playPauseButton" destination="gtW-nP-Fol" id="Ja5-n9-3H6"/>
                 <outlet property="progressView" destination="hQE-RR-3tG" id="yPA-1a-bFD"/>
                 <outlet property="safeAreaBottomView" destination="9Ri-Gk-8rj" id="pT0-aE-HxK"/>
@@ -225,6 +239,7 @@
         <image name="btn_audiosubtitle" width="35" height="26"/>
         <image name="btn_back24x25" width="24" height="25"/>
         <image name="btn_fullscreen22x22" width="22" height="22"/>
+        <image name="btn_pip_start" width="22.5" height="17.5"/>
         <image name="btn_play22x22" width="22" height="22"/>
     </resources>
 </document>

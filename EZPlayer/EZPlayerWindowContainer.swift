@@ -10,7 +10,7 @@ import UIKit
 let windowWidth = (UIScreen.main.bounds.size.width)
 let windowHight = (UIScreen.main.bounds.size.height)
 
-open class EZPlayerFloatContainer {
+open class EZPlayerWindowContainer {
     open private(set) var isShow = false
     // MARK: - Autorotation
     open var shouldAutorotate = true
@@ -35,7 +35,7 @@ open class EZPlayerFloatContainer {
     }
     // MARK: - init
 
-    init(frame: CGRect, rootViewController: EZPlayerFloatContainerRootViewController) {
+    init(frame: CGRect, rootViewController: EZPlayerWindowContainerRootViewController) {
         self.commonInit()
         rootViewController.floatContainer = self
         self.frame = frame

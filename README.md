@@ -20,7 +20,7 @@
 基于AVPlayer封装的视频播放器，功能丰富，快速集成，可定制性强。
 
 ## 要求
-- iOS 8.0+ 
+- iOS 9.0+ 
 - Xcode 12.0+
 - Swift 5.0+
 
@@ -28,6 +28,7 @@
 - 本地视频、网络视频播放（支持的格式请参考苹果AVPlayer文档）
 - [全屏模式/嵌入模式/浮动模式随意切换(支持根据设备自动旋转)](#DisplayMode)
 - [全屏模式支持横屏全屏和竖屏全屏](#DisplayMode)
+- [浮动模式支持系统PIP和window浮层](#FloatMode)
 - [定制手势：播放/暂停(全屏/嵌入模式双击，浮动模式单击)，浮动和全屏切换（双击），音量/亮度调节（上下滑动），进度调节（左右滑动）](#GestureRecognizer)
 - [支持airPlay](#airPlay)
 - [支持UITableview自动管理嵌入和浮动模式切换](#tableview)
@@ -133,6 +134,23 @@ open func toEmbedded(animated: Bool = true , completion: ((Bool) -> Swift.Void)?
 open func toFloat(animated: Bool = true, completion: ((Bool) -> Swift.Void)? = nil) 
 ```
 例子：EZPlayerExample-DisplayMode
+
+<a name="FloatMode"></a>
+
+- 浮动模式支持系统PIP和window浮层
+
+```
+//播放器浮框模式
+public enum EZPlayerFloatMode  {
+    case none
+    case auto //支持系统pip的就是system，否则是window
+    case system //iPhone在ios14一下不显示
+    case window
+}
+
+/// 全屏的模式
+open var floatMode = EZPlayerFloatMode.auto
+```
 
 <a name="GestureRecognizer"></a>
 
@@ -372,7 +390,6 @@ Utils.js ： 工具类
 
 ## Todo
 - 支持VR
-- 支持iPad pip
 - 支持本地m3u8
 - 支持多码率控制
 - 支持3d touch截图，截图后简单处理

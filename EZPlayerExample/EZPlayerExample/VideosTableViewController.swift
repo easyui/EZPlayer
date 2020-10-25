@@ -57,6 +57,8 @@ class VideosTableViewController: UITableViewController {
         MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: cell?.textLabel)
         MediaManager.sharedInstance.player?.indexPath = indexPath
         MediaManager.sharedInstance.player?.scrollView = tableView
+        MediaManager.sharedInstance.player?.floatMode = .window
+
     }
 
 

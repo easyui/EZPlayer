@@ -36,10 +36,10 @@
 		991492341DDC166A005FF2BD /* AVAsset+EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */; };
 		9919C1441E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919C1431E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift */; };
 		9919C1461E6D5E3C00249407 /* EZPlayerFairPlayResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9919C1451E6D5E3C00249407 /* EZPlayerFairPlayResourceLoaderDelegate.swift */; };
-		991BE8531E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */; };
+		991BE8531E0035190032C14B /* EZPlayerWindowContainerRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991BE8521E0035190032C14B /* EZPlayerWindowContainerRootViewController.xib */; };
 		9933B2051DFEFA920066A09A /* EZPlayerThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */; };
-		995D47AA1DFFB05500BEB41B /* EZPlayerFloatContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */; };
-		995D47AC1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */; };
+		995D47AA1DFFB05500BEB41B /* EZPlayerWindowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47A91DFFB05500BEB41B /* EZPlayerWindowContainer.swift */; };
+		995D47AC1DFFB0B400BEB41B /* EZPlayerWindowContainerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D47AB1DFFB0B400BEB41B /* EZPlayerWindowContainerRootViewController.swift */; };
 		995E791C1DD99D5A006CE7E9 /* EZPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 995E791A1DD99D5A006CE7E9 /* EZPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		995E79241DD99E92006CE7E9 /* EZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79231DD99E92006CE7E9 /* EZPlayer.swift */; };
 		995E79261DD9A04A006CE7E9 /* EZPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */; };
@@ -58,8 +58,9 @@
 		99C221DC1DDCB4EB00167DBE /* EZPlayerContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */; };
 		99CF4D691E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */; };
 		99CF4D6A1E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */; };
-		99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */; };
-		99EB8CB21E0FFF0300176BF2 /* EZPlayerFloatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */; };
+		99EB8CB01E0FFEEC00176BF2 /* EZPlayerWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EB8CAF1E0FFEEC00176BF2 /* EZPlayerWindowView.swift */; };
+		99EB8CB21E0FFF0300176BF2 /* EZPlayerWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EB8CB11E0FFF0300176BF2 /* EZPlayerWindowView.xib */; };
+		A6C56C692544114100BD9654 /* EZPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C56C682544114000BD9654 /* EZPlayerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +68,10 @@
 		991492331DDC166A005FF2BD /* AVAsset+EZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAsset+EZPlayer.swift"; sourceTree = "<group>"; };
 		9919C1431E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerAVAssetResourceLoaderDelegate.swift; sourceTree = "<group>"; };
 		9919C1451E6D5E3C00249407 /* EZPlayerFairPlayResourceLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFairPlayResourceLoaderDelegate.swift; sourceTree = "<group>"; };
-		991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerFloatContainerRootViewController.xib; sourceTree = "<group>"; };
+		991BE8521E0035190032C14B /* EZPlayerWindowContainerRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerWindowContainerRootViewController.xib; sourceTree = "<group>"; };
 		9933B2041DFEFA920066A09A /* EZPlayerThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerThumbnail.swift; sourceTree = "<group>"; };
-		995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatContainer.swift; sourceTree = "<group>"; };
-		995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatContainerRootViewController.swift; sourceTree = "<group>"; };
+		995D47A91DFFB05500BEB41B /* EZPlayerWindowContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerWindowContainer.swift; sourceTree = "<group>"; };
+		995D47AB1DFFB0B400BEB41B /* EZPlayerWindowContainerRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerWindowContainerRootViewController.swift; sourceTree = "<group>"; };
 		995E79171DD99D5A006CE7E9 /* EZPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EZPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		995E791A1DD99D5A006CE7E9 /* EZPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZPlayer.h; sourceTree = "<group>"; };
 		995E791B1DD99D5A006CE7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,8 +92,9 @@
 		99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerContentItem.swift; sourceTree = "<group>"; };
 		99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerAudibleLegibleViewController.swift; sourceTree = "<group>"; };
 		99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerAudibleLegibleViewController.xib; sourceTree = "<group>"; };
-		99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZPlayerFloatView.swift; sourceTree = "<group>"; };
-		99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerFloatView.xib; sourceTree = "<group>"; };
+		99EB8CAF1E0FFEEC00176BF2 /* EZPlayerWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EZPlayerWindowView.swift; path = ../../../Downloads/EZPlayerWindowView.swift; sourceTree = "<group>"; };
+		99EB8CB11E0FFF0300176BF2 /* EZPlayerWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZPlayerWindowView.xib; sourceTree = "<group>"; };
+		A6C56C682544114000BD9654 /* EZPlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EZPlayerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,9 +154,9 @@
 				99818A6D1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift */,
 				99CF4D671E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift */,
 				99CF4D681E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib */,
-				995D47A91DFFB05500BEB41B /* EZPlayerFloatContainer.swift */,
-				995D47AB1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift */,
-				991BE8521E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib */,
+				995D47A91DFFB05500BEB41B /* EZPlayerWindowContainer.swift */,
+				995D47AB1DFFB0B400BEB41B /* EZPlayerWindowContainerRootViewController.swift */,
+				991BE8521E0035190032C14B /* EZPlayerWindowContainerRootViewController.xib */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				995E79231DD99E92006CE7E9 /* EZPlayer.swift */,
+				A6C56C682544114000BD9654 /* EZPlayerDelegate.swift */,
 				99818A671DE948D1000DAC1C /* EZPlayerNotification.swift */,
 				99C221DB1DDCB4EB00167DBE /* EZPlayerContentItem.swift */,
 				995E79251DD9A04A006CE7E9 /* EZPlayerView.swift */,
@@ -192,8 +195,8 @@
 			children = (
 				995E79271DD9A2E9006CE7E9 /* EZPlayerControlView.swift */,
 				995E79291DD9A322006CE7E9 /* EZPlayerControlView.xib */,
-				99EB8CAF1E0FFEEC00176BF2 /* EZPlayerFloatView.swift */,
-				99EB8CB11E0FFF0300176BF2 /* EZPlayerFloatView.xib */,
+				99EB8CAF1E0FFEEC00176BF2 /* EZPlayerWindowView.swift */,
+				99EB8CB11E0FFF0300176BF2 /* EZPlayerWindowView.xib */,
 			);
 			name = Skin;
 			sourceTree = "<group>";
@@ -280,10 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				995E792A1DD9A322006CE7E9 /* EZPlayerControlView.xib in Resources */,
-				991BE8531E0035190032C14B /* EZPlayerFloatContainerRootViewController.xib in Resources */,
+				991BE8531E0035190032C14B /* EZPlayerWindowContainerRootViewController.xib in Resources */,
 				99CF4D6A1E06B43200798ACE /* EZPlayerAudibleLegibleViewController.xib in Resources */,
 				991492311DDC0274005FF2BD /* EZPlayer.xcassets in Resources */,
-				99EB8CB21E0FFF0300176BF2 /* EZPlayerFloatView.xib in Resources */,
+				99EB8CB21E0FFF0300176BF2 /* EZPlayerWindowView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9933B2051DFEFA920066A09A /* EZPlayerThumbnail.swift in Sources */,
-				995D47AC1DFFB0B400BEB41B /* EZPlayerFloatContainerRootViewController.swift in Sources */,
+				995D47AC1DFFB0B400BEB41B /* EZPlayerWindowContainerRootViewController.swift in Sources */,
 				99818A681DE948D1000DAC1C /* EZPlayerNotification.swift in Sources */,
 				99C221DC1DDCB4EB00167DBE /* EZPlayerContentItem.swift in Sources */,
 				99CF4D691E06B43200798ACE /* EZPlayerAudibleLegibleViewController.swift in Sources */,
@@ -333,10 +336,11 @@
 				99C221D81DDCAC5400167DBE /* EZPlayerTransport.swift in Sources */,
 				995E79281DD9A2E9006CE7E9 /* EZPlayerControlView.swift in Sources */,
 				99B999761E2763BA00DBC4AA /* AVPlayer+EZPlayer.swift in Sources */,
-				99EB8CB01E0FFEEC00176BF2 /* EZPlayerFloatView.swift in Sources */,
+				99EB8CB01E0FFEEC00176BF2 /* EZPlayerWindowView.swift in Sources */,
 				99998A261DE3450700296EDB /* Timer+EZPlayer.swift in Sources */,
 				99C221DA1DDCAEEA00167DBE /* EZPlayerTransportExtension.swift in Sources */,
-				995D47AA1DFFB05500BEB41B /* EZPlayerFloatContainer.swift in Sources */,
+				A6C56C692544114100BD9654 /* EZPlayerDelegate.swift in Sources */,
+				995D47AA1DFFB05500BEB41B /* EZPlayerWindowContainer.swift in Sources */,
 				99818A6E1DE9C760000DAC1C /* EZPlayerFullScreenViewController.swift in Sources */,
 				995E79241DD99E92006CE7E9 /* EZPlayer.swift in Sources */,
 				9919C1441E6D545A00249407 /* EZPlayerAVAssetResourceLoaderDelegate.swift in Sources */,
