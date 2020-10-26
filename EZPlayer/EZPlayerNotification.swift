@@ -19,10 +19,10 @@ public extension Notification.Name {
 
     /// 播放器状态改变
     static let EZPlayerStatusDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerStatusDidChange")
-    
+
     /// 视频结束
     static let EZPlayerPlaybackDidFinish = Notification.Name(rawValue: "com.ezplayer.EZPlayerPlaybackDidFinish")
-    
+
     /// loading状态改变
     static let EZPlayerLoadingDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerLoadingDidChange")
 
@@ -41,21 +41,21 @@ public extension Notification.Name {
 
     /// FairPlay DRM
     static let EZPlayerDidPersistContentKey = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKey")
-    
+
     /// PIP
     static let EZPlayerPIPControllerWillStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillStart")
-    
+
     static let EZPlayerPIPControllerDidStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidStart")
 
     static let EZPlayerPIPFailedToStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPFailedToStart")
 
     static let EZPlayerPIPControllerWillEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillEnd")
-    
+
     static let EZPlayerPIPControllerDidEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidEnd")
-    
+
     static let EZPlayerPIPRestoreUserInterfaceForStop = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPRestoreUserInterfaceForStop")
 
-    
+
 }
 
 extension Notification {
@@ -73,7 +73,7 @@ extension Notification {
         /// 播放器控制条隐藏显示
         public static let EZPlayerControlsHiddenDidChangeKey = "EZPlayerControlsHiddenDidChangeKey"
         public static let EZPlayerControlsHiddenDidChangeByAnimatedKey = "EZPlayerControlsHiddenDidChangeByAnimatedKey"
-        
+
         /// 播放器显示模式改变了（全屏，嵌入屏，浮动）
         public static let EZPlayerDisplayModeDidChangeKey = "EZPlayerDisplayModeDidChangeKey"
         public static let EZPlayerDisplayModeChangedFrom = "EZPlayerDisplayModeChangedFrom"
@@ -85,7 +85,7 @@ extension Notification {
 
         /// FairPlay DRM=
         public static let EZPlayerDidPersistAssetIdentifierKey = "EZPlayerDidPersistAssetIdentifierKey"
-        
+
         /// PIP 启动失败
         public static let EZPlayerPIPFailedToStart =  "EZPlayerPIPFailedToStart"
         /// PIP 关闭画中画且恢复播放界面

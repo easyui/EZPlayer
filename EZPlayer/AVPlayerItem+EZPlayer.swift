@@ -20,7 +20,7 @@ extension AVPlayerItem {
         return nil
     }
 
-    
+
     /// 获取／设置当前subtitle／cc
     public var selectedMediaCharacteristicLegibleOption:AVMediaSelectionOption?{
         get{

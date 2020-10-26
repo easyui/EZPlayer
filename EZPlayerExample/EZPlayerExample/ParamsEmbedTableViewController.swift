@@ -14,31 +14,31 @@ class ParamsEmbedTableViewController: UITableViewController {
     weak var  paramsViewController: ParamsViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let volume = AVAudioSession.sharedInstance().outputVolume//其他会获取不到，比如：EZPlayerUtils.systemVolumeSlider.value
         volumeLabel.text =  String(format:"%.2f", volume)
         volumeSilder.value = volume
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(ParamsEmbedTableViewController.volumeChange(_:)) , name:Notification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification") , object: nil)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
+
+
     // MARK: - url
     //http://www.cnblogs.com/linr/p/6185172.html
     @IBOutlet weak var urlTextField: UITextField!
@@ -48,22 +48,22 @@ class ParamsEmbedTableViewController: UITableViewController {
             MediaManager.sharedInstance.playEmbeddedVideo(url: url, embeddedContentView: self.paramsViewController.dlView)
         }
     }
-    
-    
+
+
     // MARK: - local
     @IBAction func localMP4ButtonTap(_ sender: UIButton) {
         MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
     }
     // MARK: - remote
-    
+
     @IBAction func remoteT1Tap(_ sender: UIButton) {
         MediaManager.sharedInstance.playEmbeddedVideo(url: URL.Test.apple_0, embeddedContentView: self.paramsViewController.dlView)
     }
-    
+
     @IBAction func remoteT2Tap(_ sender: UIButton) {
         MediaManager.sharedInstance.playEmbeddedVideo(url: URL.Test.apple_1, embeddedContentView: self.paramsViewController.dlView)
     }
-    
+
     @IBAction func remoteT3Tap(_ sender: UIButton) {
         MediaManager.sharedInstance.playEmbeddedVideo(url: URL.Test.remoteMP4_0, embeddedContentView: self.paramsViewController.dlView)
     }
@@ -71,30 +71,30 @@ class ParamsEmbedTableViewController: UITableViewController {
     @IBAction func rateSlowTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.rate = 0.5
     }
-    
+
     @IBAction func rateNormalTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.rate = 1
     }
-    
+
     @IBAction func rateFastTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.rate = 1.5
     }
-    
+
     // MARK: - videoGravity
-    
+
     @IBAction func aspectTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.videoGravity = .aspect
     }
-    
+
     @IBAction func aspectFillTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.videoGravity = .aspectFill
     }
-    
+
     @IBAction func scaleFillTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.videoGravity = .scaleFill
     }
-    
-    
+
+
     // MARK: - displayMode
     @IBAction func embeddedTap(_ sender: UIButton) {
         //        MediaManager.sharedInstance.hiddenFloatVideo()
@@ -103,19 +103,19 @@ class ParamsEmbedTableViewController: UITableViewController {
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
         }
-        
+
     }
-    
+
     @IBAction func fullscreenPortraitTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.fullScreenMode = .portrait
             MediaManager.sharedInstance.player?.toFull()
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: nil, userinfo: ["fullScreenMode" :EZPlayerFullScreenMode.portrait])
-            
+
         }
     }
-    
+
     @IBAction func fullscreenLandscapeTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.fullScreenMode = .landscape
@@ -123,58 +123,58 @@ class ParamsEmbedTableViewController: UITableViewController {
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0)
         }
-        
+
     }
-    
+
     @IBAction func floatTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.toFloat()
         }else{
-            
+
         }
-        
+
     }
-    
+
     // MARK: - skin
     @IBAction func noneSkinTap(_ sender: UIButton) {
-        
+
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.controlViewForIntercept = UIView()
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView, userinfo: ["skin" : UIView()])
         }
-        
+
     }
-    
+
     @IBAction func yellowSkinTap(_ sender: UIButton) {
         let yellow = UIView()
         yellow.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         if MediaManager.sharedInstance.player != nil {
-            
+
             MediaManager.sharedInstance.player?.controlViewForIntercept = yellow
         }else{
             let yellow = UIView()
             yellow.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
-            
+
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView, userinfo: ["skin" :yellow])
         }
-        
+
     }
-    
+
     @IBAction func defaultSkinTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
-            
+
             MediaManager.sharedInstance.player?.controlViewForIntercept = nil
-            
+
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
         }
     }
-    
-    
-    
+
+
+
     // MARK: - Continued：
-    
+
     @IBAction func firstVideoTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.apple_0)
@@ -182,45 +182,45 @@ class ParamsEmbedTableViewController: UITableViewController {
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.apple_0, embeddedContentView: self.paramsViewController.dlView)
         }
     }
-    
+
     @IBAction func secondTap(_ sender: UIButton) {
         if MediaManager.sharedInstance.player != nil {
             MediaManager.sharedInstance.player?.replaceToPlayWithURL(URL.Test.localMP4_0)
-            
+
         }else{
             MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_0, embeddedContentView: self.paramsViewController.dlView)
         }
-        
+
     }
-    
+
     // MARK: - autoPlay：
-    
+
     @IBAction func autoPlayTap(_ sender: UIButton) {
-        
+
         MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_1, embeddedContentView: self.paramsViewController.dlView)
-        
+
     }
-    
+
     @IBAction func nonautoPlayTap(_ sender: UIButton) {
-        
+
         MediaManager.sharedInstance.playEmbeddedVideo(url:URL.Test.localMP4_2, embeddedContentView: self.paramsViewController.dlView , userinfo: ["autoPlay" :false])
-        
-        
+
+
     }
-    
+
     // MARK: - fairPlay：
-    
+
     @IBAction func onlineTap(_ sender: UIButton) {
-        
-        
+
+
     }
-    
+
     @IBAction func offlineTap(_ sender: UIButton) {
-        
-        
-        
+
+
+
     }
-    
+
     // MARK: - Volume：
     @IBOutlet weak var volumeSilder: UISlider!
     @IBOutlet weak var volumeLabel: UILabel!
@@ -230,7 +230,7 @@ class ParamsEmbedTableViewController: UITableViewController {
             volumeLabel.text =  String(format:"%.2f", sender.value)
         }
     }
-    
+
     @objc func volumeChange(_ notification:NSNotification) {
         if let userInfo = notification.userInfo{
             let volume = userInfo["AVSystemController_AudioVolumeNotificationParameter"] as! Float
@@ -249,25 +249,25 @@ class ParamsEmbedTableViewController: UITableViewController {
             }
         }
     }
-    
+
     @IBAction func snapshotWithM3u8(_ sender: Any) {
         if let player = MediaManager.sharedInstance.player ,let image = player.snapshotImage() {
             self.snapshotImageView.image = image
         }
 
     }
-    
+
     // MARK: - pip：
     @IBAction func startPIP(_ sender: Any) {
         if let player = MediaManager.sharedInstance.player  {
             player.startPIP()
         }
     }
-    
+
     @IBAction func stopPIP(_ sender: Any) {
         if let player = MediaManager.sharedInstance.player  {
             player.stopPIP()
         }
     }
-    
+
 }

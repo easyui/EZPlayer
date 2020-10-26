@@ -51,7 +51,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
+
     // MARK: - Orientations
     override open var shouldAutorotate : Bool {
         return true
@@ -114,7 +114,7 @@ open class EZPlayerFullScreenViewController: UIViewController {
         self.currentOrientation = UIDevice.current.orientation
 
     }
-    
+
     open override var prefersHomeIndicatorAutoHidden: Bool{
         return self.player.controlsHidden
     }

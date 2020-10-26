@@ -16,7 +16,7 @@ public class EZPlayerAVAssetResourceLoaderDelegate: NSObject {
     }
 
     public unowned let asset: AVURLAsset
-    
+
     public let delegateQueue: DispatchQueue?
 
     public init(asset: AVURLAsset,delegateQueue: DispatchQueue? = nil) {

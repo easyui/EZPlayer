@@ -18,7 +18,7 @@ public struct  MediaTypes: OptionSet {
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
-    
+
 }
 open class EZPlayerAudibleLegibleViewController: UIViewController {
     fileprivate let mediaTypeTableViewIdentifier = "mediaTypeTableViewIdentifier"

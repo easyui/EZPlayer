@@ -17,45 +17,45 @@ open class EZPlayerControlView: UIView{
         didSet{
             player?.setControlsHidden(false, animated: true)
             self.autohideControlView()
-            
+
         }
     }
-    
+
     //    open var tapGesture: UITapGestureRecognizer!
-    
+
     var hideControlViewTask: Task?
-    
+
     public var autohidedControlViews = [UIView]()
     //    var controlsHidden = false
     @IBOutlet weak var navBarContainer: UIView!
     @IBOutlet weak var navBarContainerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var ToolBarContainerBottomConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var toolBarContainer: UIView!
     @IBOutlet weak var safeAreaBottomView: UIView!
-    
+
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var fullEmbeddedScreenButton: UIButton!
     @IBOutlet weak var fullEmbeddedScreenButtonWidthConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var timeSlider: UISlider!
-    
+
     @IBOutlet weak var videoshotPreview: UIView!
     @IBOutlet weak var videoshotPreviewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var videoshotImageView: UIImageView!
-    
+
     @IBOutlet weak var loading: EZPlayerLoading!
     @IBOutlet weak var audioSubtitleCCButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var pipButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var airplayContainer: UIView!
-    
+
     // MARK: - Life cycle
-    
+
     deinit {
-        
+
     }
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -64,9 +64,9 @@ open class EZPlayerControlView: UIView{
         self.progressView.progressTintColor = UIColor.lightGray
         self.progressView.trackTintColor = UIColor.clear
         self.progressView.backgroundColor = UIColor.clear
-        
+
         self.videoshotPreview.isHidden = true
-        
+
         self.audioSubtitleCCButtonWidthConstraint.constant = 0
         self.pipButtonWidthConstraint.constant = 0
 
@@ -74,10 +74,10 @@ open class EZPlayerControlView: UIView{
         //        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureTapped(_:)))
         //        self.tapGesture.delegate = self
         //        self.addGestureRecognizer(self.tapGesture)
-        
-        
-        
-        
+
+
+
+
         let airplayImage = UIImage(named: "btn_airplay", in: Bundle(for: EZPlayerControlView.self),compatibleWith: nil)
         let airplayView = MPVolumeView(frame: self.airplayContainer.bounds)
         airplayView.showsVolumeSlider = false
@@ -85,38 +85,38 @@ open class EZPlayerControlView: UIView{
         airplayView.setRouteButtonImage(airplayImage, for: .normal)
         self.airplayContainer.addSubview(airplayView)
         //        self.loading.start()
-        
-        
+
+
     }
-    
+
     // MARK: - EZPlayerCustomControlView
-    
-    
-    
+
+
+
     fileprivate var isProgressSliderSliding = false {
         didSet{
             if !(self.player?.isM3U8 ?? true) {
                 //                self.videoshotPreview.isHidden = !isProgressSliderSliding
             }
         }
-        
+
     }
-    
+
     @IBAction func progressSliderTouchBegan(_ sender: Any) {
         guard let player = self.player else {
             return
         }
         self.player(player, progressWillChange: TimeInterval(self.timeSlider.value))
     }
-    
+
     @IBAction func progressSliderValueChanged(_ sender: Any) {
         guard let player = self.player else {
             return
         }
-        
+
         self.player(player, progressChanging: TimeInterval(self.timeSlider.value))
     }
-    
+
     @IBAction func progressSliderTouchEnd(_ sender: Any) {
         self.videoshotPreview.isHidden = true
         guard let player = self.player else {
@@ -124,8 +124,8 @@ open class EZPlayerControlView: UIView{
         }
         self.player(player, progressDidChange: TimeInterval(self.timeSlider.value))
     }
-    
-    
+
+
     //    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
     //        self.autohideControlView()
     //        return !self.autohidedControlViews.contains(touch.view!) && !self.autohidedControlViews.contains(touch.view!.superview!)
@@ -139,8 +139,8 @@ open class EZPlayerControlView: UIView{
     //        }
     //        player.controlsHidden = !player.controlsHidden
     //    }
-    
-    
+
+
     fileprivate func hideControlView(_ animated: Bool) {
         //        if self.controlsHidden == true{
         //          return
@@ -164,12 +164,12 @@ open class EZPlayerControlView: UIView{
             }
         }
     }
-    
+
     fileprivate func showControlView(_ animated: Bool) {
         //        if self.controlsHidden == false{
         //            return
         //        }
-        
+
         if animated{
             UIView.setAnimationsEnabled(false)
             self.autohidedControlViews.forEach{
@@ -179,7 +179,7 @@ open class EZPlayerControlView: UIView{
                 if self.player?.displayMode == .fullscreen{
                     self.navBarContainerTopConstraint.constant =  ((EZPlayerUtils.hasSafeArea || (ProcessInfo.processInfo.operatingSystemVersion.majorVersion >= 13)) && self.player?.fullScreenMode == .landscape) ? 20 : EZPlayerUtils.statusBarHeight
                     self.ToolBarContainerBottomConstraint.constant = EZPlayerUtils.hasSafeArea ? self.player?.fullScreenMode == .portrait ? 34 : 21 : 0
-                    
+
                 }else{
                     self.navBarContainerTopConstraint.constant = 0
                     self.ToolBarContainerBottomConstraint.constant = 0
@@ -205,7 +205,7 @@ open class EZPlayerControlView: UIView{
             self.autohideControlView()
         }
     }
-    
+
     fileprivate func autohideControlView(){
         guard let player = self.player , player.autohiddenTimeInterval > 0 else {
             return
@@ -219,12 +219,12 @@ open class EZPlayerControlView: UIView{
             weakSelf.player?.setControlsHidden(true, animated: true)
         })
     }
-    
+
     fileprivate func showThumbnail(){
         guard let player = self.player  else {
             return
         }
-  
+
         if !player.isM3U8 {
             self.videoshotPreview.isHidden = false
             player.generateThumbnails(times:  [ TimeInterval(self.timeSlider.value)],maximumSize:CGSize(width: self.videoshotImageView.bounds.size.width, height: self.videoshotImageView.bounds.size.height)) { (thumbnails) in
@@ -246,7 +246,7 @@ open class EZPlayerControlView: UIView{
             }
         }
     }
-    
+
 }
 
 extension EZPlayerControlView: EZPlayerCustom {
@@ -261,7 +261,7 @@ extension EZPlayerControlView: EZPlayerCustom {
             player.play()
         }
     }
-    
+
     @IBAction public func fullEmbeddedScreenButtonPressed(_ sender: Any) {
         guard let player = self.player else {
             return
@@ -275,24 +275,24 @@ extension EZPlayerControlView: EZPlayerCustom {
             }else  if player.lastDisplayMode == .float{
                 player.toFloat()
             }
-            
+
         default:
             break
         }
     }
-    
+
     @IBAction public func audioSubtitleCCButtonPressed(_ sender: Any) {
         guard let player = self.player else {
             return
         }
         let audibleLegibleViewController = EZPlayerAudibleLegibleViewController(nibName:  String(describing: EZPlayerAudibleLegibleViewController.self),bundle: Bundle(for: EZPlayerAudibleLegibleViewController.self),player:player, sourceView:sender as? UIView)
         EZPlayerUtils.viewController(from: self)?.present(audibleLegibleViewController, animated: true, completion: {
-            
+
         })
     }
-    
-    
-    
+
+
+
     @IBAction public func backButtonPressed(_ sender: Any) {
         guard let player = self.player else {
             return
@@ -311,24 +311,24 @@ extension EZPlayerControlView: EZPlayerCustom {
 //        }
         player.backButtonBlock?(displayMode)
     }
-    
+
     @IBAction public func pipButtonPressed(_ sender: Any) {
         guard let player = self.player else {
             return
         }
         player.toFloat()
     }
-    
+
     // MARK: - EZPlayerGestureRecognizer
     public func player(_ player: EZPlayer, singleTapGestureTapped singleTap: UITapGestureRecognizer) {
         player.setControlsHidden(!player.controlsHidden, animated: true)
-        
+
     }
-    
+
     public func player(_ player: EZPlayer, doubleTapGestureTapped doubleTap: UITapGestureRecognizer) {
         self.playPauseButtonPressed(doubleTap)
     }
-    
+
     // MARK: - EZPlayerHorizontalPan
     public func player(_ player: EZPlayer, progressWillChange value: TimeInterval) {
         if player.isLive ?? true{
@@ -338,7 +338,7 @@ extension EZPlayerControlView: EZPlayerCustom {
         cancel(self.hideControlViewTask)
         self.isProgressSliderSliding = true
     }
-    
+
     public func player(_ player: EZPlayer, progressChanging value: TimeInterval) {
         if player.isLive ?? true{
             return
@@ -347,10 +347,10 @@ extension EZPlayerControlView: EZPlayerCustom {
         if !self.timeSlider.isTracking {
             self.timeSlider.value = Float(value)
         }
-        
+
         self.showThumbnail()
     }
-    
+
     public func player(_ player: EZPlayer, progressDidChange value: TimeInterval) {
         if player.isLive ?? true{
             return
@@ -359,12 +359,12 @@ extension EZPlayerControlView: EZPlayerCustom {
         //        self.isProgressSliderSliding = false
         self.player?.seek(to: value, completionHandler: { (isFinished) in
             self.isProgressSliderSliding = false
-            
+
         })
     }
-    
+
     // MARK: - EZPlayerDelegate
-    
+
     public func playerHeartbeat(_ player: EZPlayer) {
         if let asset = player.playerasset, let  playerIntem = player.playerItem ,playerIntem.status == .readyToPlay{
             if asset.audios != nil || asset.subtitles != nil || asset.closedCaption != nil{
@@ -377,8 +377,8 @@ extension EZPlayerControlView: EZPlayerCustom {
         self.pipButtonWidthConstraint.constant = (player.scrollView != nil || player.floatMode == .none || player.displayMode == .float || player.displayMode == .none) ? 0 : 50
 
     }
-    
-    
+
+
     public func player(_ player: EZPlayer, playerDisplayModeDidChange displayMode: EZPlayerDisplayMode) {
         switch displayMode {
         case .none:
@@ -398,10 +398,10 @@ extension EZPlayerControlView: EZPlayerCustom {
             self.fullEmbeddedScreenButtonWidthConstraint.constant = 0
             self.pipButtonWidthConstraint.constant = 0
             break
-            
+
         }
     }
-    
+
     public func player(_ player: EZPlayer, playerStateDidChange state: EZPlayerState) {
         //播放器按钮状态
         switch state {
@@ -409,17 +409,17 @@ extension EZPlayerControlView: EZPlayerCustom {
             //播放状态
             //            self.playPauseButton.isSelected = true //暂停按钮
             self.playPauseButton.setImage(UIImage(named: "btn_pause22x22", in: Bundle(for: EZPlayerControlView.self), compatibleWith: nil), for: .normal)
-            
+
         case .seekingBackward ,.seekingForward:
             break
         default:
             //            self.playPauseButton.isSelected = false // 播放按钮
             self.playPauseButton.setImage(UIImage(named: "btn_play22x22", in: Bundle(for: EZPlayerControlView.self), compatibleWith: nil), for: .normal)
-            
+
         }
-        
-        
-        
+
+
+
         //        switch state {
         //        case  .playing ,.pause,.seekingForward,.seekingBackward,.stopped,.bufferFinished:
         //            self.loading.stop()
@@ -428,9 +428,9 @@ extension EZPlayerControlView: EZPlayerCustom {
         //            self.loading.start()
         //            break
         //        }
-        
+
     }
-    
+
     public func player(_ player: EZPlayer, bufferDurationDidChange bufferDuration: TimeInterval, totalDuration: TimeInterval) {
         if totalDuration.isNaN || bufferDuration.isNaN || totalDuration == 0 || bufferDuration == 0{
             self.progressView.progress = 0
@@ -438,7 +438,7 @@ extension EZPlayerControlView: EZPlayerCustom {
             self.progressView.progress = Float(bufferDuration/totalDuration)
         }
     }
-    
+
     public func player(_ player: EZPlayer, currentTime: TimeInterval, duration: TimeInterval) {
         if currentTime.isNaN || (currentTime == 0 && duration.isNaN){
             return
@@ -450,11 +450,11 @@ extension EZPlayerControlView: EZPlayerCustom {
         if !self.isProgressSliderSliding {
             self.timeSlider.value = Float(currentTime)
             self.timeLabel.text = duration.isNaN ? "Live" : EZPlayerUtils.formatTime(position: currentTime, duration: duration)
-            
+
         }
     }
-    
-    
+
+
     public func player(_ player: EZPlayer, playerControlsHiddenDidChange controlsHidden: Bool, animated: Bool) {
         if controlsHidden {
             self.hideControlView(animated)
@@ -462,7 +462,7 @@ extension EZPlayerControlView: EZPlayerCustom {
             self.showControlView(animated)
         }
     }
-    
+
     public func player(_ player: EZPlayer ,showLoading: Bool){
         if showLoading {
             self.loading.start()
@@ -470,9 +470,9 @@ extension EZPlayerControlView: EZPlayerCustom {
             self.loading.stop()
         }
     }
-    
-    
-    
 
-    
+
+
+
+
 }

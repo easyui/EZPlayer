@@ -78,7 +78,7 @@ public func !=(lhs: EZPlayerState, rhs: EZPlayerState) -> Bool {
 
 // MARK: - 辅助方法
 public class EZPlayerUtils{
-    
+
     /// system volume ui
     public static let systemVolumeSlider : UISlider = {
         let volumeView = MPVolumeView()
@@ -93,8 +93,8 @@ public class EZPlayerUtils{
         }
         return returnSlider
     }()
-    
-    
+
+
     /// fotmat time
     ///
     /// - Parameters:
@@ -108,7 +108,7 @@ public class EZPlayerUtils{
         let positionHours = (Int(position) / 3600) % 60
         let positionMinutes = (Int(position) / 60) % 60
         let positionSeconds = Int(position) % 60;
-        
+
         let durationHours = (Int(duration) / 3600) % 60
         let durationMinutes = (Int(duration) / 60) % 60
         let durationSeconds = Int(duration) % 60
@@ -117,8 +117,8 @@ public class EZPlayerUtils{
         }
         return String(format: "%02d:%02d:%02d/%02d:%02d:%02d",positionHours,positionMinutes,positionSeconds,durationHours,durationMinutes,durationSeconds)
     }
-    
-    
+
+
     ///  get current top viewController
     ///
     /// - Returns: current top viewController
@@ -148,8 +148,8 @@ public class EZPlayerUtils{
         }
         return result
     }
-    
-    
+
+
     /// get viewController from view
     ///
     /// - Parameter view: view
@@ -164,7 +164,7 @@ public class EZPlayerUtils{
         }
         return nil
     }
-    
+
     /// is iPhone X
     public static var hasSafeArea: Bool{
         if #available(iOS 13.0,  *){
@@ -174,13 +174,13 @@ public class EZPlayerUtils{
         }
         return false
     }
-    
+
     /// is iPhone X
     public static var statusBarHeight: CGFloat{
         return EZPlayerUtils.hasSafeArea ? 44 : 20
     }
-    
-    
+
+
     public static func floatModelSupported(_ player :EZPlayer) -> EZPlayerFloatMode{
         if player.floatMode == .auto {
             if UIDevice.current.userInterfaceIdiom == .pad {
@@ -198,5 +198,5 @@ public class EZPlayerUtils{
         }
         return  player.floatMode
     }
-    
+
 }

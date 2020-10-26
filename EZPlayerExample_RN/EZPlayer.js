@@ -33,6 +33,12 @@ class EZPlayer extends Component {
     onPlayerDisplayModeChangedDidAppear: PropTypes.func,
     onPlayerTapGestureRecognizer: PropTypes.func,
     onPlayerDidPersistContentKey: PropTypes.func,
+    onPlayerPIPControllerWillStart: PropTypes.func,
+    onPlayerPIPControllerDidStart: PropTypes.func,
+    onPlayerPIPFailedToStart: PropTypes.func,
+    onPlayerPIPControllerWillEnd: PropTypes.func,
+    onPlayerPIPControllerDidEnd: PropTypes.func,
+    onPlayerPIPRestoreUserInterfaceForStop: PropTypes.func,
   };
 
   static defaultProps = {
@@ -80,6 +86,20 @@ class EZPlayer extends Component {
         this,
       ),
       onPlayerDidPersistContentKey: this._onPlayerDidPersistContentKey.bind(
+        this,
+      ),
+      onPlayerPIPControllerWillStart: this._onPlayerPIPControllerWillStart.bind(
+        this,
+      ),
+      onPlayerPIPControllerDidStart: this._onPlayerPIPControllerDidStart.bind(
+        this,
+      ),
+      onPlayerPIPFailedToStart: this._onPlayerPIPFailedToStart.bind(this),
+      onPlayerPIPControllerWillEnd: this._onPlayerPIPControllerWillEnd.bind(
+        this,
+      ),
+      onPlayerPIPControllerDidEnd: this._onPlayerPIPControllerDidEnd.bind(this),
+      onPlayerPIPRestoreUserInterfaceForStop: this._onPlayerPIPRestoreUserInterfaceForStop.bind(
         this,
       ),
     };
@@ -243,6 +263,68 @@ class EZPlayer extends Component {
     }
   }
 
+  _onPlayerPIPControllerWillStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerWillStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerWillStart === 'function') {
+      this.props.onPlayerPIPControllerWillStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerDidStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerDidStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerDidStart === 'function') {
+      this.props.onPlayerPIPControllerDidStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPFailedToStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPFailedToStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPFailedToStart === 'function') {
+      this.props.onPlayerPIPFailedToStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerWillEnd(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerWillEnd ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerWillEnd === 'function') {
+      this.props.onPlayerPIPControllerWillEnd(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerDidEnd(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerDidEnd ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerDidEnd === 'function') {
+      this.props.onPlayerPIPControllerDidEnd(...arguments);
+    }
+  }
+
+  _onPlayerPIPRestoreUserInterfaceForStop(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPRestoreUserInterfaceForStop ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (
+      typeof this.props.onPlayerPIPRestoreUserInterfaceForStop === 'function'
+    ) {
+      this.props.onPlayerPIPRestoreUserInterfaceForStop(...arguments);
+    }
+  }
+
   /**
    | -------------------------------------------------------
    | 播放器行为
@@ -381,6 +463,18 @@ class EZPlayer extends Component {
         }
         onPlayerTapGestureRecognizer={this.events.onPlayerTapGestureRecognizer}
         onPlayerDidPersistContentKey={this.events.onPlayerDidPersistContentKey}
+        onPlayerPIPControllerWillStart={
+          this.events.onPlayerPIPControllerWillStart
+        }
+        onPlayerPIPControllerDidStart={
+          this.events.onPlayerPIPControllerDidStart
+        }
+        onPlayerPIPFailedToStart={this.events.onPlayerPIPFailedToStart}
+        onPlayerPIPControllerWillEnd={this.events.onPlayerPIPControllerWillEnd}
+        onPlayerPIPControllerDidEnd={this.events.onPlayerPIPControllerDidEnd}
+        onPlayerPIPRestoreUserInterfaceForStop={
+          this.events.onPlayerPIPRestoreUserInterfaceForStop
+        }
       />
     );
   }

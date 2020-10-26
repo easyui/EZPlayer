@@ -30,19 +30,19 @@ class MediaManager {
     func playEmbeddedVideo(mediaItem: MediaItem, embeddedContentView contentView: UIView? = nil , userinfo: [AnyHashable : Any]? = nil ) {
         //stop
         self.releasePlayer()
-        
+
         if let skinView = userinfo?["skin"] as? UIView{
          self.player =  EZPlayer(controlView: skinView)
         }else{
           self.player = EZPlayer()
         }
-        
+
 //        self.player!.slideTrigger = (left:EZPlayerSlideTrigger.none,right:EZPlayerSlideTrigger.none)
-        
+
         if let autoPlay = userinfo?["autoPlay"] as? Bool{
             self.player!.autoPlay = autoPlay
         }
-        
+
         if let floatMode = userinfo?["floatMode"] as? EZPlayerFloatMode{
             self.player!.floatMode = floatMode
         }
@@ -50,7 +50,7 @@ class MediaManager {
         if let fullScreenMode = userinfo?["fullScreenMode"] as? EZPlayerFullScreenMode{
             self.player!.fullScreenMode = fullScreenMode
         }
-        
+
         self.player!.backButtonBlock = { fromDisplayMode in
             if fromDisplayMode == .embedded {
                 self.releasePlayer()
@@ -58,17 +58,17 @@ class MediaManager {
                 if self.embeddedContentView == nil && self.player!.lastDisplayMode != .float{
                     self.releasePlayer()
                 }
-                
+
             }else if fromDisplayMode == .float {
                 if self.player!.lastDisplayMode == .none{
                     self.releasePlayer()
                 }
             }
-            
+
         }
-        
+
         self.embeddedContentView = contentView
-        
+
         self.player!.playWithURL(mediaItem.url! , embeddedContentView: self.embeddedContentView)
     }
 
@@ -78,13 +78,13 @@ class MediaManager {
     func releasePlayer(){
             self.player?.stop()
             self.player?.view.removeFromSuperview()
-        
+
         self.player = nil
         self.embeddedContentView = nil
         self.mediaItem = nil
 
     }
-    
+
     @objc  func playerDidPlayToEnd(_ notifiaction: Notification) {
        //结束播放关闭播放器
        //self.releasePlayer()

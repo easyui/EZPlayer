@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   requireNativeComponent,
   NativeModules,
   findNodeHandle,
   ViewPropTypes,
-  View,
-  Text
 } from 'react-native';
 // refers to EZRNPlayerView.swift we have in XCode
 const EZRNPlayerViewNative = requireNativeComponent('EZRNPlayerView', EZPlayer);
@@ -20,8 +18,9 @@ class EZPlayer extends Component {
     source: PropTypes.object,
     autoPlay: PropTypes.bool,
     useDefaultUI: PropTypes.bool,
-    videoGravity: PropTypes.string,//aspect,aspectFill,scaleFill
-    fullScreenMode: PropTypes.string,//portrait,landscape
+    videoGravity: PropTypes.string, //aspect,aspectFill,scaleFill
+    fullScreenMode: PropTypes.string, //portrait,landscape
+    floatMode: PropTypes.string, //none,auto,system,window
 
     onPlayerHeartbeat: PropTypes.func,
     onPlayerPlaybackTimeDidChange: PropTypes.func,
@@ -34,8 +33,12 @@ class EZPlayer extends Component {
     onPlayerDisplayModeChangedDidAppear: PropTypes.func,
     onPlayerTapGestureRecognizer: PropTypes.func,
     onPlayerDidPersistContentKey: PropTypes.func,
-
-
+    onPlayerPIPControllerWillStart: PropTypes.func,
+    onPlayerPIPControllerDidStart: PropTypes.func,
+    onPlayerPIPFailedToStart: PropTypes.func,
+    onPlayerPIPControllerWillEnd: PropTypes.func,
+    onPlayerPIPControllerDidEnd: PropTypes.func,
+    onPlayerPIPRestoreUserInterfaceForStop: PropTypes.func,
   };
 
   static defaultProps = {
@@ -44,9 +47,9 @@ class EZPlayer extends Component {
     autoPlay: true,
     useDefaultUI: true,
     videoGravity: 'aspect',
-    fullScreenMode: 'landscape'
+    fullScreenMode: 'landscape',
+    floatMode: 'auto',
   };
-
 
   /**
    | -------------------------------------------------------
@@ -61,25 +64,53 @@ class EZPlayer extends Component {
      */
     this.events = {
       onPlayerHeartbeat: this._onPlayerHeartbeat.bind(this),
-      onPlayerPlaybackTimeDidChange: this._onPlayerPlaybackTimeDidChange.bind(this),
+      onPlayerPlaybackTimeDidChange: this._onPlayerPlaybackTimeDidChange.bind(
+        this,
+      ),
       onPlayerStatusDidChange: this._onPlayerStatusDidChange.bind(this),
       onPlayerPlaybackDidFinish: this._onPlayerPlaybackDidFinish.bind(this),
       onPlayerLoadingDidChange: this._onPlayerLoadingDidChange.bind(this),
-      onPlayerControlsHiddenDidChange: this._onPlayerControlsHiddenDidChange.bind(this),
-      onPlayerDisplayModeDidChange: this._onPlayerDisplayModeDidChange.bind(this),
-      onPlayerDisplayModeChangedWillAppear: this._onPlayerDisplayModeChangedWillAppear.bind(this),
-      onPlayerDisplayModeChangedDidAppear: this._onPlayerDisplayModeChangedDidAppear.bind(this),
-      onPlayerTapGestureRecognizer: this._onPlayerTapGestureRecognizer.bind(this),
-      onPlayerDidPersistContentKey: this._onPlayerDidPersistContentKey.bind(this),
+      onPlayerControlsHiddenDidChange: this._onPlayerControlsHiddenDidChange.bind(
+        this,
+      ),
+      onPlayerDisplayModeDidChange: this._onPlayerDisplayModeDidChange.bind(
+        this,
+      ),
+      onPlayerDisplayModeChangedWillAppear: this._onPlayerDisplayModeChangedWillAppear.bind(
+        this,
+      ),
+      onPlayerDisplayModeChangedDidAppear: this._onPlayerDisplayModeChangedDidAppear.bind(
+        this,
+      ),
+      onPlayerTapGestureRecognizer: this._onPlayerTapGestureRecognizer.bind(
+        this,
+      ),
+      onPlayerDidPersistContentKey: this._onPlayerDidPersistContentKey.bind(
+        this,
+      ),
+      onPlayerPIPControllerWillStart: this._onPlayerPIPControllerWillStart.bind(
+        this,
+      ),
+      onPlayerPIPControllerDidStart: this._onPlayerPIPControllerDidStart.bind(
+        this,
+      ),
+      onPlayerPIPFailedToStart: this._onPlayerPIPFailedToStart.bind(this),
+      onPlayerPIPControllerWillEnd: this._onPlayerPIPControllerWillEnd.bind(
+        this,
+      ),
+      onPlayerPIPControllerDidEnd: this._onPlayerPIPControllerDidEnd.bind(this),
+      onPlayerPIPRestoreUserInterfaceForStop: this._onPlayerPIPRestoreUserInterfaceForStop.bind(
+        this,
+      ),
     };
 
     /**
-      * 播放器
-      */
+     * 播放器
+     */
     this.player = {
       ref: EZRNPlayerViewNative,
 
-      state: 'unknown',//unknown,readyToPlay,buffering,bufferFinished,playing,seekingForward,seekingBackward,pause,stopped,error.invalidContentURL,error.playerFail
+      state: 'unknown', //unknown,readyToPlay,buffering,bufferFinished,playing,seekingForward,seekingBackward,pause,stopped,error.invalidContentURL,error.playerFail
 
       currentTime: undefined,
       duration: undefined,
@@ -87,20 +118,18 @@ class EZPlayer extends Component {
       rate: 0,
       systemVolume: 0,
       isM3U8: false,
-      displayMode: undefined,//none,embedded,fullscreen,float   
+      displayMode: undefined, //none,embedded,fullscreen,float
       isLoading: true,
 
-      firstReady: false
+      firstReady: false,
     };
-
   }
 
   componentWillUnmount() {
-    console.log("[EZPlayer] componentWillUnmount")
-    this.player.firstReady = false
-    this.stop()
+    console.log('[EZPlayer] componentWillUnmount');
+    this.player.firstReady = false;
+    this.stop();
   }
-
 
   /**
    | -------------------------------------------------------
@@ -108,15 +137,17 @@ class EZPlayer extends Component {
    | -------------------------------------------------------
   */
   _onPlayerHeartbeat(event) {
-    console.log("[EZPlayer] onPlayerHeartbeat " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerHeartbeat ' + JSON.stringify(event.nativeEvent),
+    );
     if (this.player.firstReady) {
-      this.player.currentTime = event.nativeEvent.currentTime
-      this.player.duration = event.nativeEvent.duration
-      this.player.isLive = event.nativeEvent.isLive
-      this.player.rate = event.nativeEvent.rate
-      this.player.systemVolume = event.nativeEvent.systemVolume
-      this.player.isM3U8 = event.nativeEvent.isM3U8
-      this.player.state = event.nativeEvent.state
+      this.player.currentTime = event.nativeEvent.currentTime;
+      this.player.duration = event.nativeEvent.duration;
+      this.player.isLive = event.nativeEvent.isLive;
+      this.player.rate = event.nativeEvent.rate;
+      this.player.systemVolume = event.nativeEvent.systemVolume;
+      this.player.isM3U8 = event.nativeEvent.isM3U8;
+      this.player.state = event.nativeEvent.state;
     }
 
     if (typeof this.props.onPlayerHeartbeat === 'function') {
@@ -125,81 +156,174 @@ class EZPlayer extends Component {
   }
 
   _onPlayerPlaybackTimeDidChange(event) {
-    console.log("[EZPlayer] onPlayerPlaybackTimeDidChange " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerPlaybackTimeDidChange ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerPlaybackTimeDidChange === 'function') {
       this.props.onPlayerPlaybackTimeDidChange(...arguments);
     }
   }
 
   _onPlayerStatusDidChange(event) {
-    console.log("[EZPlayer] onPlayerStatusDidChange " + JSON.stringify(event.nativeEvent));
-    if ((event.nativeEvent.oldState === 'unknown') && (event.nativeEvent.newState === 'readyToPlay')) {
-      this.player.firstReady = true
+    console.log(
+      '[EZPlayer] onPlayerStatusDidChange ' + JSON.stringify(event.nativeEvent),
+    );
+    if (
+      event.nativeEvent.oldState === 'unknown' &&
+      event.nativeEvent.newState === 'readyToPlay'
+    ) {
+      this.player.firstReady = true;
     }
-    this.player.state = event.nativeEvent.newState
+    this.player.state = event.nativeEvent.newState;
     if (typeof this.props.onPlayerStatusDidChange === 'function') {
       this.props.onPlayerStatusDidChange(...arguments);
     }
   }
 
   _onPlayerPlaybackDidFinish(event) {
-    console.log("[EZPlayer] onPlayerPlaybackDidFinish " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerPlaybackDidFinish ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerPlaybackDidFinish === 'function') {
       this.props.onPlayerPlaybackDidFinish(...arguments);
     }
   }
 
   _onPlayerLoadingDidChange(event) {
-    console.log("[EZPlayer] onPlayerLoadingDidChange " + JSON.stringify(event.nativeEvent));
-    this.player.isLoading = event.nativeEvent.EZPlayerLoadingDidChangeKey
+    console.log(
+      '[EZPlayer] onPlayerLoadingDidChange ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    this.player.isLoading = event.nativeEvent.EZPlayerLoadingDidChangeKey;
     if (typeof this.props.onPlayerLoadingDidChange === 'function') {
       this.props.onPlayerLoadingDidChange(...arguments);
     }
   }
 
   _onPlayerControlsHiddenDidChange(event) {
-    console.log("[EZPlayer] onPlayerControlsHiddenDidChange " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerControlsHiddenDidChange ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerControlsHiddenDidChange === 'function') {
       this.props.onPlayerControlsHiddenDidChange(...arguments);
     }
   }
 
   _onPlayerDisplayModeDidChange(event) {
-    console.log("[EZPlayer] onPlayerDisplayModeDidChange " + JSON.stringify(event.nativeEvent));    
-    this.player.displayMode = event.nativeEvent.displayMode
+    console.log(
+      '[EZPlayer] onPlayerDisplayModeDidChange ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    this.player.displayMode = event.nativeEvent.displayMode;
     if (typeof this.props.onPlayerDisplayModeDidChange === 'function') {
       this.props.onPlayerDisplayModeDidChange(...arguments);
     }
   }
 
   _onPlayerDisplayModeChangedWillAppear(event) {
-    console.log("[EZPlayer] onPlayerDisplayModeChangedWillAppear " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerDisplayModeChangedWillAppear ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerDisplayModeChangedWillAppear === 'function') {
       this.props.onPlayerDisplayModeChangedWillAppear(...arguments);
     }
   }
 
   _onPlayerDisplayModeChangedDidAppear(event) {
-    console.log("[EZPlayer] onPlayerDisplayModeChangedDidAppear " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerDisplayModeChangedDidAppear ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerDisplayModeChangedDidAppear === 'function') {
       this.props.onPlayerDisplayModeChangedDidAppear(...arguments);
     }
   }
 
   _onPlayerTapGestureRecognizer(event) {
-    console.log("[EZPlayer] onPlayerTapGestureRecognizer " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerTapGestureRecognizer ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerTapGestureRecognizer === 'function') {
       this.props.onPlayerTapGestureRecognizer(...arguments);
     }
   }
 
   _onPlayerDidPersistContentKey(event) {
-    console.log("[EZPlayer] onPlayerDidPersistContentKey " + JSON.stringify(event.nativeEvent));
+    console.log(
+      '[EZPlayer] onPlayerDidPersistContentKey ' +
+        JSON.stringify(event.nativeEvent),
+    );
     if (typeof this.props.onPlayerDidPersistContentKey === 'function') {
       this.props.onPlayerDidPersistContentKey(...arguments);
     }
   }
 
+  _onPlayerPIPControllerWillStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerWillStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerWillStart === 'function') {
+      this.props.onPlayerPIPControllerWillStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerDidStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerDidStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerDidStart === 'function') {
+      this.props.onPlayerPIPControllerDidStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPFailedToStart(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPFailedToStart ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPFailedToStart === 'function') {
+      this.props.onPlayerPIPFailedToStart(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerWillEnd(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerWillEnd ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerWillEnd === 'function') {
+      this.props.onPlayerPIPControllerWillEnd(...arguments);
+    }
+  }
+
+  _onPlayerPIPControllerDidEnd(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPControllerDidEnd ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (typeof this.props.onPlayerPIPControllerDidEnd === 'function') {
+      this.props.onPlayerPIPControllerDidEnd(...arguments);
+    }
+  }
+
+  _onPlayerPIPRestoreUserInterfaceForStop(event) {
+    console.log(
+      '[EZPlayer] onPlayerPIPRestoreUserInterfaceForStop ' +
+        JSON.stringify(event.nativeEvent),
+    );
+    if (
+      typeof this.props.onPlayerPIPRestoreUserInterfaceForStop === 'function'
+    ) {
+      this.props.onPlayerPIPRestoreUserInterfaceForStop(...arguments);
+    }
+  }
 
   /**
    | -------------------------------------------------------
@@ -207,58 +331,103 @@ class EZPlayer extends Component {
    | -------------------------------------------------------
   */
   play() {
-    EZRNPlayerViewManager.play(findNodeHandle(this._getEZRNPlayerViewNativeHandle()))
+    EZRNPlayerViewManager.play(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+    );
   }
 
   pause() {
-    EZRNPlayerViewManager.pause(findNodeHandle(this._getEZRNPlayerViewNativeHandle()))
+    EZRNPlayerViewManager.pause(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+    );
   }
 
   stop() {
-    EZRNPlayerViewManager.stop(findNodeHandle(this._getEZRNPlayerViewNativeHandle()))
+    EZRNPlayerViewManager.stop(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+    );
   }
 
   seek(time, callback) {
     if (isNaN(time)) {
-      return
+      return;
     }
-    EZRNPlayerViewManager.seek(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), time, (finished) => callback && callback(finished))
+    EZRNPlayerViewManager.seek(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      time,
+      (finished) => callback && callback(finished),
+    );
   }
 
   replaceToPlay(source) {
-    EZRNPlayerViewManager.replaceToPlay(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), source)
+    EZRNPlayerViewManager.replaceToPlay(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      source,
+    );
   }
 
   rate(rate) {
-    EZRNPlayerViewManager.rate(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), rate)
+    EZRNPlayerViewManager.rate(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      rate,
+    );
   }
 
   autoPlay(autoPlay) {
-    EZRNPlayerViewManager.autoPlay(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), autoPlay)
+    EZRNPlayerViewManager.autoPlay(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      autoPlay,
+    );
   }
 
   videoGravity(videoGravity) {
-    EZRNPlayerViewManager.videoGravity(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), videoGravity)
+    EZRNPlayerViewManager.videoGravity(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      videoGravity,
+    );
   }
 
   toEmbedded(animated = true, callback) {
-    EZRNPlayerViewManager.toEmbedded(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), animated, (finished) => callback && callback(finished))
+    EZRNPlayerViewManager.toEmbedded(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      animated,
+      (finished) => callback && callback(finished),
+    );
   }
 
   toFloat(animated = true, callback) {
-    EZRNPlayerViewManager.toFloat(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), animated, (finished) => callback && callback(finished))
+    EZRNPlayerViewManager.toFloat(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      animated,
+      (finished) => callback && callback(finished),
+    );
   }
 
   //orientation : landscapeLeft , landscapeRight
   toFull(orientation = 'landscapeLeft', animated = true, callback) {
-    EZRNPlayerViewManager.toFull(findNodeHandle(this._getEZRNPlayerViewNativeHandle()), orientation, animated, (finished) => callback && callback(finished))
+    EZRNPlayerViewManager.toFull(
+      findNodeHandle(this._getEZRNPlayerViewNativeHandle()),
+      orientation,
+      animated,
+      (finished) => callback && callback(finished),
+    );
   }
 
   //fullScreenMode:portrait , landscape
   fullScreenMode(fullScreenMode) {
-    EZRNPlayerViewManager.fullScreenMode(this._getEZRNPlayerViewNativeHandle(), fullScreenMode)
+    EZRNPlayerViewManager.fullScreenMode(
+      this._getEZRNPlayerViewNativeHandle(),
+      fullScreenMode,
+    );
   }
 
+  //fullScreenMode:portrait , landscape
+  floatMode(floatMode) {
+    EZRNPlayerViewManager.floatMode(
+      this._getEZRNPlayerViewNativeHandle(),
+      floatMode,
+    );
+  }
 
   /**
    | -------------------------------------------------------
@@ -273,21 +442,41 @@ class EZPlayer extends Component {
     return (
       <EZRNPlayerViewNative
         {...this.props}
-        ref={(nativePlayer) => this.player.ref = nativePlayer}
+        ref={(nativePlayer) => (this.player.ref = nativePlayer)}
         style={this.props.style}
         onPlayerHeartbeat={this.events.onPlayerHeartbeat}
-        onPlayerPlaybackTimeDidChange={this.events.onPlayerPlaybackTimeDidChange}
+        onPlayerPlaybackTimeDidChange={
+          this.events.onPlayerPlaybackTimeDidChange
+        }
         onPlayerStatusDidChange={this.events.onPlayerStatusDidChange}
         onPlayerPlaybackDidFinish={this.events.onPlayerPlaybackDidFinish}
         onPlayerLoadingDidChange={this.events.onPlayerLoadingDidChange}
-        onPlayerControlsHiddenDidChange={this.events.onPlayerControlsHiddenDidChange}
+        onPlayerControlsHiddenDidChange={
+          this.events.onPlayerControlsHiddenDidChange
+        }
         onPlayerDisplayModeDidChange={this.events.onPlayerDisplayModeDidChange}
-        onPlayerDisplayModeChangedWillAppear={this.events.onPlayerDisplayModeChangedWillAppear}
-        onPlayerDisplayModeChangedDidAppear={this.events.onPlayerDisplayModeChangedDidAppear}
+        onPlayerDisplayModeChangedWillAppear={
+          this.events.onPlayerDisplayModeChangedWillAppear
+        }
+        onPlayerDisplayModeChangedDidAppear={
+          this.events.onPlayerDisplayModeChangedDidAppear
+        }
         onPlayerTapGestureRecognizer={this.events.onPlayerTapGestureRecognizer}
         onPlayerDidPersistContentKey={this.events.onPlayerDidPersistContentKey}
+        onPlayerPIPControllerWillStart={
+          this.events.onPlayerPIPControllerWillStart
+        }
+        onPlayerPIPControllerDidStart={
+          this.events.onPlayerPIPControllerDidStart
+        }
+        onPlayerPIPFailedToStart={this.events.onPlayerPIPFailedToStart}
+        onPlayerPIPControllerWillEnd={this.events.onPlayerPIPControllerWillEnd}
+        onPlayerPIPControllerDidEnd={this.events.onPlayerPIPControllerDidEnd}
+        onPlayerPIPRestoreUserInterfaceForStop={
+          this.events.onPlayerPIPRestoreUserInterfaceForStop
+        }
       />
-    )
+    );
   }
 }
 

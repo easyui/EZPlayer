@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
   s.version      = "1.1.0"
   s.summary      = "Player base on AVPlayer"
 
+  s.swift_versions = ['5.0']
+
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
@@ -91,7 +93,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "EZPlayer/*"
-  #s.exclude_files = "Classes/Exclude"
+  s.exclude_files = "EZPlayerExample/*", "EZPlayerExample_RN/*"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -117,7 +119,7 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-  s.frameworks = "AVKit", "UIKit", "AVFoundation", "MediaPlayer"
+  s.frameworks = "AVKit", "UIKit", "Foundation", "AVFoundation", "MediaPlayer"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"

@@ -19,7 +19,7 @@ extension AVPlayer {
         }
         return duration
     }
-    
+
     /// 总时长
     public var duration: TimeInterval? {
         if let  duration = self.currentItem?.duration  {
@@ -27,7 +27,7 @@ extension AVPlayer {
         }
         return nil
     }
-    
+
     /// 播放进度
     public var currentTime: TimeInterval? {
             return CMTimeGetSeconds(self.currentTime())
