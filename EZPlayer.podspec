@@ -93,7 +93,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "EZPlayer/*"
-  s.exclude_files = "EZPlayerExample/*", "EZPlayerExample_RN/*"
+  s.exclude_files = "EZPlayerExample/*", "EZPlayerExample_RN/*", "EZPlayer/*.plist"
 
   # s.public_header_files = "Classes/**/*.h"
 

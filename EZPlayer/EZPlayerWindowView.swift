@@ -10,24 +10,30 @@ import UIKit
 
 open class EZPlayerWindowView: UIView, EZPlayerCustomAction {
     public var autohidedControlViews = [UIView]()
-
-
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-
-    weak public var player: EZPlayer?
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    weak public var player: EZPlayer?{
+        didSet {
+            if let _ = player?.scrollView{
+                self.backButton.isHidden = true
+            }else{
+                self.backButton.isHidden = false
+            }
+        }
+    }
     public func playPauseButtonPressed(_ sender: Any){
     }
     public func fullEmbeddedScreenButtonPressed(_ sender: Any){
     }
     public func audioSubtitleCCButtonPressed(_ sender: Any){
     }
-
+    
     @IBAction public func backButtonPressed(_ sender: Any){
         guard let player = self.player else {
             return
@@ -42,16 +48,16 @@ open class EZPlayerWindowView: UIView, EZPlayerCustomAction {
         }
         self.player?.backButtonBlock?(.float)
     }
-
+    
     @IBAction public func closeButtonPressed(_ sender: Any){
         self.player?.stop()
     }
-
+    
 }
 
 
 extension EZPlayerWindowView: EZPlayerGestureRecognizer {
-
+    
     public func player(_ player: EZPlayer, singleTapGestureTapped singleTap: UITapGestureRecognizer)
     {
         if player.isPlaying {
@@ -60,10 +66,10 @@ extension EZPlayerWindowView: EZPlayerGestureRecognizer {
             player.play()
         }
     }
-
+    
     public func player(_ player: EZPlayer, doubleTapGestureTapped doubleTap: UITapGestureRecognizer) {
         player.toFull()
     }
-
-
+    
+    
 }

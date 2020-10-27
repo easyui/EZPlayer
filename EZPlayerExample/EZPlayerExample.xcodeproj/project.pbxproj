@@ -14,8 +14,6 @@
 		99145C571E16685400891B06 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99145C561E16685400891B06 /* VideosTableViewController.swift */; };
 		9914922B1DDBDA5F005FF2BD /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9914922A1DDBDA5F005FF2BD /* MediaManager.swift */; };
 		9914922D1DDBDF79005FF2BD /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9914922C1DDBDF79005FF2BD /* MediaItem.swift */; };
-		9914922E1DDBF442005FF2BD /* EZPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995E794E1DD9A404006CE7E9 /* EZPlayer.framework */; };
-		991595E21DE5D97B00D3CA1F /* EZPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 995E794E1DD9A404006CE7E9 /* EZPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99453E071DE41F5100BBF2FB /* hubblecast.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 99453E061DE41F5100BBF2FB /* hubblecast.m4v */; };
 		99504F811DE6C3BF00E1058D /* testVideo-0.ts in Resources */ = {isa = PBXBuildFile; fileRef = 99504F7E1DE6C3BF00E1058D /* testVideo-0.ts */; };
 		99504F821DE6C3BF00E1058D /* testVideo-1.ts in Resources */ = {isa = PBXBuildFile; fileRef = 99504F7F1DE6C3BF00E1058D /* testVideo-1.ts */; };
@@ -27,16 +25,11 @@
 		99C1A2C71DDB46510096A543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2C61DDB46510096A543 /* TabBarController.swift */; };
 		99C1A2C91DDBC8EF0096A543 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2C81DDBC8EF0096A543 /* NavigationController.swift */; };
 		99C1A2CD1DDBC9870096A543 /* ParamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C1A2CC1DDBC9870096A543 /* ParamsViewController.swift */; };
+		A621363B2547B4240083F70C /* EZPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995E794E1DD9A404006CE7E9 /* EZPlayer.framework */; };
+		A621363C2547B4240083F70C /* EZPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 995E794E1DD9A404006CE7E9 /* EZPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		991595E31DE5D97B00D3CA1F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 995E79491DD9A403006CE7E9 /* EZPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 995E79161DD99D5A006CE7E9;
-			remoteInfo = EZPlayer;
-		};
 		995E794D1DD9A404006CE7E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 995E79491DD9A403006CE7E9 /* EZPlayer.xcodeproj */;
@@ -44,7 +37,7 @@
 			remoteGlobalIDString = 995E79171DD99D5A006CE7E9;
 			remoteInfo = EZPlayer;
 		};
-		995E794F1DD9A41A006CE7E9 /* PBXContainerItemProxy */ = {
+		A62136382547B41C0083F70C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 995E79491DD9A403006CE7E9 /* EZPlayer.xcodeproj */;
 			proxyType = 1;
@@ -54,13 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		991595E51DE5D97B00D3CA1F /* Embed Frameworks */ = {
+		A621363D2547B4240083F70C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				991595E21DE5D97B00D3CA1F /* EZPlayer.framework in Embed Frameworks */,
+				A621363C2547B4240083F70C /* EZPlayer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9914922E1DDBF442005FF2BD /* EZPlayer.framework in Frameworks */,
+				A621363B2547B4240083F70C /* EZPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +123,7 @@
 				995E79491DD9A403006CE7E9 /* EZPlayer.xcodeproj */,
 				995E79361DD9A3CF006CE7E9 /* EZPlayerExample */,
 				995E79351DD9A3CF006CE7E9 /* Products */,
+				A621363A2547B4240083F70C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +164,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A621363A2547B4240083F70C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,13 +181,12 @@
 				995E79301DD9A3CF006CE7E9 /* Sources */,
 				995E79311DD9A3CF006CE7E9 /* Frameworks */,
 				995E79321DD9A3CF006CE7E9 /* Resources */,
-				991595E51DE5D97B00D3CA1F /* Embed Frameworks */,
+				A621363D2547B4240083F70C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				995E79501DD9A41A006CE7E9 /* PBXTargetDependency */,
-				991595E41DE5D97B00D3CA1F /* PBXTargetDependency */,
+				A62136392547B41C0083F70C /* PBXTargetDependency */,
 			);
 			name = EZPlayerExample;
 			productName = EZPlayerExample;
@@ -289,15 +289,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		991595E41DE5D97B00D3CA1F /* PBXTargetDependency */ = {
+		A62136392547B41C0083F70C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EZPlayer;
-			targetProxy = 991595E31DE5D97B00D3CA1F /* PBXContainerItemProxy */;
-		};
-		995E79501DD9A41A006CE7E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EZPlayer;
-			targetProxy = 995E794F1DD9A41A006CE7E9 /* PBXContainerItemProxy */;
+			targetProxy = A62136382547B41C0083F70C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,7 +428,6 @@
 		995E79471DD9A3CF006CE7E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -454,7 +448,6 @@
 		995E79481DD9A3CF006CE7E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yangjun zhu (8NM4W5ZF88)";
 				DEVELOPMENT_TEAM = "";
