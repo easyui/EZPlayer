@@ -71,7 +71,7 @@
 
    ```ruby
    project 'EZPlayerExample.xcodeproj'
-   platform :ios, '8.0'
+   platform :ios, '9.0'
 
    target '<Your Target Name>' do
      use_frameworks!
