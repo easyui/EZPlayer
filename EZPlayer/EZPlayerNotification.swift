@@ -30,7 +30,7 @@ public extension Notification.Name {
     static let EZPlayerControlsHiddenDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerControlsHiddenDidChange")
 
     /// 播放器显示模式改变了（全屏，嵌入屏，浮动）
-    static let EZPlayerDisplayModeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerStatusDidChang")
+    static let EZPlayerDisplayModeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerDisplayModeDidChange")
     /// 播放器显示模式动画开始
     static let EZPlayerDisplayModeChangedWillAppear = Notification.Name(rawValue: "EZPlayerDisplayModeChangedWillAppear")
     /// 播放器显示模式动画结束
