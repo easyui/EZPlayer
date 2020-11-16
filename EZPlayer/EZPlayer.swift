@@ -102,7 +102,7 @@ open class EZPlayer: NSObject {
 
     /// 设备横屏时自动旋转(phone)
     open var autoLandscapeFullScreenLandscape = UIDevice.current.userInterfaceIdiom == .phone
-    /// 全屏的模式
+    /// 浮框的模式
     open var floatMode = EZPlayerFloatMode.auto
     /// 全屏的模式
     open var fullScreenMode = EZPlayerFullScreenMode.landscape
