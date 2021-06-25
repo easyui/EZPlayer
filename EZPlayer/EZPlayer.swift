@@ -1126,7 +1126,7 @@ extension EZPlayer {
                             self.toFloat()
                         }else{
                             if let cell = view.cellForRow(at: index){
-                                if  !cell.contentView.subviews.contains(self.view){
+                                if !self.view.isDescendant(of: cell){
                                     self.view.removeFromSuperview()
                                     self.embeddedContentView = self.embeddedContentView ?? cell.contentView
                                     self.embeddedContentView!.addSubview(self.view)
