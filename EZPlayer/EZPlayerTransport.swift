@@ -8,19 +8,19 @@
 
 import Foundation
 
-public protocol EZPlayerHorizontalPan: class {
+public protocol EZPlayerHorizontalPan: AnyObject {
     func player(_ player: EZPlayer ,progressWillChange value: TimeInterval)
     func player(_ player: EZPlayer ,progressChanging value: TimeInterval)
     func player(_ player: EZPlayer ,progressDidChange value: TimeInterval)
 }
 
-public protocol EZPlayerGestureRecognizer: class {
+public protocol EZPlayerGestureRecognizer: AnyObject {
     func player(_ player: EZPlayer ,singleTapGestureTapped singleTap: UITapGestureRecognizer)
     func player(_ player: EZPlayer ,doubleTapGestureTapped doubleTap: UITapGestureRecognizer)
 }
 
 
-public protocol EZPlayerCustomAction:class {
+public protocol EZPlayerCustomAction:AnyObject {
     var player: EZPlayer? { get set }
     var autohidedControlViews: [UIView] { get set }
 

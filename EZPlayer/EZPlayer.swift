@@ -164,8 +164,8 @@ open class EZPlayer: NSObject {
                     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
                     item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
                     item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges))
-                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackBufferEmpty))
-                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackLikelyToKeepUp))
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty))
+                    item.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp))
                 }
             }
         }
@@ -178,9 +178,9 @@ open class EZPlayer: NSObject {
                     //缓冲区大小
                     item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: NSKeyValueObservingOptions.new, context: nil)
                     // 缓冲区空了，需要等待数据
-                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackBufferEmpty), options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty), options: NSKeyValueObservingOptions.new, context: nil)
                     // 缓冲区有足够数据可以播放了
-                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.playbackLikelyToKeepUp), options: NSKeyValueObservingOptions.new, context: nil)
+                    item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp), options: NSKeyValueObservingOptions.new, context: nil)
                 }
             }
         }
@@ -1101,10 +1101,10 @@ extension EZPlayer {
                     printLog("AVPlayerItem's loadedTimeRanges is changed")
                     (self.controlView as? EZPlayerDelegate)?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
                     self.delegate?.player(self, bufferDurationDidChange: item.bufferDuration ?? 0, totalDuration: self.duration ?? 0)
-                case #keyPath(AVPlayerItem.playbackBufferEmpty):
+                case #keyPath(AVPlayerItem.isPlaybackBufferEmpty):
                     //1）首先是观察到kAVPlayerItemPlaybackBufferEmpty的变化，从1变为0，说有缓存到内容了，已经有loadedTimeRanges了，但这时候还不一定能播放，因为数据可能还不够播放；
                     printLog("AVPlayerItem's playbackBufferEmpty is changed")
-                case #keyPath(AVPlayerItem.playbackLikelyToKeepUp):
+                case #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp):
                     //2）然后是kAVPlayerItemPlaybackLikelyToKeepUp，从0变到1，说明可以播放了，这时候会自动开始播放
 
                     printLog("AVPlayerItem's playbackLikelyToKeepUp is changed")

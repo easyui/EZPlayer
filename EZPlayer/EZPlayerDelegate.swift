@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-public protocol EZPlayerDelegate : class {
+public protocol EZPlayerDelegate : AnyObject {
     func player(_ player: EZPlayer ,playerStateDidChange state: EZPlayerState)//.EZPlayerStatusDidChange
     func player(_ player: EZPlayer ,playerDisplayModeDidChange displayMode: EZPlayerDisplayMode)//.EZPlayerDisplayModeDidChange
 
