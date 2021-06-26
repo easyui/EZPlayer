@@ -10,6 +10,4 @@ import Foundation
 public struct EZPlayerContentItem {
     var url: URL?
     var title: String?
-
-
 }

@@ -10,50 +10,50 @@ import Foundation
 
 
 
-public extension Notification.Name {
+extension Notification.Name {
     /// EZPlayer生命周期
-    static let EZPlayerHeartbeat = Notification.Name(rawValue: "com.ezplayer.EZPlayerHeartbeat")
+    public static let EZPlayerHeartbeat = Notification.Name(rawValue: "com.ezplayer.EZPlayerHeartbeat")
 
     /// addPeriodicTimeObserver方法的触发
-    static let EZPlayerPlaybackTimeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerPlaybackTimeDidChange")
+    public static let EZPlayerPlaybackTimeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerPlaybackTimeDidChange")
 
     /// 播放器状态改变
-    static let EZPlayerStatusDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerStatusDidChange")
+    public static let EZPlayerStatusDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerStatusDidChange")
 
     /// 视频结束
-    static let EZPlayerPlaybackDidFinish = Notification.Name(rawValue: "com.ezplayer.EZPlayerPlaybackDidFinish")
+    public static let EZPlayerPlaybackDidFinish = Notification.Name(rawValue: "com.ezplayer.EZPlayerPlaybackDidFinish")
 
     /// loading状态改变
-    static let EZPlayerLoadingDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerLoadingDidChange")
+    public static let EZPlayerLoadingDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerLoadingDidChange")
 
     /// 播放器控制条隐藏显示
-    static let EZPlayerControlsHiddenDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerControlsHiddenDidChange")
+    public static let EZPlayerControlsHiddenDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerControlsHiddenDidChange")
 
     /// 播放器显示模式改变了（全屏，嵌入屏，浮动）
-    static let EZPlayerDisplayModeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerDisplayModeDidChange")
+    public static let EZPlayerDisplayModeDidChange = Notification.Name(rawValue: "com.ezplayer.EZPlayerDisplayModeDidChange")
     /// 播放器显示模式动画开始
-    static let EZPlayerDisplayModeChangedWillAppear = Notification.Name(rawValue: "EZPlayerDisplayModeChangedWillAppear")
+    public static let EZPlayerDisplayModeChangedWillAppear = Notification.Name(rawValue: "EZPlayerDisplayModeChangedWillAppear")
     /// 播放器显示模式动画结束
-    static let EZPlayerDisplayModeChangedDidAppear = Notification.Name(rawValue: "EZPlayerDisplayModeChangedDidAppear")
+    public static let EZPlayerDisplayModeChangedDidAppear = Notification.Name(rawValue: "EZPlayerDisplayModeChangedDidAppear")
 
     /// 点击播放器手势通知
-    static let EZPlayerTapGestureRecognizer = Notification.Name(rawValue: "com.ezplayer.EZPlayerTapGestureRecognizer")
+    public static let EZPlayerTapGestureRecognizer = Notification.Name(rawValue: "com.ezplayer.EZPlayerTapGestureRecognizer")
 
     /// FairPlay DRM
-    static let EZPlayerDidPersistContentKey = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKey")
+    public static let EZPlayerDidPersistContentKey = Notification.Name(rawValue: "com.ezplayer.EZPlayerDidPersistContentKey")
 
     /// PIP
-    static let EZPlayerPIPControllerWillStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillStart")
+    public static let EZPlayerPIPControllerWillStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillStart")
 
-    static let EZPlayerPIPControllerDidStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidStart")
+    public static let EZPlayerPIPControllerDidStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidStart")
 
-    static let EZPlayerPIPFailedToStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPFailedToStart")
+    public static let EZPlayerPIPFailedToStart = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPFailedToStart")
 
-    static let EZPlayerPIPControllerWillEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillEnd")
+    public static let EZPlayerPIPControllerWillEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerWillEnd")
 
-    static let EZPlayerPIPControllerDidEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidEnd")
+    public static let EZPlayerPIPControllerDidEnd = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPControllerDidEnd")
 
-    static let EZPlayerPIPRestoreUserInterfaceForStop = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPRestoreUserInterfaceForStop")
+    public static let EZPlayerPIPRestoreUserInterfaceForStop = Notification.Name(rawValue: "com.ezplayer.EZPlayerPIPRestoreUserInterfaceForStop")
 
 
 }

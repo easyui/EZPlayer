@@ -283,18 +283,18 @@ open class EZPlayer: NSObject {
                 (self.controlView as? EZPlayerDelegate)?.player(self, playerStateDidChange: state)
                 self.delegate?.player(self, playerStateDidChange: state)
                 NotificationCenter.default.post(name: .EZPlayerStatusDidChange, object: self, userInfo: [Notification.Key.EZPlayerNewStateKey: state,Notification.Key.EZPlayerOldStateKey: oldValue])
+                var loading = false;
                 switch state {
                 case  .readyToPlay,.playing ,.pause,.seekingForward,.seekingBackward,.stopped,.bufferFinished://cactus todo
-                    (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: false)
-                    self.delegate?.player(self, showLoading: false)
-                    NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: false])
+                    loading = false;
                     break
                 default:
-                    (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: true)
-                    self.delegate?.player(self, showLoading: true)
-                    NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: true])
+                    loading = true;
                     break
                 }
+                (self.controlView as? EZPlayerDelegate)?.player(self, showLoading: loading)
+                self.delegate?.player(self, showLoading: loading)
+                NotificationCenter.default.post(name: .EZPlayerLoadingDidChange, object: self, userInfo: [Notification.Key.EZPlayerLoadingDidChangeKey: loading])
 
                 if case .error(_) = state {
                     NotificationCenter.default.post(name: .EZPlayerPlaybackDidFinish, object: self, userInfo: [Notification.Key.EZPlayerPlaybackDidFinishReasonKey: EZPlayerPlaybackDidFinishReason.playbackError])
