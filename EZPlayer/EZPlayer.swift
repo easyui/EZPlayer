@@ -1033,11 +1033,22 @@ extension EZPlayer {
 
     @objc fileprivate  func deviceOrientationDidChange(_ notifiaction: Notification){
         //        if !self.autoLandscapeFullScreenLandscape || self.embeddedContentView == nil{
+        
+        //app前后台切换
+        if UIApplication.shared.applicationState != UIApplication.State.active {
+            return
+        }
+
         if !self.autoLandscapeFullScreenLandscape || self.fullScreenMode == .portrait {
             return
         }
+        
         switch UIDevice.current.orientation {
         case .portrait:
+            //如果后台切回前台保持原来竖屏状态
+            if self.displayMode == .embedded || self.displayMode == .float {
+                return
+            }
             if self.lastDisplayMode == .embedded{
                 self.toEmbedded()
             }else if self.lastDisplayMode == .float{
