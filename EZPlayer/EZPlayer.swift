@@ -731,7 +731,6 @@ open class EZPlayer: NSObject {
             let floatModelSupported = EZPlayerUtils.floatModelSupported(self)
             if floatModelSupported == .system{
                 self.lastDisplayMode = .embedded//特殊处理：设置目标
-
                 self.stopPIP {
 
                 }
@@ -812,7 +811,7 @@ open class EZPlayer: NSObject {
                         return
                     }
                     fullScreenViewController.dismiss(animated: false) {
-
+                        weakSelf.fullScreenViewController = nil
                     }
                 }else if weakSelf.lastDisplayMode == .embedded{
                     //                    weakSelf.view.removeFromSuperview()
@@ -1453,6 +1452,9 @@ extension EZPlayer: AVPictureInPictureControllerDelegate {
         NotificationCenter.default.post(name: .EZPlayerPIPControllerDidEnd, object: self, userInfo: nil)
 
         if self.displayMode == .fullscreen{
+            if self.state == .playing {
+                self.play()
+            }
             if self.fullScreenViewController == nil {
                 self.fullScreenViewController = EZPlayerFullScreenViewController()
                 self.fullScreenViewController!.preferredlandscapeForPresentation = UIDevice.current.orientation == .landscapeRight ? .landscapeLeft : .landscapeRight
