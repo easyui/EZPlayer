@@ -16,7 +16,7 @@ class MediaManager {
     static let sharedInstance = MediaManager()
     private init(){
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: NSNotification.Name.EZPlayerPlaybackDidFinish, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: .EZPlayerPlaybackDidFinish, object: nil)
 
     }
 
@@ -36,6 +36,7 @@ class MediaManager {
         }else{
           self.player = EZPlayer()
         }
+        
 
 //        self.player!.slideTrigger = (left:EZPlayerSlideTrigger.none,right:EZPlayerSlideTrigger.none)
 
@@ -76,8 +77,8 @@ class MediaManager {
 
 
     func releasePlayer(){
-            self.player?.stop()
-            self.player?.view.removeFromSuperview()
+        self.player?.stop()
+        self.player?.view.removeFromSuperview()
 
         self.player = nil
         self.embeddedContentView = nil

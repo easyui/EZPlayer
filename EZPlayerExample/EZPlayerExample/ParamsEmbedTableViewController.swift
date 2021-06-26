@@ -40,7 +40,6 @@ class ParamsEmbedTableViewController: UITableViewController {
 
 
     // MARK: - url
-    //http://www.cnblogs.com/linr/p/6185172.html
     @IBOutlet weak var urlTextField: UITextField!
     @IBAction func playButtonTap(_ sender: UIButton) {
         self.view.endEditing(true)
@@ -67,6 +66,11 @@ class ParamsEmbedTableViewController: UITableViewController {
     @IBAction func remoteT3Tap(_ sender: UIButton) {
         MediaManager.sharedInstance.playEmbeddedVideo(url: URL.Test.remoteMP4_0, embeddedContentView: self.paramsViewController.dlView)
     }
+    
+    @IBAction func liveTap(_ sender: UIButton) {
+        MediaManager.sharedInstance.playEmbeddedVideo(url: URL.Test.live_0, embeddedContentView: self.paramsViewController.dlView)
+    }
+    
     // MARK: - rate
     @IBAction func rateSlowTap(_ sender: UIButton) {
         MediaManager.sharedInstance.player?.rate = 0.5
