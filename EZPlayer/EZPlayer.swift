@@ -172,7 +172,7 @@ open class EZPlayer: NSObject {
         didSet {
             if playerItem != oldValue{
                 if let item = playerItem{
-
+                    
                     NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidPlayToEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
                     item.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: NSKeyValueObservingOptions.new, context: nil)
                     //缓冲区大小
@@ -503,7 +503,9 @@ open class EZPlayer: NSObject {
             }
         }
 
-
+        playerItem?.cancelPendingSeeks()
+        playerasset?.cancelLoading()
+    
         player.seek(to: CMTimeMakeWithSeconds(time,preferredTimescale: CMTimeScale(NSEC_PER_SEC)), toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero, completionHandler: {  [weak self]  (finished) in
             guard let weakSelf = self else {
                 return
@@ -1092,6 +1094,7 @@ extension EZPlayer {
             if item == self.playerItem {
                 switch keyPath {
                 case #keyPath(AVPlayerItem.status):
+                    //todo check main thread
                     //3）然后是kAVPlayerItemStatus的变化，从0变为1，即变为readyToPlay
                     printLog("AVPlayerItem's status is changed: \(item.status.rawValue)")
                     if item.status == .readyToPlay {//可以播放
